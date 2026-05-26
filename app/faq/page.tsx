@@ -10,15 +10,15 @@ import { CTAButton } from "@/components/CTAButton";
 export const metadata: Metadata = {
   title: "FAQ — SpicyRx",
   description:
-    "Frequently asked questions about Quattro and the SpicyRx process.",
+    "Frequently asked questions about Hot Sauce and the SpicyRx process.",
 };
 
 /* MEDICAL CLAIM: review — these answers are placeholders. Final copy
    requires Rimo medical-counsel review before launch. */
 const faqs = [
   {
-    q: "What is Quattro?",
-    a: "Quattro is a sublingual ED medication — a tablet placed under the tongue rather than swallowed. Final indications and dosing are determined by the prescribing clinician.",
+    q: "What is Hot Sauce?",
+    a: "Hot Sauce is a sublingual ED medication — a tablet placed under the tongue rather than swallowed. Final indications and dosing are determined by the prescribing clinician.",
   },
   {
     q: "Do I need to visit a clinic?",
@@ -33,8 +33,8 @@ const faqs = [
     a: "Yes. We follow HIPAA standards for protected health information. See our Privacy Policy for full details on what we collect and how it's used.",
   },
   {
-    q: "What if Quattro isn't right for me?",
-    a: "If the clinician determines Quattro isn't appropriate, you won't be charged for the medication. Consultation fees, if any, are disclosed before you submit.",
+    q: "What if Hot Sauce isn't right for me?",
+    a: "If the clinician determines Hot Sauce isn't appropriate, you won't be charged for the medication. Consultation fees, if any, are disclosed before you submit.",
   },
   {
     q: "Where do you operate?",

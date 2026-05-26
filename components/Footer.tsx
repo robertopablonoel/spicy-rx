@@ -10,7 +10,7 @@ const policyLinks = [
 ];
 
 const productLinks = [
-  { href: "/products/quattro", label: "Quattro" },
+  { href: "/products/hot-sauce", label: "Hot Sauce" },
   { href: "/how-it-works", label: "How it works" },
   { href: "/faq", label: "FAQ" },
 ];

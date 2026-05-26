@@ -10,7 +10,7 @@ import { CTAButton } from "@/components/CTAButton";
 import { PRODUCT_NAME } from "@/lib/constants";
 
 /**
- * Quattro product card — homepage feature.
+ * Hot Sauce product card — homepage feature.
  * Routes to /products/quattro for the detail page.
  */
 export function ProductCard() {
@@ -31,7 +31,7 @@ export function ProductCard() {
         <div className="flex flex-col gap-3 sm:flex-row">
           <CTAButton location="product_card" />
           <Link
-            href="/products/quattro"
+            href="/products/hot-sauce"
             className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-4 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
           >
             Learn more

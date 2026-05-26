@@ -17,8 +17,15 @@ export const SUPPORT_EMAIL = "support@spicyrx.com";
 export const RIMO_PORTAL_URL =
   process.env.NEXT_PUBLIC_RIMO_PORTAL_URL ?? "https://app.caliberrx.co";
 
-export const PRODUCT_NAME = "Quattro";
-export const PRODUCT_TAGLINE = "Sublingual ED treatment, prescribed online.";
+/**
+ * Public product name for the SpicyRx Rx line. The Rimo-side internal name
+ * for the formulation is "Quattro sublingual" — we surface "Hot Sauce" as the
+ * brand-facing name, callback to the Spicy Cubes flavor lineage without
+ * importing the supplement voice.
+ */
+export const PRODUCT_NAME = "Hot Sauce";
+export const PRODUCT_TAGLINE =
+  "ED treatment, without the clinic visit.";
 
 /** Header attached by middleware.ts for downstream state-restriction logic. */
 export const STATE_HEADER = "x-user-state";

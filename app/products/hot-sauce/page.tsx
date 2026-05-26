@@ -3,19 +3,19 @@ import { CTAButton } from "@/components/CTAButton";
 import { Separator } from "@/components/ui/separator";
 
 export const metadata: Metadata = {
-  title: "Quattro — SpicyRx",
+  title: "Hot Sauce — SpicyRx",
   description:
     "Sublingual ED treatment prescribed online by licensed clinicians.",
 };
 
-export default function QuattroPage() {
+export default function HotSaucePage() {
   return (
     <article className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
       <p className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
         Product
       </p>
       <h1 className="mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-        Quattro
+        Hot Sauce
       </h1>
       <p className="mt-6 text-xl leading-relaxed text-muted-foreground">
         A sublingual ED medication prescribed online and delivered to your
@@ -35,7 +35,7 @@ export default function QuattroPage() {
             questionnaire. A licensed clinician reviews your answers.
           </li>
           <li>
-            <strong>Prescription review.</strong> If Quattro is appropriate
+            <strong>Prescription review.</strong> If Hot Sauce is appropriate
             for you, the clinician issues a prescription through our partner
             pharmacy.
           </li>
@@ -50,12 +50,12 @@ export default function QuattroPage() {
 
       <section className="space-y-6">
         <h2 className="text-2xl font-semibold tracking-tight text-foreground">
-          Is Quattro right for you?
+          Is Hot Sauce right for you?
         </h2>
         {/* MEDICAL CLAIM: review — placeholder language only. Final copy
             requires Rimo medical-counsel review before launch. */}
         <p className="leading-relaxed text-foreground/90">
-          Quattro may not be appropriate for everyone. The consultation
+          Hot Sauce may not be appropriate for everyone. The consultation
           process screens for contraindications, including nitrate use and
           certain cardiovascular conditions. Final eligibility is determined
           by your reviewing clinician.
@@ -65,7 +65,7 @@ export default function QuattroPage() {
       <Separator className="my-12" />
 
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-        <CTAButton location="quattro_product_page" />
+        <CTAButton location="hot_sauce_product_page" />
         <p className="text-sm text-muted-foreground">
           Begins with an online consultation — no charge if not prescribed.
         </p>

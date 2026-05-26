@@ -1,9 +1,9 @@
 /**
  * State-restriction configuration.
  *
- * Rimo provides the authoritative list of states where Quattro (sublingual ED
- * medication) may be prescribed. Until Rimo confirms, these arrays are empty
- * placeholders. Do not populate with guesses.
+ * Rimo provides the authoritative list of states where Hot Sauce (sublingual
+ * ED medication) may be prescribed. Until Rimo confirms, these arrays are
+ * empty placeholders. Do not populate with guesses.
  *
  * Convention: two-letter USPS state codes, uppercase.
  */

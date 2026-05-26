@@ -19,7 +19,7 @@ const steps = [
     step: 2,
     title: "Prescription review",
     description:
-      "If Quattro is appropriate for you, your clinician issues a prescription through our partner pharmacy. You only pay if you're prescribed.",
+      "If Hot Sauce is appropriate for you, your clinician issues a prescription through our partner pharmacy. You only pay if you're prescribed.",
   },
   {
     step: 3,

@@ -35,10 +35,12 @@ export async function CTAButton({
     return <StateRestrictionNotice state={state ?? ""} />;
   }
 
+  // Pill-shaped buttons mirror the Spicy Cubes Shopify theme (50px radius).
+  // Primary uses the burgundy brand color; hover shifts to coral accent.
   const primary =
-    "inline-flex h-11 items-center justify-center rounded-md bg-foreground px-6 text-sm font-semibold text-background transition-colors hover:bg-foreground/90";
+    "inline-flex h-12 items-center justify-center rounded-full bg-primary px-8 text-sm font-bold uppercase tracking-wider text-primary-foreground transition-colors hover:bg-accent";
   const secondary =
-    "inline-flex h-11 items-center justify-center rounded-md border border-input bg-background px-6 text-sm font-semibold transition-colors hover:bg-accent hover:text-accent-foreground";
+    "inline-flex h-12 items-center justify-center rounded-full border-2 border-primary bg-background px-8 text-sm font-bold uppercase tracking-wider text-primary transition-colors hover:bg-primary hover:text-primary-foreground";
 
   return (
     <a
