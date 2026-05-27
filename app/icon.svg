@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" fill="none">
+  
+  <defs>
+    <linearGradient id="heat" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFB30A"></stop>
+      <stop offset="0.45" stop-color="#FF7A1A"></stop>
+      <stop offset="1" stop-color="#FF3B1F"></stop>
+    </linearGradient>
+  </defs>
+  
+  <path d="M50 4 C50 4, 12 50, 12 78 C12 98, 29 114, 50 114 C71 114, 88 98, 88 78 C88 50, 50 4, 50 4 Z" fill="url(#heat)"></path>
+  
+  <ellipse cx="38" cy="72" rx="6" ry="13" fill="#0A0907" transform="rotate(-18 38 72)"></ellipse>
+  <ellipse cx="62" cy="72" rx="6" ry="13" fill="#0A0907" transform="rotate(18 62 72)"></ellipse>
+</svg>
