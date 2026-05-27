@@ -1,203 +1,45 @@
-> **Draft — pending legal review.** Structure ported from a peer telehealth site as a starting template. Items marked `[REVIEW: …]` need legal/Rimo sign-off before launch.
+# Spicy Alien Telehealth Consent
 
-# Telehealth Informed Consent
+**Effective date:** May 27, 2026
 
-**Effective date:** [REVIEW: set at launch.]
+BY CLICKING "I AGREE," CHECKING A RELATED BOX TO SIGNIFY YOUR ACCEPTANCE, USING ANY OTHER ACCEPTANCE PROTOCOL PRESENTED THROUGH THE SERVICE OR OTHERWISE AFFIRMATIVELY ACCEPTING THIS CONSENT, YOU ACKNOWLEDGE THAT YOU HAVE READ, ACCEPTED, AND AGREED TO BE BOUND BY THIS CONSENT. IF YOU DO NOT AGREE TO THIS CONSENT, DO NOT CREATE AN ACCOUNT OR USE THE SERVICE. YOU HEREBY GRANT AGENCY AUTHORITY TO ANY PARTY WHO CLICKS ON THE "I AGREE" BUTTON OR OTHERWISE INDICATES ACCEPTANCE TO THIS CONSENT ON YOUR BEHALF.
 
-By clicking "I Agree," checking a related box to signify your acceptance,
-using any other acceptance protocol presented through the Service, or
-otherwise affirmatively accepting this Consent, you acknowledge that you
-have read, accepted, and agreed to be bound by this Consent.
-
-If you do not agree to this Consent, do not create an account or use the
-Service.
-
-You hereby grant agency authority to any party who clicks the "I Agree"
-button or otherwise indicates acceptance to this Consent on your behalf.
-
-**If you are experiencing a life-threatening situation such as
-contemplating suicide, call 911 or the 988 Suicide & Crisis Lifeline at
-988.**
+IF YOU ARE EXPERIENCING A LIFE-THREATENING SITUATION SUCH AS CONTEMPLATING SUICIDE, CALL 911 OR THE 988 SUICIDE & CRISIS LIFELINE AT 988.
 
 ## Purpose
 
-The purpose of this consent form ("Consent") is to provide you with
-information about telehealth and to obtain your informed consent to the
-use of telehealth in the delivery of healthcare services to you by
-physicians, physician assistants, and nurse practitioners (collectively,
-"Providers") using the online platforms owned and operated by Spicy Alien
-(the "Service").
-
-In this Consent, the terms "you" and "yours" refer to the person using
-the Service.
+The purpose of this consent form ("Consent") is to provide you with information about telehealth and to obtain your informed consent to the use of telehealth in the delivery of healthcare services to you by physicians, physician assistants, nurse practitioners ("Providers") using the online platforms owned and operated by Noel Ventures LLC, doing business as Spicy Alien (the "Service"). In this Consent, the terms "you" and "yours" refer to the person using the Service.
 
 ## Use of Telehealth
 
-Telehealth involves the delivery of healthcare services using electronic
-communications, information technology, or other means between a
-healthcare provider and a patient who are not in the same physical
-location.
-
-Telehealth may be used for diagnosis, treatment, follow-up, and patient
-education, and may include one or more of the following:
-
-- Electronic transmission of medical records, photo images, personal
-  health information, or other data between a patient and a provider
-- Interactions between a patient and provider via audio, video, and data
-  communications such as messaging or email
-- Use of output data from medical devices, sound, and video files
-
-Alternative methods of care may be available to you, such as in-person
-services, and you may choose an alternative at any time. Always discuss
-alternative options with your Provider.
+Telehealth involves the delivery of healthcare services using electronic communications, information technology or other means between a healthcare provider and a patient who are not in the same physical location. Telehealth may be used for diagnosis, treatment, follow-up and/or patient education, and may include, but is not limited to, one or more of the following: electronic transmission of medical records, photo images, personal health information or other data between a patient and a provider; interactions between a patient and provider via audio, video and/or data communications (such as messaging or email communications); use of output data from medical devices, sound and video files. Alternative methods of care may be available to you, such as in-person services, and you may choose an alternative at any time. Always discuss alternative options with your Provider.
 
 ## Anticipated Benefits
 
-The use of telehealth may have possible benefits that include making it
-easier and more efficient for you to access medical care or other
-services and treatment for the conditions treated by your Provider,
-allowing you to obtain care at times that are convenient for you, and
-enabling you to interact with Providers without the necessity of an
-in-office appointment.
+The use of telehealth may have the following possible benefits: making it easier and more efficient for you to access medical care or other services and treatment for the conditions treated by your Provider(s); allowing you to obtain medical care or other services and treatment by Provider(s) at times that are convenient for you; and enabling you to interact with Provider(s) without the necessity of an in-office appointment.
 
 ## Potential Risks
 
-While telehealth can provide benefits, there are potential risks that
-include the following:
+While the use of telehealth in the delivery of care can provide potential benefits for you, there are also potential risks associated with the use of telehealth and other technology. These risks include, but may not be limited to the following: the quality, accuracy or effectiveness of the services you receive from your Provider could be limited; technology, including the Service, may contain bugs or other errors, including ones which may limit functionality, produce erroneous results, render part or all of such technology, including the Service, unavailable or inoperable, produce incorrect records, transmissions, data or content, or cause records, transmissions, data or content to be corrupted or lost; failures of technology may also impact your Provider(s) ability to correctly diagnose or treat your condition; the inability of your Provider(s) to conduct certain tests or assess vital signs in-person may in some cases prevent the Provider(s) from providing a diagnosis or treatment or from identifying the need for emergency medical care or treatment for you; your Provider(s) may not able to provide treatment for your particular condition and you may be required to seek alternative healthcare or emergency care services; mental health services may result in feeling worse as therapy progresses; delays in medical evaluation/treatment could occur due to unavailability of your Provider(s) or deficiencies or failures of the technology or electronic equipment used; the electronic systems or other security protocols or safeguards used could fail, causing a breach of privacy of your medical or other information; data stored and communicated electronically, for example, through email communications, may be more susceptible to unintended disclosure of protected health information to third parties; given regulatory requirements in certain jurisdictions, your Provider(s) diagnosis and/or treatment options, especially pertaining to certain prescriptions, may be limited; a lack of access to all of your medical records may result in adverse drug interactions or allergic reactions or other judgment errors.
 
-- The quality, accuracy, or effectiveness of the services you receive
-  from your Provider could be limited.
-- Technology, including the Service, may contain bugs or other errors
-  that may limit functionality, produce erroneous results, render the
-  Service unavailable or inoperable, produce incorrect records,
-  transmissions, data, or content, or cause records, transmissions,
-  data, or content to be corrupted or lost.
-- Failures of technology may impact your Provider's ability to correctly
-  diagnose or treat your condition.
-- The inability to conduct certain tests or assess vital signs in person
-  may prevent diagnosis or treatment or the identification of the need
-  for emergency medical care.
-- Your Provider may not be able to provide treatment for your particular
-  condition, and you may be required to seek alternative healthcare or
-  emergency services.
-- Delays in medical evaluation or treatment could occur due to
-  unavailability of your Provider or failures of technology or equipment.
-- Electronic systems or other safeguards could fail, causing a breach of
-  privacy of your medical or other information.
-- Data stored and communicated electronically — for example, through
-  email — may be more susceptible to unintended disclosure to third
-  parties.
-- Regulatory requirements in certain jurisdictions may limit diagnosis
-  and treatment options, especially regarding certain prescriptions.
-- A lack of access to all of your medical records may result in adverse
-  drug interactions, allergic reactions, or other judgment errors.
+## Life Threatening and Other Emergency Situations; Follow-Up Care
 
-## ED-Specific Risk Disclosures
+If you are experiencing a life-threatening situation such as contemplating suicide, call 911 or the 988 Suicide and Crisis Lifeline at 988.
 
-**[REVIEW: medical counsel to confirm wording and completeness of this
-section. The bullets below are common ED-medication disclosures and are
-provided as a starting point only.]**
-
-- **Nitrate interaction.** PDE5 inhibitors (including sildenafil,
-  vardenafil, and tadalafil) must not be combined with nitrate
-  medications. The combination can cause severe, life-threatening drops
-  in blood pressure.
-- **Cardiovascular preconditions.** If you have a history of heart
-  attack, stroke, severe heart failure, uncontrolled high or low blood
-  pressure, or other cardiovascular conditions, you must disclose this
-  during intake. Your Provider may decline to prescribe.
-- **Priapism.** An erection lasting more than four hours is a medical
-  emergency. Seek immediate in-person emergency care.
-- **Sudden vision or hearing changes.** Stop the medication and contact
-  a healthcare professional immediately.
-- **Alcohol and other drugs.** Excessive alcohol use and certain
-  recreational substances can increase the risk of side effects.
-
-## Life-Threatening and Other Emergency Situations; Follow-Up Care
-
-If you are experiencing a life-threatening situation such as contemplating
-suicide, call 911 or the 988 Suicide and Crisis Lifeline at 988.
-
-If the situation is an emergency, call 911.
-
-In some situations, telehealth is not an appropriate method of care.
-
-If you require immediate or urgent care, you must seek care at an
-emergency room facility or another provider equipped to deliver urgent or
-emergent care.
-
-Providers may not respond promptly to communications you submit through
-the Service.
-
-If you are not experiencing an emergency or do not require immediate or
-urgent care, you can communicate with Providers through the secure
-message service in the Service.
+If the situation is an emergency, call 911. In some situations, telehealth is not an appropriate method of care. If you require immediate or urgent care, you must seek care at an emergency room facility or other provider equipped to deliver urgent or emergent care. Providers may not respond promptly to communications you submit through the Service. If you are not experiencing an emergency or do not require immediate or urgent care, you can communicate with Providers through the secure message service in the Service.
 
 ## Data Privacy and Protection
 
-The electronic systems used in the Service incorporate network and
-software security protocols to protect the privacy and security of your
-information and include measures to safeguard data against intentional or
-unintentional corruption.
-
-Personal information that identifies you or contains protected health
-information will not be disclosed to any third party without your
-consent, except as authorized by law for consultation, treatment,
-payment or billing, certain administrative purposes, and as required by
-law to disclose to other persons and agencies certain information
-obtained during the provision of mental health services such as danger
-to self or others and mandatory reporting of child, elder, or vulnerable
-adult abuse, or as otherwise set forth in your Provider's Notice of
-Privacy Practices.
-
-Use of the Service may include email communications to and from you that
-may include your protected health information.
-
-You understand that Spicy Alien does not and cannot guarantee the security or
-privacy of the services you use to receive communications, including, for
-example, your email service provider.
+The electronic systems used in the Service will incorporate network and software security protocols to protect the privacy and security of your information and will include measures to safeguard data against intentional or unintentional corruption. Personal information that identifies you or contains protected health information will not be disclosed to any third party without your consent, except as authorized by law for the purposes of consultation, treatment, payment/billing, certain administrative purposes, and as required by law to disclose to other persons and agencies certain information obtained during the provision of mental health services (e.g., danger to self or others; mandatory reporting of child, elder, or vulnerable adult abuse) or as otherwise set forth in your Provider's Notice of Privacy Practices. Use of the Service may include email communications to and from you that may include your protected health information. You understand that Spicy Alien does not and cannot guarantee the security or privacy of the services you use to receive communications, including for example your email service provider.
 
 ## Your Acknowledgments
 
-By clicking "I Agree," checking a related box to signify your acceptance,
-using any other acceptance protocol presented through the Service, or
-otherwise affirmatively accepting this Consent, you agree and provide
-your consent to the following:
+By clicking "I Agree", checking a related box to signify your acceptance, using any other acceptance protocol presented through the Service or otherwise affirmatively accepting this consent, you are agreeing and providing your consent with respect to the following:
 
-- Healthcare services provided to you by Providers via the Service will
-  be provided by telehealth.
-- In some cases, your treating Provider may be a nurse practitioner or
-  physician assistant and not a physician, and you agree to be treated by
-  non-physician providers when applicable by using the Service.
-- Certain technology, including the Service, may be used while still in a
-  beta testing and development phase and before such technology is a
-  final product.
-- Technology used to deliver care may contain bugs or errors that impact
-  care quality.
-- No potential benefits or results can be guaranteed.
-- You may not receive diagnosis or treatment for every condition through
-  telehealth.
-- You have the opportunity to discuss telehealth with your Provider.
-- There will be no recording of sessions.
-- You may withdraw consent at any time with written notice.
-- You agree to provide truthful, accurate, and complete information.
+Healthcare services provided to you by Providers via the Service will be provided by telehealth. In some cases, your treating Provider may be a nurse practitioner or physician assistant and not a physician, and you agree to be treated by non-physician providers, if applicable, by using the Service. Your treating Provider for therapy services will be a mental health professional, such as a licensed counselor. Certain technology, including the Service, may be used while still in a beta testing and development phase, and before such technology is a final and finished product. Technology used to deliver care, including the Service, may contain bugs or other errors, including ones which may limit functionality, produce erroneous results, render part or all of such technology unavailable or inoperable, produce incorrect records, transmissions, data or content, or cause records, transmissions, data or content to be corrupted or lost, any or all of which could limit or otherwise impact the quality, accuracy and/or effectiveness of the medical care or other services that you receive from your Provider(s). Certain diagnostic testing services, including laboratory products and services offered through the Service, may contain defects, including ones which may limit functionality or produce erroneous results, any or all of which could limit or otherwise impact the quality, accuracy and/or effectiveness of the medical care or other services that you receive from your Provider(s). The delivery of healthcare services via telehealth is an evolving field and the use of telehealth or other technology in your medical care and treatment from Provider(s) may include uses of technology different from those described in this Consent or not specifically described in this Consent. No potential benefits from the use of telehealth or other technology or specific results can be guaranteed, including any laboratory testing results or related diagnosis or treatment by your Provider(s). Your condition may not be cured or improved, and in some cases, may get worse. There are limitations in the provision of medical care or other services and treatment via telehealth and technology, including the Service, and you may not be able to receive diagnosis and/or treatment through telehealth for every condition for which you seek diagnosis and/or treatment. There are potential risks to the use of telehealth and other technology, including but not limited to the risks described in this Consent. You have the opportunity to discuss the use of telehealth, including the Service, with your Provider(s), including the benefits and risks of such use and the alternatives to the use of telehealth. You understand that there will be no recording of any online treatment sessions by your Provider(s) or you. Your Provider(s) will assess your medical condition and, in their sole discretion, may determine it is medically appropriate to diagnose and/or treat your condition via telehealth and whether you maintain sufficient knowledge and skills in the use of technology appropriate to diagnosing and/or treating your condition via telehealth. By continuing to use the Service, you concur with your Provider's medical assessment and agree to receive a diagnosis and/or treatment via telehealth technology. You have the right to withdraw your consent to the use of telehealth in the course of your care, without prejudice to any future care or treatment and without risking the loss or withdrawal of any health benefits to which you're entitled, but you understand that the Providers who utilize the Service do not offer in-person treatment. Any withdrawal of your consent will be effective upon receipt of written notice to your Providers, except that such withdrawal will not have any effect on any action taken by Spicy Alien or your Provider(s) in reliance on this Consent before it received your written notice of withdrawal. Any withdrawal of your consent will not affect any other provision of this Consent, and you will continue to be bound by this Consent. You understand that the use of the Service involves electronic communication to and from you of your personal medical information in connection with the provision of telehealth services, including through email. You understand that it is your duty to provide Spicy Alien and your Provider(s) truthful, accurate and complete information, including all relevant information regarding care that you may have received or may be receiving from healthcare and/or mental health providers including emergency contact information for your local healthcare and/or mental health providers. You understand that each of your Provider(s) will assess your medical condition and, in their sole discretion, may determine it is medically appropriate to diagnose and/or treat your condition using telehealth technology, including the Service. By continuing to use the Service, you concur with your Provider's medical assessment and agree to receive a diagnosis and/or treatment via telehealth technology. You understand that each of your Provider(s) may determine in their sole discretion that your condition is not suitable for diagnosis and/or treatment using telehealth technology, including the Service, and that you may need to seek care and treatment from a specialist or other healthcare provider, outside of such telehealth technology.
 
-Spicy Alien will use its pharmacy partners to fulfill your order directly to
-your door.
+Spicy Alien will use its pharmacy partners to fulfill your order directly to your door. You are free to obtain your prescription from any pharmacy of your choice by contacting our support team and notifying your prescribing healthcare professional directly using the Platform and your secure messaging. Prescriptions may be filled by and transferred between any pharmacy partners on your behalf. You must pay the full amount of the costs associated with use of the Service, including any prescription you may receive, and you will not attempt to submit a claim to Medicare, any other federal payor, or any state or private insurer.
 
-You are free to obtain your prescription from any pharmacy of your
-choice by contacting support and notifying your prescribing healthcare
-professional.
+If you have a concern about a medical professional, you may contact the Medical Board in your state regarding your concerns.
 
-Prescriptions may be filled by and transferred between pharmacy partners
-on your behalf.
-
-You must pay the full amount of costs associated with use of the Service,
-including prescriptions, and will not submit claims to Medicare or other
-insurers.
-
-If you have a concern about a medical professional, you may contact the
-Medical Board in your state.
-
-**[REVIEW: name the medical group / consultation partner here, e.g.
-"Consultations are conducted through [Partner Medical Group]."]**
+Spicy Alien does not provide doctor consultations; consultations are done through DrTelx.

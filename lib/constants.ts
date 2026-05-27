@@ -11,6 +11,14 @@ export const SUPPORT_EMAIL = "support@spicyalien.com";
 export const PRODUCT_NAME = "Hot Sauce";
 
 /**
+ * Legal entity name. Used in footer copyright, telehealth consent, and any
+ * other place where the contracting entity must be identified by its
+ * registered name (not the trade name). "Spicy Alien" is the brand /
+ * trade name; "Noel Ventures LLC" is the entity that owns and operates it.
+ */
+export const LEGAL_ENTITY = "Noel Ventures LLC";
+
+/**
  * Rimo-hosted patient portal. Marketing-site "Sign in" CTAs link here.
  * The /consult flow inside this app handles initial intake; once approved
  * a patient gets a portal account at this URL.

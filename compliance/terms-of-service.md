@@ -1,5 +1,3 @@
-> **Draft — pending legal review.** Structure ported from a peer telehealth site as a starting template. Items marked `[REVIEW: …]` need legal/Rimo sign-off before launch.
-
 # Terms of Service
 
 ## Service Not Intended for Emergencies
@@ -44,8 +42,13 @@ a class action lawsuit or class-wide arbitration, as detailed below.
 Additionally, exceptions and the procedure for opting out of arbitration
 are outlined below.
 
-**[REVIEW: legal to confirm arbitration provider, seat, governing law, and
-opt-out window before launch.]**
+Arbitration will be administered by the American Arbitration Association
+("AAA") under its Consumer Arbitration Rules, with the seat of
+arbitration in Delaware. These Terms and Conditions, and any dispute
+arising out of or related to them, are governed by the laws of the State
+of Delaware without regard to its conflict-of-laws principles. You may
+opt out of arbitration by sending written notice to support@spicyalien.com
+within 30 days of first agreeing to these Terms.
 
 ## Spicy Alien and the Service
 
@@ -92,14 +95,12 @@ relationships (collectively, the "Pharmacies"). By using the Service,
 you agree your prescription(s) may be filled and transferred among the
 Pharmacies and authorize the Service to facilitate this on your behalf.
 
-Spicy Alien may also provide access to an independent medical group (the
-"Medical Group") for the provision of healthcare services through the
-Website. The Medical Group employs or contracts with physicians, allied
-health professionals, and/or other licensed clinicians who provide
-certain services through the Website (the "Providers").
-
-**[REVIEW: name the Medical Group and Pharmacy partners (Rimo / clinician
-network) once contracts are signed.]**
+Spicy Alien provides access to DrTelx, an independent telehealth
+medical group (the "Medical Group"), for the provision of healthcare
+services through the Website. The Medical Group employs or contracts
+with physicians, allied health professionals, and/or other licensed
+clinicians who provide certain services through the Website (the
+"Providers").
 
 By accepting this Agreement, you acknowledge that any services you
 receive from the Pharmacies, the Medical Group, or the Providers through
@@ -143,4 +144,4 @@ If you are the parent or legal guardian of an individual under 18 who you
 believe has used the Service without your consent, please contact Spicy Alien
 at [support@spicyalien.com](mailto:support@spicyalien.com).
 
-**Effective date:** [REVIEW: set at launch.]
+**Effective date:** May 27, 2026

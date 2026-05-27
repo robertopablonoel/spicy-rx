@@ -5,10 +5,11 @@ import { COMPARISON_ROWS } from "@/lib/content";
  * Old pills vs. Hot Sauce — pharma-grade table.
  *
  *   Desktop: 2fr / 1fr / 1fr — label / old way / Hot Sauce.
- *   Mobile:  1.4fr / 1fr     — the "old way" column is hidden via .m-cmp-old.
+ *   Mobile:  1.4fr / 1fr     — the "old way" column hidden.
  *
- * The Hot Sauce column has a warm tint (`rgba(255,59,31,0.06)`), a
- * hot border, and a ✓ glyph in front of each value.
+ * Mobile sizing is tighter than the kit: shorter eyebrow, smaller header
+ * subhead, py-3 cells. At 320px the Hot Sauce column is ~90px wide which
+ * doesn't fit "Hot Sauce 4-in-1" + "Sublingual stack" at the desktop sizes.
  */
 export function Comparison() {
   return (
@@ -34,7 +35,7 @@ export function Comparison() {
 
       <div className="grid grid-cols-[1.4fr_1fr] border border-ash md:grid-cols-[2fr_1fr_1fr]">
         {/* Header row */}
-        <div className="bg-cosmos px-3.5 py-4 md:px-5 md:py-[18px]" />
+        <div className="bg-cosmos px-3 py-3 md:px-5 md:py-[18px]" />
         <div className="hidden border-b border-l border-ash bg-cosmos px-3.5 py-4 md:block md:px-5 md:py-[18px]">
           <p className="font-[family-name:var(--font-mono)] text-[10px] font-medium uppercase tracking-[0.14em] text-fog">
             The old way
@@ -44,16 +45,17 @@ export function Comparison() {
           </p>
         </div>
         <div
-          className="-mr-px px-3.5 py-4 md:px-5 md:py-[18px]"
+          className="-mr-px px-3 py-3 md:px-5 md:py-[18px]"
           style={{
             background: "rgba(255,59,31,0.06)",
             border: "1px solid var(--border-hot)",
           }}
         >
-          <p className="font-[family-name:var(--font-mono)] text-[10px] font-medium uppercase tracking-[0.14em] text-hot">
-            ● Hot Sauce 4-in-1
+          <p className="font-[family-name:var(--font-mono)] text-[10px] font-medium uppercase tracking-[0.08em] text-hot md:tracking-[0.14em]">
+            ● Hot Sauce
+            <span className="hidden md:inline"> 4-in-1</span>
           </p>
-          <p className="mt-1 font-[family-name:var(--font-display)] text-[18px] font-semibold text-fg">
+          <p className="mt-1 font-[family-name:var(--font-display)] text-[15px] font-semibold text-fg md:text-[18px]">
             Sublingual stack
           </p>
         </div>
@@ -78,14 +80,14 @@ function Row({
 }) {
   return (
     <>
-      <div className="border-t border-ash bg-cosmos px-3.5 py-4 text-[13px] text-fg md:px-5 md:py-5 md:text-[15px]">
+      <div className="border-t border-ash bg-cosmos px-3 py-3 text-[13px] leading-snug text-fg md:px-5 md:py-5 md:text-[15px] md:leading-normal">
         {label}
       </div>
       <div className="hidden border-t border-l border-ash bg-cosmos px-3.5 py-4 text-[13px] text-fog md:block md:px-5 md:py-5 md:text-[15px]">
         {oldWay}
       </div>
       <div
-        className="-mr-px px-3.5 py-4 text-[14px] font-semibold text-fg md:px-5 md:py-5 md:text-[15px]"
+        className="-mr-px px-3 py-3 text-[13px] font-semibold leading-snug text-fg md:px-5 md:py-5 md:text-[15px] md:leading-normal"
         style={{
           background: "rgba(255,59,31,0.06)",
           borderTop: "1px solid var(--border-hot)",
@@ -95,7 +97,7 @@ function Row({
       >
         <span
           aria-hidden
-          className="mr-2 font-[family-name:var(--font-mono)] text-hot"
+          className="mr-1.5 font-[family-name:var(--font-mono)] text-hot md:mr-2"
         >
           ✓
         </span>

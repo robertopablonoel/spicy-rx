@@ -42,11 +42,14 @@ export function MoleculeRow() {
 
       <div className="grid grid-cols-1 gap-px border border-ash bg-ash sm:grid-cols-2 lg:grid-cols-4">
         {INGREDIENTS.map((ing) => (
-          <article key={ing.key} className="bg-cosmos px-6 py-8">
+          <article
+            key={ing.key}
+            className="bg-cosmos px-5 py-6 md:px-6 md:py-8"
+          >
             <p className="font-[family-name:var(--font-mono)] text-[11px] font-medium uppercase tracking-[0.14em] text-ember">
               {ing.slot}
             </p>
-            <div className="mt-4 h-20 text-ember">
+            <div className="mt-3 h-16 md:mt-4 md:h-20">
               <Image
                 src={`/brand/molecule-${ing.key}.svg`}
                 alt=""
@@ -56,11 +59,11 @@ export function MoleculeRow() {
               />
             </div>
             <h3
-              className="mt-5 font-[family-name:var(--font-display)] font-semibold text-fg"
+              className="mt-4 font-[family-name:var(--font-display)] font-semibold text-fg md:mt-5"
               style={{
-                fontSize: 26,
+                fontSize: 24,
                 letterSpacing: "-0.025em",
-                lineHeight: 1,
+                lineHeight: 1.05,
               }}
             >
               {ing.role}
@@ -68,7 +71,7 @@ export function MoleculeRow() {
             <p className="mt-2 font-[family-name:var(--font-mono)] text-[11px] font-medium uppercase tracking-[0.12em] text-fog">
               {ing.name}
             </p>
-            <p className="mt-[18px] text-[13px] leading-[1.5] text-mist">
+            <p className="mt-4 text-[13px] leading-[1.5] text-mist">
               {ing.mechanism}
             </p>
           </article>

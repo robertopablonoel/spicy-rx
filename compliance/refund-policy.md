@@ -1,11 +1,8 @@
-> **Draft — pending legal review.** Structure ported from a peer telehealth site as a starting template. Items marked `[REVIEW: …]` need legal/Rimo sign-off before launch.
-
 # Refund Policy
 
-We maintain a [REVIEW: confirm window — peer site uses 30 days] return
-window from item receipt. Items must remain unworn, unused, in their
-original packaging, with seals and tags intact, and accompanied by proof
-of purchase.
+We maintain a 30-day return window from item receipt. Items must remain
+unworn, unused, in their original packaging, with seals and tags intact,
+and accompanied by proof of purchase.
 
 To initiate a return, contact [support@spicyalien.com](mailto:support@spicyalien.com).
 Returns require prior approval; unsolicited packages cannot be accepted.
@@ -28,11 +25,9 @@ The following cannot be returned:
 - Hazardous materials or temperature-sensitive shipments
 - Sale items or gift cards
 
-**[REVIEW: confirm exact list of non-returnable categories with Rimo /
-pharmacy partner. State pharmacy boards generally prohibit return of any
-dispensed prescription product.]**
-
-Contact us regarding any specific item concerns.
+State board-of-pharmacy rules generally prohibit return of any dispensed
+prescription product, regardless of condition. Contact us regarding any
+specific item concerns.
 
 ## Exchanges
 
@@ -54,13 +49,12 @@ passed since approval and you have not received the refund.
 
 ## "Risk-Free": No Charge If You Don't Qualify
 
-If a Spicy Alien-affiliated clinician reviews your intake and determines that
-Hot Sauce is not appropriate for you, you will not be charged for the
-medication. **[REVIEW: confirm whether the consultation fee, if any, is
-also waived, or charged separately.]**
+If a Spicy Alien-affiliated clinician reviews your intake and determines
+that Hot Sauce is not appropriate for you, you will not be charged for the
+medication or the clinician consultation.
 
 ## Contact
 
 Refund and return inquiries: [support@spicyalien.com](mailto:support@spicyalien.com)
 
-**Effective date:** [REVIEW: set at launch.]
+**Effective date:** May 27, 2026

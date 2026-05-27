@@ -1,5 +1,3 @@
-> **Draft — pending legal review.** Structure ported from a peer telehealth site as a starting template. Items marked `[REVIEW: …]` need legal/Rimo sign-off before launch.
-
 # Privacy Policy
 
 ## Introduction
@@ -187,6 +185,4 @@ If you have questions about this Privacy Policy or our privacy practices,
 contact the Spicy Alien Privacy Officer by emailing [support@spicyalien.com](mailto:support@spicyalien.com)
 with the subject line "Privacy Policy Question."
 
-**[REVIEW: confirm support phone number to publish.]**
-
-**Effective date:** [REVIEW: set at launch.]
+**Effective date:** May 27, 2026

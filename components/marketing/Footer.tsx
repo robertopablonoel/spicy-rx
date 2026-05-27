@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BRAND_NAME } from "@/lib/constants";
+import { BRAND_NAME, LEGAL_ENTITY } from "@/lib/constants";
 import { Pill } from "@/components/ui/pill";
 
 const LEGAL_LINKS = [
@@ -12,12 +12,11 @@ const LEGAL_LINKS = [
 ];
 
 /**
- * Cosmos-background footer. Brand mark + disclosure copy + Rx/LegitScript
- * pills on the left; a single Legal column on the right linking to the
- * five compliance pages. Bottom rail has the mono batch readout.
+ * Cosmos-background footer.
  *
- * Non-compliance link columns (Product / Company / placeholder Legal) were
- * removed pending real destinations.
+ *   Row 1: brand mark + product disclosure + Rx pill | Legal column
+ *   Row 2: Medical Provider Partners disclosure (full-width band)
+ *   Row 3: mono copyright + batch readout
  */
 export function Footer() {
   return (
@@ -43,7 +42,6 @@ export function Footer() {
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
               <Pill tone="ember">Rx ONLY</Pill>
-              <Pill tone="fog">LegitScript verified</Pill>
             </div>
           </div>
 
@@ -65,9 +63,34 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-3 border-t border-ash pt-6 font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.1em] text-fog md:flex-row md:items-center md:justify-between">
-          <span>© {new Date().getFullYear()} {BRAND_NAME.toUpperCase()} Inc.</span>
-          <span>Batch 0042 · [REVIEW: licensed states]</span>
+        {/*
+          Medical Provider Partners disclosure — full-width band. Required
+          regulatory disclosure that Spicy Alien itself doesn't provide
+          consultations; care is delivered by the partner medical group.
+        */}
+        <div className="mt-12 max-w-[820px] border-t border-ash pt-8">
+          <p className="mb-3 font-[family-name:var(--font-mono)] text-[11px] font-medium uppercase tracking-[0.14em] text-ember">
+            Medical Provider Partners
+          </p>
+          <p className="text-[13px] leading-[1.55] text-fog">
+            We are partnered with{" "}
+            <a
+              href="https://drtelx.com/"
+              target="_blank"
+              rel="noopener"
+              className="text-mist underline decoration-mist/40 underline-offset-4 transition-colors hover:text-fg hover:decoration-fg"
+            >
+              DrTelx
+            </a>
+            , an independent telehealth medical group, to bring the best
+            product and overall experience to our membership. Our team meets
+            regularly with pharmacies to discuss any product shortages,
+            shipping delays, and updated reports on their medication testing.
+          </p>
+        </div>
+
+        <div className="mt-10 border-t border-ash pt-6 font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.1em] text-fog">
+          <span>© {new Date().getFullYear()} {LEGAL_ENTITY}</span>
         </div>
       </div>
     </footer>
