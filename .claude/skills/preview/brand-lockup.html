@@ -1,0 +1,35 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  body.card { display: flex; align-items: center; justify-content: space-between; padding: 36px 40px; }
+  .mark { width: 100px; height: 120px; }
+  .wm-stack { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+  .wm {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 56px;
+    letter-spacing: -0.04em;
+    color: var(--fg);
+    line-height: 0.95;
+  }
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ember);
+  }
+</style>
+</head>
+<body class="card">
+  <svg class="mark" viewBox="0 0 100 120">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFB30A"/><stop offset=".45" stop-color="#FF7A1A"/><stop offset="1" stop-color="#FF3B1F"/></linearGradient></defs>
+    <path d="M50 4 C50 4,12 50,12 78 C12 98,29 114,50 114 C71 114,88 98,88 78 C88 50,50 4,50 4Z" fill="url(#g)"/>
+    <ellipse cx="38" cy="72" rx="6" ry="13" fill="#0A0907" transform="rotate(-18 38 72)"/>
+    <ellipse cx="62" cy="72" rx="6" ry="13" fill="#0A0907" transform="rotate(18 62 72)"/>
+  </svg>
+  <div class="wm-stack">
+    <div class="wm">SPICY<br>ALIEN</div>
+    <div class="tag">Performance pharma · Est. 2025</div>
+  </div>
+</body></html>

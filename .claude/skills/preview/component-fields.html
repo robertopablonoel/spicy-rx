@@ -1,0 +1,48 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  .stack { display: flex; flex-direction: column; gap: 14px; max-width: 480px; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--fog);
+  }
+  input, select, textarea {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--fg);
+    background: transparent;
+    border: 1px solid var(--ash);
+    border-bottom-width: 1.5px;
+    padding: 12px 14px;
+    border-radius: 4px;
+    outline: 0;
+    transition: border-color 200ms;
+  }
+  input:focus, select:focus, textarea:focus { border-color: var(--ember); }
+  input::placeholder { color: var(--smoke); }
+  .check { display: flex; align-items: center; gap: 10px; font-family: var(--font-body); font-size: 14px; }
+  .box {
+    width: 18px; height: 18px; background: var(--hot); display: flex; align-items: center; justify-content: center;
+    color: var(--void); font-size: 13px; font-weight: 700;
+  }
+  .box-empty { width: 18px; height: 18px; border: 1.5px solid var(--smoke); }
+</style>
+</head>
+<body class="card">
+  <div class="stack">
+    <div class="field">
+      <label>Email</label>
+      <input value="you@spicyalien.co" />
+    </div>
+    <div class="field">
+      <label>Date of birth</label>
+      <input placeholder="MM / DD / YYYY" />
+    </div>
+    <div class="check"><div class="box">✓</div>I'm not taking nitrates or alpha-blockers.</div>
+    <div class="check"><div class="box-empty"></div>Send me lab updates (no marketing).</div>
+  </div>
+</body></html>

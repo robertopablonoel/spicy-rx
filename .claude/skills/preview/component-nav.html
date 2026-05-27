@@ -1,0 +1,67 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  body.card { padding: 0; }
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 28px;
+    border-bottom: 1px solid var(--ash);
+    background: rgba(10, 9, 7, 0.78);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+  }
+  .lock { display: flex; align-items: center; gap: 10px; }
+  .mark { width: 22px; height: 26px; }
+  .wm {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: -0.02em;
+    color: var(--fg);
+  }
+  .links { display: flex; gap: 28px; }
+  .links a {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--mist);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 200ms;
+  }
+  .links a:hover { color: var(--fg); }
+  .links a.active { color: var(--ember); }
+  .cta {
+    background: var(--hot);
+    color: var(--void);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 13px;
+    padding: 10px 16px;
+    border-radius: 0;
+  }
+  .below { padding: 16px 28px; }
+</style>
+</head>
+<body class="card">
+  <nav>
+    <div class="lock">
+      <svg class="mark" viewBox="0 0 100 120">
+        <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFB30A"/><stop offset=".45" stop-color="#FF7A1A"/><stop offset="1" stop-color="#FF3B1F"/></linearGradient></defs>
+        <path d="M50 4 C50 4,12 50,12 78 C12 98,29 114,50 114 C71 114,88 98,88 78 C88 50,50 4,50 4Z" fill="url(#g)"/>
+        <ellipse cx="38" cy="72" rx="6" ry="13" fill="#0A0907" transform="rotate(-18 38 72)"/>
+        <ellipse cx="62" cy="72" rx="6" ry="13" fill="#0A0907" transform="rotate(18 62 72)"/>
+      </svg>
+      <div class="wm">SPICY ALIEN</div>
+    </div>
+    <div class="links">
+      <a href="#" class="active">Hot Sauce</a>
+      <a href="#">Science</a>
+      <a href="#">Clinicians</a>
+      <a href="#">Journal</a>
+    </div>
+    <div class="cta">Start consultation</div>
+  </nav>
+  <div class="below val">Fixed nav · hairline on scroll · backdrop-blur with 78% void.</div>
+</body></html>

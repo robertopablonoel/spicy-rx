@@ -1,0 +1,42 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  .badges { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .b {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 999px;
+    border: 1px solid;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .b::before { content: ''; width: 5px; height: 5px; border-radius: 999px; background: currentColor; }
+  .b-rx     { color: var(--ember);  border-color: rgba(255,122,26,0.4); }
+  .b-sched  { color: var(--hot);    border-color: rgba(255,59,31,0.4); }
+  .b-vitals { color: var(--vitals); border-color: rgba(56,255,161,0.3); }
+  .b-flag   { color: var(--serum);  border-color: rgba(245,213,71,0.35); }
+  .b-info   { color: var(--cobalt); border-color: rgba(42,79,255,0.4); }
+  .b-lot    { color: var(--fog);    border-color: var(--ash); }
+  .b-pop    { color: var(--plasma); border-color: rgba(255,46,138,0.4); }
+  .b-solid  { background: var(--hot); color: var(--void); border-color: var(--hot); }
+  .b-solid::before { background: var(--void); }
+</style>
+</head>
+<body class="card">
+  <div class="badges">
+    <span class="b b-rx">Rx ONLY</span>
+    <span class="b b-sched">Schedule IV</span>
+    <span class="b b-vitals">System OK</span>
+    <span class="b b-flag">Lab flag</span>
+    <span class="b b-info">Clinician review</span>
+    <span class="b b-lot">Lot 0042</span>
+    <span class="b b-pop">Specimen</span>
+    <span class="b b-solid">Hot Sauce</span>
+  </div>
+  <div class="val" style="margin-top: 14px;">All caps · mono · 0.14em tracking · 999px pill. Dot prefix optional but standard.</div>
+</body></html>

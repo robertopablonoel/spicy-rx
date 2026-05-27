@@ -1,134 +1,186 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
+/* =============================================================
+   SPICY ALIEN — design tokens
+   Mirrors .claude/skills/colors_and_type.css (source of truth).
+   Edit there first, then sync this file.
+   ============================================================= */
+
+:root {
+  /* Cosmic neutrals — warm-shifted blacks */
+  --void:    #0A0907;
+  --cosmos:  #14110D;
+  --crater:  #1F1A14;
+  --ash:     #2A2520;
+  --smoke:   #4A443D;
+  --fog:     #8A8278;
+  --mist:    #BFB7AB;
+  --paper:   #F2ECDF;
+  --bone:    #FAF6EE;
+  --chalk:   #FFFFFF;
+
+  /* Heat (capsaicin) */
+  --hot:      #FF3B1F;
+  --hot-deep: #C5240D;
+  --ember:    #FF7A1A;
+  --serum:    #F5D547;
+
+  /* Cosmic accents — signal use only */
+  --plasma:      #FF2E8A;
+  --vitals:      #38FFA1;
+  --cobalt:      #2A4FFF;
+  --ultraviolet: #8A4DFF;
+
+  /* Semantic aliases */
+  --bg:         var(--void);
+  --bg-elev:    var(--cosmos);
+  --surface:    var(--crater);
+  --fg:         var(--paper);
+  --fg-muted:   var(--mist);
+  --fg-dim:     var(--fog);
+  --fg-faint:   var(--smoke);
+  --border:     var(--ash);
+  --border-hot: rgba(255, 59, 31, 0.4);
+
+  /* Gradients */
+  --grad-capsaicin: linear-gradient(135deg, #FFB30A 0%, #FF7A1A 32%, #FF3B1F 64%, #C5240D 100%);
+  --grad-plasma:    linear-gradient(135deg, #FF2E8A 0%, #8A4DFF 100%);
+  --grad-vacuum:    radial-gradient(120% 80% at 50% 0%, #1F1A14 0%, #0A0907 70%);
+
+  /* Tracking */
+  --tr-display: -0.03em;
+  --tr-tight:   -0.01em;
+  --tr-eyebrow: 0.14em;
+  --tr-mono:    0.02em;
+
+  /* Shadows */
+  --sh-lab-1:   0 1px 0 rgba(0,0,0,0.3), 0 2px 8px rgba(0,0,0,0.25);
+  --sh-lab-2:   0 2px 0 rgba(0,0,0,0.35), 0 12px 32px rgba(0,0,0,0.45);
+  --sh-heat:    0 0 0 1px rgba(255,59,31,0.35), 0 0 32px rgba(255,59,31,0.35);
+  --sh-heat-lg: 0 0 0 1px rgba(255,59,31,0.4), 0 0 80px rgba(255,59,31,0.5);
+
+  /* Motion */
+  --ease-out:    cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-snap:   cubic-bezier(0.3, 1.4, 0.5, 1);
+
+  /* Layout */
+  --container-max: 1280px;
+  --container-pad: 32px;
+}
+
+/* =============================================================
+   Tailwind 4 theme — expose tokens as utility classes.
+   `@theme inline` keeps tokens referenced by var() so they remain
+   editable at runtime via :root above.
+   ============================================================= */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-work-sans), system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono);
-  --font-heading: superior-title, var(--font-work-sans), Georgia, serif;
-  --font-serif: superior-title, var(--font-work-sans), Georgia, serif;
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --color-brand-burgundy: #7b1c14;
-  --color-brand-burgundy-light: #b5251b;
-  --color-brand-coral: #ff473b;
-  --color-brand-cream: #faf1e0;
-  --color-brand-cream-light: #fdfaf1;
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+  /* Colors — enable bg-hot, text-ember, border-ash, etc. */
+  --color-void:        var(--void);
+  --color-cosmos:      var(--cosmos);
+  --color-crater:      var(--crater);
+  --color-ash:         var(--ash);
+  --color-smoke:       var(--smoke);
+  --color-fog:         var(--fog);
+  --color-mist:        var(--mist);
+  --color-paper:       var(--paper);
+  --color-bone:        var(--bone);
+  --color-chalk:       var(--chalk);
+  --color-hot:         var(--hot);
+  --color-hot-deep:    var(--hot-deep);
+  --color-ember:       var(--ember);
+  --color-serum:       var(--serum);
+  --color-plasma:      var(--plasma);
+  --color-vitals:      var(--vitals);
+  --color-cobalt:      var(--cobalt);
+  --color-ultraviolet: var(--ultraviolet);
+  --color-bg:          var(--bg);
+  --color-fg:          var(--fg);
+  --color-fg-muted:    var(--fg-muted);
+  --color-fg-dim:      var(--fg-dim);
+  --color-border:      var(--border);
+
+  /* Fonts — set on <html> by next/font in app/layout.tsx */
+  --font-display:   var(--font-display);
+  --font-body:      var(--font-body);
+  --font-editorial: var(--font-editorial);
+  --font-mono:      var(--font-mono);
+
+  /* Radii — system rejects 8–14px range. Hard or pill, nothing between. */
+  --radius-xs:   2px;
+  --radius-sm:   4px;
+  --radius:      4px;
+  --radius-md:   4px;
+  --radius-lg:   4px;
+  --radius-pill: 999px;
 }
 
-/*
- * SpicyRx brand palette — mirrors Spicy Cubes' Shopify theme.
- * Burgundy primary (#7b1c14) and cream backgrounds (#faf1e0) keep the
- * sibling-brand DNA without inheriting the supplement voice.
- */
-:root {
-  --background: #faf1e0;
-  --foreground: #1a1a1a;
-  --card: #ffffff;
-  --card-foreground: #1a1a1a;
-  --popover: #ffffff;
-  --popover-foreground: #1a1a1a;
-  --primary: #7b1c14;
-  --primary-foreground: #fdfaf1;
-  --secondary: #fdfaf1;
-  --secondary-foreground: #2d2d2d;
-  --muted: #f4ead6;
-  --muted-foreground: #5c5c5c;
-  --accent: #ff473b;
-  --accent-foreground: #ffffff;
-  --destructive: #cc4400;
-  --border: #e8d9b8;
-  --input: #e8d9b8;
-  --ring: #7b1c14;
-  --chart-1: #7b1c14;
-  --chart-2: #b5251b;
-  --chart-3: #ff473b;
-  --chart-4: #cc4400;
-  --chart-5: #2d2d2d;
-  --radius: 0.75rem;
-  --sidebar: #faf1e0;
-  --sidebar-foreground: #1a1a1a;
-  --sidebar-primary: #7b1c14;
-  --sidebar-primary-foreground: #fdfaf1;
-  --sidebar-accent: #f4ead6;
-  --sidebar-accent-foreground: #2d2d2d;
-  --sidebar-border: #e8d9b8;
-  --sidebar-ring: #7b1c14;
-}
-
-.dark {
-  /* Dark mode disabled for v0 — Spicy Cubes is light-mode-only.
-     Variables retained as a precaution against shadcn components that
-     read `.dark` class state, but no dark toggle is shipped. */
-  --background: #1a1410;
-  --foreground: #fdfaf1;
-  --card: #2a201a;
-  --card-foreground: #fdfaf1;
-  --popover: #2a201a;
-  --popover-foreground: #fdfaf1;
-  --primary: #ff473b;
-  --primary-foreground: #1a1410;
-  --secondary: #2a201a;
-  --secondary-foreground: #fdfaf1;
-  --muted: #3a2e25;
-  --muted-foreground: #c5b8a3;
-  --accent: #ff473b;
-  --accent-foreground: #1a1410;
-  --destructive: #cc4400;
-  --border: #3a2e25;
-  --input: #3a2e25;
-  --ring: #ff473b;
-}
+/* =============================================================
+   Base
+   ============================================================= */
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
+  html {
+    color-scheme: dark;
+    background: var(--bg);
   }
   body {
-    @apply bg-background text-foreground;
-  }
-  html {
-    @apply font-sans;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
+    font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: var(--tr-display);
+    line-height: 0.95;
+    text-wrap: balance;
+  }
+  ::selection {
+    background: var(--hot);
+    color: var(--void);
+  }
+  /* Subtle scrollbar to match the warm canvas. */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: var(--cosmos); }
+  ::-webkit-scrollbar-thumb { background: var(--ash); border-radius: 999px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--smoke); }
+}
+
+/* =============================================================
+   Hero-only animations that stay in CSS (per the FM-vs-CSS split
+   in the design plan). The conic-gradient nebulae can't be cleanly
+   animated through Framer Motion's transform pipeline.
+   ============================================================= */
+
+@keyframes sa-breathe {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50%      { opacity: 0.95; transform: scale(1.08); }
+}
+@keyframes sa-breathe-soft {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50%      { opacity: 0.8; transform: scale(1.04); }
+}
+@keyframes sa-nebula     { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+@keyframes sa-nebula-rev { 0% { transform: rotate(360deg); } 100% { transform: rotate(0deg); } }
+@keyframes sa-shimmer {
+  0%, 100% { opacity: 0.18; }
+  50%      { opacity: 0.5; }
+}
+@keyframes sa-floor {
+  0%, 100% { opacity: 0.55; transform: translateX(-50%) scaleX(1); }
+  50%      { opacity: 0.85; transform: translateX(-50%) scaleX(1.08); }
+}
+@keyframes sa-highlight {
+  0%, 100% { opacity: 0;   transform: translateY(0); }
+  50%      { opacity: 0.5; transform: translateY(-6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sa-anim,
+  .sa-anim * {
+    animation: none !important;
   }
 }

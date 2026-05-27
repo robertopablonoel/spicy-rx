@@ -1,0 +1,59 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .card-lab {
+    background: var(--crater);
+    border: 1px solid var(--ash);
+    padding: 22px;
+    border-radius: 0;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.3), 0 2px 8px rgba(0,0,0,0.25);
+  }
+  .card-heat {
+    background: linear-gradient(180deg, #1F1A14 0%, #0A0907 100%);
+    border: 1px solid rgba(255,59,31,0.4);
+    padding: 22px;
+    border-radius: 0;
+    box-shadow: 0 0 0 1px rgba(255,59,31,0.25), 0 0 32px rgba(255,59,31,0.25);
+  }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ember);
+    margin-bottom: 14px;
+  }
+  .card-lab .eyebrow { color: var(--vitals); }
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    color: var(--fg);
+    margin: 0 0 8px 0;
+    line-height: 1.1;
+  }
+  p {
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--mist);
+    margin: 0;
+  }
+</style>
+</head>
+<body class="card">
+  <div class="cards">
+    <div class="card-lab">
+      <div class="eyebrow">● Lab card</div>
+      <h3>Sublingual absorption</h3>
+      <p>Bypasses first-pass metabolism. Onset in 12–18 minutes versus 45+ for oral.</p>
+    </div>
+    <div class="card-heat">
+      <div class="eyebrow">● Heat card</div>
+      <h3>Hot Sauce 4-in-1</h3>
+      <p>Sildenafil, tadalafil, vardenafil, apomorphine. One dose. Up to 36 hours.</p>
+    </div>
+  </div>
+</body></html>

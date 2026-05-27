@@ -1,0 +1,105 @@
+/* =============================================================
+   Spicy Alien — mobile responsive overrides
+   The marketing site uses inline styles (React), so we override
+   via attribute/class selectors with !important at breakpoints.
+   ============================================================= */
+
+/* TABLET — 1024px and below */
+@media (max-width: 1024px) {
+  main section { padding-left: 28px !important; padding-right: 28px !important; }
+  .m-grid-4 { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* MOBILE — 768px and below */
+@media (max-width: 768px) {
+  /* Generic section padding */
+  main section {
+    padding-top: 72px !important;
+    padding-bottom: 72px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* NAV — hide center links + sign-in, keep logo + CTA only */
+  .m-nav { padding: 14px 20px !important; }
+  .m-nav-links { display: none !important; }
+  .m-nav-signin { display: none !important; }
+
+  /* HERO — stack columns, ease padding */
+  .m-hero {
+    grid-template-columns: 1fr !important;
+    padding: 110px 20px 56px !important;
+    min-height: auto !important;
+    gap: 36px !important;
+    text-align: left !important;
+  }
+  .m-hero h1 { font-size: clamp(44px, 12vw, 68px) !important; }
+  .m-hero p  { font-size: 16px !important; }
+  .m-vial-wrap {
+    width: 320px !important;
+    height: 400px !important;
+    margin: 0 auto !important;
+  }
+  .m-vial-wrap svg.sa-vial {
+    width: 220px !important;
+    height: 340px !important;
+  }
+  .m-stats {
+    flex-wrap: wrap !important;
+    gap: 14px 18px !important;
+  }
+  .m-stats > div[style*="background: var(--ash)"], /* legacy divider catch */
+  .m-stats > .m-divider { display: none !important; }
+  .m-hero-cta { flex-wrap: wrap !important; gap: 10px !important; }
+
+  /* Generic h2 cap */
+  main section h2 { font-size: clamp(34px, 9vw, 52px) !important; }
+
+  /* GRIDS — stack all */
+  .m-grid-3,
+  .m-grid-4 {
+    grid-template-columns: 1fr !important;
+    gap: 1px !important;
+  }
+
+  /* COMPARISON — collapse to 2 columns; hide the "old way" column. */
+  .m-grid-cmp { grid-template-columns: 1.4fr 1fr !important; }
+  .m-cmp-old { display: none !important; }
+  .m-cmp-row-text  { padding: 16px 14px !important; font-size: 13px !important; }
+  .m-cmp-cell      { padding: 16px 14px !important; font-size: 14px !important; }
+
+  /* FOOTER — single column */
+  .m-footer { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .m-footer-meta {
+    flex-direction: column !important;
+    gap: 12px !important;
+    align-items: flex-start !important;
+  }
+
+  /* SCIENCE SCREEN */
+  .m-science-stats { grid-template-columns: 1fr !important; }
+  .m-science-split { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .m-science-stat-big { font-size: 64px !important; }
+
+  /* CONSULT SCREEN — progress bar */
+  .m-consult-head { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; }
+  .m-consult-h1   { font-size: clamp(34px, 9vw, 48px) !important; }
+}
+
+/* SMALL MOBILE — 480px and below */
+@media (max-width: 480px) {
+  main section {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+  .m-hero { padding: 100px 20px 40px !important; }
+  .m-hero h1 { font-size: clamp(38px, 13vw, 56px) !important; }
+  .m-vial-wrap {
+    width: 280px !important;
+    height: 360px !important;
+  }
+  .m-vial-wrap svg.sa-vial {
+    width: 180px !important;
+    height: 280px !important;
+  }
+}

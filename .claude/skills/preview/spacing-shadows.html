@@ -1,0 +1,37 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; padding: 16px 8px; }
+  .sh { height: 80px; background: var(--crater); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mist); }
+  .row-l { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .tok { font-family: var(--font-mono); font-size: 10px; color: var(--fog); }
+</style>
+</head>
+<body class="card">
+  <div class="grid">
+    <div class="row-l">
+      <div class="sh" style="box-shadow: 0 1px 0 rgba(0,0,0,0.3), 0 2px 8px rgba(0,0,0,0.25);">lab-1</div>
+      <div class="tok">--sh-lab-1 · resting</div>
+    </div>
+    <div class="row-l">
+      <div class="sh" style="box-shadow: 0 2px 0 rgba(0,0,0,0.35), 0 12px 32px rgba(0,0,0,0.45);">lab-2</div>
+      <div class="tok">--sh-lab-2 · raised</div>
+    </div>
+    <div class="row-l">
+      <div class="sh" style="box-shadow: 0 4px 0 rgba(0,0,0,0.4), 0 28px 60px rgba(0,0,0,0.55);">lab-3</div>
+      <div class="tok">--sh-lab-3 · modal</div>
+    </div>
+    <div class="row-l">
+      <div class="sh" style="box-shadow: 0 0 0 1px rgba(255,59,31,0.35), 0 0 32px rgba(255,59,31,0.35); color: var(--ember);">heat</div>
+      <div class="tok">--sh-heat · CTA</div>
+    </div>
+    <div class="row-l">
+      <div class="sh" style="box-shadow: 0 0 0 1px rgba(255,59,31,0.4), 0 0 80px rgba(255,59,31,0.5); color: var(--ember);">heat-lg</div>
+      <div class="tok">--sh-heat-lg · live</div>
+    </div>
+    <div class="row-l">
+      <div class="sh" style="box-shadow: 0 0 24px rgba(56,255,161,0.4); color: var(--vitals);">vitals</div>
+      <div class="tok">--sh-vitals · success</div>
+    </div>
+  </div>
+</body></html>

@@ -1,0 +1,20 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  .radii { display: flex; gap: 18px; align-items: flex-end; }
+  .r-card { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .r-box { width: 76px; height: 76px; background: var(--crater); border: 1.5px solid var(--ember); }
+  .tok { font-family: var(--font-mono); font-size: 10px; color: var(--mist); }
+  .px { font-family: var(--font-mono); font-size: 10px; color: var(--fog); }
+  .lbl-r { font-family: var(--font-body); font-size: 11px; color: var(--fg); font-weight: 500; }
+</style>
+</head>
+<body class="card">
+  <div class="radii">
+    <div class="r-card"><div class="r-box" style="border-radius: 0"></div><div class="lbl-r">Square</div><div class="tok">r-0</div><div class="px">0px · default</div></div>
+    <div class="r-card"><div class="r-box" style="border-radius: 2px"></div><div class="lbl-r">XS</div><div class="tok">r-xs</div><div class="px">2px</div></div>
+    <div class="r-card"><div class="r-box" style="border-radius: 4px"></div><div class="lbl-r">SM</div><div class="tok">r-sm</div><div class="px">4px · inputs</div></div>
+    <div class="r-card"><div class="r-box" style="border-radius: 999px; width: 140px;"></div><div class="lbl-r">Pill</div><div class="tok">r-pill</div><div class="px">999px · chips</div></div>
+  </div>
+  <div class="val" style="margin-top: 14px; max-width: 600px;">Hard corners by default — pharma-grade, surgical. Pills for chips/badges (the dropper echo). We skip 8–14px medium soft radii — they read SaaS.</div>
+</body></html>

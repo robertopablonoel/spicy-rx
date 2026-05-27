@@ -1,0 +1,49 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  body.card { padding: 24px 28px; }
+  .head { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ember); margin-bottom: 18px; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .cell { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .cell svg { color: var(--ember); }
+  .lbl { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mist); }
+  .dose { font-family: var(--font-mono); font-size: 10px; color: var(--fog); }
+</style>
+</head>
+<body class="card">
+  <div class="head">● Active compounds · Hot Sauce</div>
+  <div class="grid">
+    <div class="cell">
+      <svg width="120" height="72" viewBox="0 0 200 120" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="40,40 60,28 80,40 80,64 60,76 40,64"/><polygon points="80,40 100,28 120,40 120,64 100,76 80,64"/><polygon points="120,40 140,28 160,40 160,64 140,76 120,64"/>
+        <line x1="44" y1="44" x2="44" y2="60"/><line x1="84" y1="44" x2="84" y2="60"/><line x1="124" y1="44" x2="124" y2="60"/>
+        <line x1="100" y1="76" x2="100" y2="96"/><circle cx="100" cy="102" r="6"/>
+      </svg>
+      <div class="lbl">Sildenafil</div><div class="dose">25 mg</div>
+    </div>
+    <div class="cell">
+      <svg width="120" height="72" viewBox="0 0 200 120" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="30,52 50,40 70,52 70,76 50,88 30,76"/><polygon points="70,52 90,40 110,52 110,76 90,88 70,76"/><polygon points="130,40 150,28 170,40 170,64 150,76 130,64"/>
+        <line x1="110" y1="64" x2="130" y2="52" stroke-dasharray="2 3"/>
+        <line x1="50" y1="88" x2="50" y2="106"/><circle cx="50" cy="112" r="6"/>
+      </svg>
+      <div class="lbl">Tadalafil</div><div class="dose">5 mg</div>
+    </div>
+    <div class="cell">
+      <svg width="120" height="72" viewBox="0 0 200 120" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="50,40 70,28 90,40 90,64 70,76 50,64"/><polygon points="90,40 110,28 130,40 130,64 110,76 90,64"/>
+        <line x1="130" y1="52" x2="150" y2="52"/><circle cx="156" cy="52" r="6"/>
+        <line x1="70" y1="76" x2="70" y2="96"/><circle cx="70" cy="102" r="6"/>
+      </svg>
+      <div class="lbl">Vardenafil</div><div class="dose">5 mg</div>
+    </div>
+    <div class="cell">
+      <svg width="120" height="72" viewBox="0 0 200 120" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="60,40 80,28 100,40 100,64 80,76 60,64"/><polygon points="100,40 120,28 140,40 140,64 120,76 100,64"/><polygon points="140,40 160,52 140,64"/>
+        <line x1="80" y1="28" x2="80" y2="12"/><circle cx="80" cy="8" r="4"/>
+        <line x1="120" y1="76" x2="120" y2="96"/><circle cx="120" cy="102" r="6"/>
+      </svg>
+      <div class="lbl">Apomorphine</div><div class="dose">2 mg</div>
+    </div>
+  </div>
+</body></html>

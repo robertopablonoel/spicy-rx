@@ -1,0 +1,78 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  body.card { padding: 28px 40px; display: flex; gap: 32px; align-items: center; background: var(--grad-vacuum); }
+  .bottle {
+    color: var(--ember);
+    filter: drop-shadow(0 0 32px rgba(255,59,31,0.35));
+  }
+  .copy { flex: 1; }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ember);
+    margin-bottom: 10px;
+  }
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 34px;
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+    margin: 0 0 10px 0;
+    color: var(--fg);
+  }
+  h2 em {
+    font-family: var(--font-editorial);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ember);
+  }
+  p {
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--mist);
+    margin: 0;
+    max-width: 320px;
+  }
+  .meta {
+    margin-top: 14px;
+    display: flex;
+    gap: 14px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fog);
+  }
+  .meta span { color: var(--fg); }
+</style>
+</head>
+<body class="card">
+  <svg class="bottle" width="100" height="200" viewBox="0 0 160 320" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M58 6 C58 6,60 0,80 0 C100 0,102 6,102 6 L102 22 L58 22Z"/>
+    <rect x="46" y="22" width="68" height="34" rx="3"/>
+    <line x1="46" y1="34" x2="114" y2="34"/>
+    <line x1="46" y1="46" x2="114" y2="46"/>
+    <path d="M62 56 L62 76 L98 76 L98 56"/>
+    <path d="M30 76 L30 296 C30 308,38 316,50 316 L110 316 C122 316,130 308,130 296 L130 76Z"/>
+    <path d="M38 200 C50 196,62 204,80 200 C98 196,110 204,122 200" stroke-dasharray="3 4"/>
+    <rect x="42" y="130" width="76" height="92" rx="2"/>
+    <line x1="52" y1="148" x2="92" y2="148"/>
+    <line x1="52" y1="158" x2="108" y2="158"/>
+    <line x1="52" y1="184" x2="108" y2="184" stroke-width="3"/>
+    <line x1="52" y1="200" x2="92" y2="200"/>
+    <line x1="52" y1="210" x2="100" y2="210"/>
+  </svg>
+  <div class="copy">
+    <div class="eyebrow">● Hot Sauce · 30 ml</div>
+    <h2>Four molecules. <em>One drop.</em></h2>
+    <p>Sublingual liquid, ~15 min to onset, up to 36 hr window. Clinician-prescribed, shipped discreetly.</p>
+    <div class="meta">
+      <span>SILDENAFIL</span> · <span>TADALAFIL</span> · <span>VARDENAFIL</span> · <span>APOMORPHINE</span>
+    </div>
+  </div>
+</body></html>

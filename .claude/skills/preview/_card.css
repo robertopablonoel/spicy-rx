@@ -1,0 +1,31 @@
+/* Shared card chrome — kept extremely minimal.
+   Cards target ~700 px wide. Asset name is rendered OUTSIDE by the host. */
+@import url('../colors_and_type.css');
+
+html, body {
+  background: var(--void);
+  color: var(--fg);
+  font-family: var(--font-body);
+}
+body.card {
+  padding: 28px 32px;
+  min-height: 0;
+}
+body.card.light {
+  background: var(--bone);
+  color: var(--cosmos);
+}
+.row { display: flex; gap: 12px; align-items: center; }
+.col { display: flex; flex-direction: column; gap: 8px; }
+.lbl {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--tr-eyebrow);
+  text-transform: uppercase;
+  color: var(--fog);
+}
+.val {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--mist);
+}

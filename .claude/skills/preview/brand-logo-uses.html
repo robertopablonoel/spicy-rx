@@ -1,0 +1,58 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  body.card { padding: 0; display: flex; align-items: stretch; }
+  .panel { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; }
+  .a { background: var(--void); }
+  .b { background: var(--bone); }
+  .c { background: var(--hot); }
+  .d { background: var(--grad-capsaicin); }
+  .mark { width: 80px; height: 96px; }
+  .lbl {
+    position: absolute;
+    bottom: 8px; left: 10px;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+  .panel { position: relative; }
+</style>
+</head>
+<body class="card">
+  <div class="panel a">
+    <svg class="mark" viewBox="0 0 100 120">
+      <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFB30A"/><stop offset=".45" stop-color="#FF7A1A"/><stop offset="1" stop-color="#FF3B1F"/></linearGradient></defs>
+      <path d="M50 4 C50 4,12 50,12 78 C12 98,29 114,50 114 C71 114,88 98,88 78 C88 50,50 4,50 4Z" fill="url(#g1)"/>
+      <ellipse cx="38" cy="72" rx="6" ry="13" fill="#0A0907" transform="rotate(-18 38 72)"/>
+      <ellipse cx="62" cy="72" rx="6" ry="13" fill="#0A0907" transform="rotate(18 62 72)"/>
+    </svg>
+    <div class="lbl" style="color: var(--mist);">On Void</div>
+  </div>
+  <div class="panel b">
+    <svg class="mark" viewBox="0 0 100 120">
+      <defs><linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFB30A"/><stop offset=".45" stop-color="#FF7A1A"/><stop offset="1" stop-color="#FF3B1F"/></linearGradient></defs>
+      <path d="M50 4 C50 4,12 50,12 78 C12 98,29 114,50 114 C71 114,88 98,88 78 C88 50,50 4,50 4Z" fill="url(#g2)"/>
+      <ellipse cx="38" cy="72" rx="6" ry="13" fill="#FAF6EE" transform="rotate(-18 38 72)"/>
+      <ellipse cx="62" cy="72" rx="6" ry="13" fill="#FAF6EE" transform="rotate(18 62 72)"/>
+    </svg>
+    <div class="lbl" style="color: var(--cosmos);">On Bone</div>
+  </div>
+  <div class="panel c">
+    <svg class="mark" viewBox="0 0 100 120" style="color: var(--void);">
+      <path d="M50 4 C50 4,12 50,12 78 C12 98,29 114,50 114 C71 114,88 98,88 78 C88 50,50 4,50 4Z" fill="currentColor"/>
+      <ellipse cx="38" cy="72" rx="6" ry="13" fill="#FF3B1F" transform="rotate(-18 38 72)"/>
+      <ellipse cx="62" cy="72" rx="6" ry="13" fill="#FF3B1F" transform="rotate(18 62 72)"/>
+    </svg>
+    <div class="lbl" style="color: var(--void);">Reverse · on Hot</div>
+  </div>
+  <div class="panel d">
+    <svg class="mark" viewBox="0 0 100 120" style="color: var(--void);">
+      <path d="M50 4 C50 4,12 50,12 78 C12 98,29 114,50 114 C71 114,88 98,88 78 C88 50,50 4,50 4Z" fill="currentColor"/>
+      <ellipse cx="38" cy="72" rx="6" ry="13" fill="#FAF6EE" transform="rotate(-18 38 72)"/>
+      <ellipse cx="62" cy="72" rx="6" ry="13" fill="#FAF6EE" transform="rotate(18 62 72)"/>
+    </svg>
+    <div class="lbl" style="color: var(--void);">On Capsaicin</div>
+  </div>
+</body></html>

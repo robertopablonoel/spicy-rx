@@ -1,0 +1,18 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  .row-sem { display: flex; align-items: center; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--ash); }
+  .row-sem:last-child { border-bottom: 0; }
+  .chip { width: 32px; height: 32px; border-radius: 0; flex-shrink: 0; }
+  .tok { font-family: var(--font-mono); font-size: 12px; color: var(--mist); width: 160px; }
+  .desc { font-family: var(--font-body); font-size: 13px; color: var(--fg); flex: 1; }
+  .hex { font-family: var(--font-mono); font-size: 11px; color: var(--fog); }
+</style>
+</head>
+<body class="card">
+  <div class="row-sem"><div class="chip" style="background:#FF3B1F"></div><div class="tok">--accent</div><div class="desc">Primary action, brand</div><div class="hex">→ --hot</div></div>
+  <div class="row-sem"><div class="chip" style="background:#38FFA1"></div><div class="tok">--success</div><div class="desc">Confirm, completed, vitals nominal</div><div class="hex">→ --vitals</div></div>
+  <div class="row-sem"><div class="chip" style="background:#F5D547"></div><div class="tok">--warning</div><div class="desc">Caution, lab flag</div><div class="hex">→ --serum</div></div>
+  <div class="row-sem"><div class="chip" style="background:#FF3B1F"></div><div class="tok">--danger</div><div class="desc">Destructive, contraindication</div><div class="hex">→ --hot</div></div>
+  <div class="row-sem"><div class="chip" style="background:#2A4FFF"></div><div class="tok">--info</div><div class="desc">Neutral inform, alien beacon</div><div class="hex">→ --cobalt</div></div>
+</body></html>

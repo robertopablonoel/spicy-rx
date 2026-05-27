@@ -1,0 +1,233 @@
+/* =============================================================
+   SPICY ALIEN — Foundations
+   Colors, type, spacing, radii, shadows, motion.
+   Source of truth for tokens used across every surface.
+   ============================================================= */
+
+/* ---------- Fonts ----------
+   Display      Space Grotesk        cosmic, modern, mechanical
+   Body         Manrope              clean grotesk, legible at any size
+   Editorial    Instrument Serif     pharma-editorial accent, italics
+   Mono         JetBrains Mono       lab readouts, ingredients, dosing
+   These are Google Fonts proxies. Replace with licensed cuts in prod.
+*/
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* ============ COLOR — Cosmic Neutrals ============
+     Warm-shifted blacks so the brand never looks like a SaaS deck.
+     Each step is a real surface, not decoration. */
+  --void:        #0A0907;   /* page bg, deep space */
+  --cosmos:      #14110D;   /* elevated page bg */
+  --crater:      #1F1A14;   /* card surface */
+  --ash:         #2A2520;   /* hairlines, dividers on dark */
+  --smoke:       #4A443D;   /* low-emphasis text on dark */
+  --fog:         #8A8278;   /* secondary text on dark */
+  --mist:        #BFB7AB;   /* tertiary, captions on dark */
+  --paper:       #F2ECDF;   /* off-white surface */
+  --bone:        #FAF6EE;   /* page bg light mode */
+  --chalk:       #FFFFFF;   /* pure white — rare, only icons on heat */
+
+  /* ============ COLOR — Heat (capsaicin) ============
+     The hot-sauce gradient. Use sparingly — these are signal colors. */
+  --hot:         #FF3B1F;   /* primary heat — CTA, brand mark */
+  --hot-deep:    #C5240D;   /* pressed / on-paper variant */
+  --ember:       #FF7A1A;   /* secondary heat */
+  --serum:       #F5D547;   /* lab yellow, warnings, highlights */
+
+  /* ============ COLOR — Cosmic Accents ============ */
+  --plasma:      #FF2E8A;   /* irreverent pop, "specimen" pink */
+  --vitals:      #38FFA1;   /* "system ok" lab green */
+  --cobalt:      #2A4FFF;   /* alien beacon blue, rare use */
+  --ultraviolet: #8A4DFF;   /* deep-space violet */
+
+  /* ============ COLOR — Semantic ============ */
+  --bg:          var(--void);
+  --bg-elev:     var(--cosmos);
+  --surface:     var(--crater);
+  --fg:          var(--paper);
+  --fg-muted:    var(--mist);
+  --fg-dim:      var(--fog);
+  --fg-faint:    var(--smoke);
+  --border:      var(--ash);
+  --border-hot:  rgba(255, 59, 31, 0.4);
+
+  --accent:      var(--hot);
+  --accent-fg:   var(--bone);
+  --success:     var(--vitals);
+  --warning:     var(--serum);
+  --danger:      var(--hot);
+  --info:        var(--cobalt);
+
+  /* ============ GRADIENTS ============
+     The capsaicin gradient is the brand's signature. */
+  --grad-capsaicin: linear-gradient(135deg, #FFB30A 0%, #FF7A1A 32%, #FF3B1F 64%, #C5240D 100%);
+  --grad-plasma:    linear-gradient(135deg, #FF2E8A 0%, #8A4DFF 100%);
+  --grad-vacuum:    radial-gradient(120% 80% at 50% 0%, #1F1A14 0%, #0A0907 70%);
+  --grad-aurora:    linear-gradient(135deg, #38FFA1 0%, #2A4FFF 50%, #8A4DFF 100%);
+
+  /* ============ TYPE — Families ============ */
+  --font-display:   'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-body:      'Manrope', ui-sans-serif, system-ui, sans-serif;
+  --font-editorial: 'Instrument Serif', ui-serif, Georgia, serif;
+  --font-mono:      'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* ============ TYPE — Scale ============
+     Modular ~1.25, biased toward the extremes for dramatic display. */
+  --fs-xs:    12px;
+  --fs-sm:    14px;
+  --fs-base:  16px;
+  --fs-md:    18px;
+  --fs-lg:    21px;
+  --fs-xl:    26px;
+  --fs-2xl:   34px;
+  --fs-3xl:   46px;
+  --fs-4xl:   64px;
+  --fs-5xl:   88px;
+  --fs-6xl:   124px;
+
+  /* Line heights */
+  --lh-tight: 0.95;
+  --lh-snug:  1.1;
+  --lh-base:  1.45;
+  --lh-loose: 1.6;
+
+  /* Tracking — display is negative, mono/eyebrow is positive */
+  --tr-display: -0.03em;
+  --tr-tight:   -0.01em;
+  --tr-normal:  0;
+  --tr-eyebrow: 0.14em;
+  --tr-mono:    0.02em;
+
+  /* ============ SPACING ============
+     4px base. Cosmetics are tight; layout is generous. */
+  --sp-0:   0;
+  --sp-1:   4px;
+  --sp-2:   8px;
+  --sp-3:   12px;
+  --sp-4:   16px;
+  --sp-5:   24px;
+  --sp-6:   32px;
+  --sp-7:   48px;
+  --sp-8:   64px;
+  --sp-9:   96px;
+  --sp-10:  128px;
+  --sp-11:  192px;
+
+  /* ============ RADII ============
+     Hard corners by default — pharma-grade. Pills for chips/buttons.
+     Capsule (--r-pill) is the dropper-bottle echo. */
+  --r-0:    0;
+  --r-xs:   2px;
+  --r-sm:   4px;
+  --r-md:   8px;
+  --r-lg:   14px;
+  --r-xl:   22px;
+  --r-pill: 999px;
+
+  /* ============ BORDERS ============ */
+  --bw-hair:  1px;
+  --bw-thin:  1.5px;
+  --bw-thick: 2px;
+  --bw-heavy: 3px;
+
+  /* ============ SHADOWS ============
+     Two systems: lab (clinical, even) and heat (capsaicin glow). */
+  --sh-lab-1: 0 1px 0 rgba(0,0,0,0.3), 0 2px 8px rgba(0,0,0,0.25);
+  --sh-lab-2: 0 2px 0 rgba(0,0,0,0.35), 0 12px 32px rgba(0,0,0,0.45);
+  --sh-lab-3: 0 4px 0 rgba(0,0,0,0.4), 0 28px 60px rgba(0,0,0,0.55);
+  --sh-heat:  0 0 0 1px rgba(255,59,31,0.35), 0 0 32px rgba(255,59,31,0.35);
+  --sh-heat-lg: 0 0 0 1px rgba(255,59,31,0.4), 0 0 80px rgba(255,59,31,0.5);
+  --sh-vitals: 0 0 24px rgba(56,255,161,0.4);
+  --sh-inset:  inset 0 1px 0 rgba(255,255,255,0.04), inset 0 0 0 1px var(--border);
+
+  /* ============ MOTION ============
+     Snappy, mechanical. No fluffy bounces. Aliens don't bounce. */
+  --ease-out:    cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-in:     cubic-bezier(0.6, 0, 0.8, 0.2);
+  --ease-in-out: cubic-bezier(0.6, 0, 0.2, 1);
+  --ease-snap:   cubic-bezier(0.3, 1.4, 0.5, 1);   /* tiny overshoot, for chips/toggles */
+  --dur-1: 120ms;
+  --dur-2: 200ms;
+  --dur-3: 320ms;
+  --dur-4: 480ms;
+
+  /* ============ LAYOUT ============ */
+  --container-max: 1280px;
+  --container-pad: 32px;
+  --hairline: 1px solid var(--border);
+}
+
+/* ============ SEMANTIC TYPE CLASSES ============
+   Apply directly with class= or compose into your own components. */
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: var(--tr-eyebrow);
+  text-transform: uppercase;
+  color: var(--ember);
+}
+
+.h1, .h2, .h3, .h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: var(--tr-display);
+  line-height: var(--lh-tight);
+  color: var(--fg);
+  text-wrap: balance;
+}
+.h1 { font-size: clamp(var(--fs-4xl), 8vw, var(--fs-6xl)); }
+.h2 { font-size: clamp(var(--fs-3xl), 5.5vw, var(--fs-5xl)); }
+.h3 { font-size: var(--fs-3xl); line-height: var(--lh-snug); }
+.h4 { font-size: var(--fs-2xl); line-height: var(--lh-snug); letter-spacing: var(--tr-tight); }
+
+.editorial {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: var(--tr-normal);
+  line-height: var(--lh-snug);
+}
+
+.body {
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: var(--lh-base);
+  font-weight: 400;
+  color: var(--fg);
+}
+.body-lg { font-family: var(--font-body); font-size: var(--fs-lg); line-height: var(--lh-base); color: var(--fg); }
+.body-sm { font-family: var(--font-body); font-size: var(--fs-sm); line-height: var(--lh-base); color: var(--fg-muted); }
+
+.caption {
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  line-height: var(--lh-base);
+  color: var(--fg-dim);
+}
+
+.mono, code, kbd, .readout {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  letter-spacing: var(--tr-mono);
+  color: var(--fg-muted);
+}
+.readout {
+  text-transform: uppercase;
+  font-size: var(--fs-xs);
+  letter-spacing: var(--tr-eyebrow);
+  color: var(--ember);
+}
+
+/* Base reset for preview cards */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

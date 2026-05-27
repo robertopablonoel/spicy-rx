@@ -1,0 +1,36 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  body.card { padding: 28px 40px; }
+  .head { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fog); margin-bottom: 14px; }
+  .voice {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 32px;
+    letter-spacing: -0.035em;
+    line-height: 0.98;
+    color: var(--fg);
+    margin-bottom: 18px;
+    max-width: 540px;
+  }
+  .voice em { font-family: var(--font-editorial); font-style: italic; font-weight: 400; color: var(--ember); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 28px; }
+  .row { display: flex; align-items: flex-start; gap: 8px; font-family: var(--font-body); font-size: 12.5px; line-height: 1.4; }
+  .mark { font-family: var(--font-mono); font-weight: 700; font-size: 12px; }
+  .ok .mark { color: var(--vitals); }
+  .no .mark { color: var(--hot); }
+  .txt { color: var(--mist); }
+</style>
+</head>
+<body class="card">
+  <div class="head">● Voice · benefit-led, comparative, triplet rhythm</div>
+  <div class="voice">Faster onset. Peak strength.<br>36-hour window. <em>Plus desire.</em></div>
+  <div class="grid">
+    <div class="row ok"><span class="mark">✓</span><span class="txt"><b style="color:var(--fg)">Benefit-led.</b> "Hits in 15 minutes."</span></div>
+    <div class="row no"><span class="mark">✗</span><span class="txt"><b style="color:var(--fg)">Mechanism-led.</b> "PDE5 inhibitor with apomorphine."</span></div>
+    <div class="row ok"><span class="mark">✓</span><span class="txt"><b style="color:var(--fg)">Comparative.</b> "Old pills vs. Hot Sauce."</span></div>
+    <div class="row no"><span class="mark">✗</span><span class="txt"><b style="color:var(--fg)">Abstract.</b> "Factory firmware ships with bugs."</span></div>
+    <div class="row ok"><span class="mark">✓</span><span class="txt"><b style="color:var(--fg)">Direct.</b> "Erectile dysfunction."</span></div>
+    <div class="row no"><span class="mark">✗</span><span class="txt"><b style="color:var(--fg)">Bro-y.</b> "Bring your A-game tonight."</span></div>
+  </div>
+</body></html>

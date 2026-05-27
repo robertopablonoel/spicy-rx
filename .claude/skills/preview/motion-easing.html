@@ -1,0 +1,36 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; padding: 8px 0; }
+  .head { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ember); margin-bottom: 12px; }
+  .ease-box { height: 38px; position: relative; background: var(--ash); border-radius: 0; overflow: hidden; }
+  .dot { position: absolute; top: 6px; width: 26px; height: 26px; background: var(--hot); animation-duration: 1.6s; animation-iteration-count: infinite; animation-fill-mode: both; }
+  @keyframes slide { 0% { left: 0; } 45% { left: calc(100% - 26px); } 50% { left: calc(100% - 26px); } 95% { left: 0; } 100% { left: 0; } }
+  .ease-out  .dot { animation-name: slide; animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .ease-in   .dot { animation-name: slide; animation-timing-function: cubic-bezier(0.6, 0, 0.8, 0.2); }
+  .ease-snap .dot { animation-name: slide; animation-timing-function: cubic-bezier(0.3, 1.4, 0.5, 1); }
+  .ease-linear .dot { animation-name: slide; animation-timing-function: linear; }
+  .lbl-r { font-family: var(--font-mono); font-size: 11px; color: var(--mist); display: flex; justify-content: space-between; }
+</style>
+</head>
+<body class="card">
+  <div class="head">Motion · snappy, mechanical. aliens don't bounce.</div>
+  <div class="grid">
+    <div>
+      <div class="ease-box ease-out"><div class="dot"></div></div>
+      <div class="lbl-r" style="margin-top: 8px;"><span>--ease-out</span><span>200ms · default</span></div>
+    </div>
+    <div>
+      <div class="ease-box ease-in"><div class="dot"></div></div>
+      <div class="lbl-r" style="margin-top: 8px;"><span>--ease-in</span><span>200ms · exits</span></div>
+    </div>
+    <div>
+      <div class="ease-box ease-snap"><div class="dot"></div></div>
+      <div class="lbl-r" style="margin-top: 8px;"><span>--ease-snap</span><span>200ms · chips, toggles</span></div>
+    </div>
+    <div>
+      <div class="ease-box ease-linear"><div class="dot"></div></div>
+      <div class="lbl-r" style="margin-top: 8px;"><span>linear</span><span>readouts, scrubbers only</span></div>
+    </div>
+  </div>
+</body></html>
