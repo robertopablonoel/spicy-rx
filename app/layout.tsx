@@ -9,7 +9,7 @@ import "./globals.css";
 import { BRAND_NAME } from "@/lib/constants";
 
 /**
- * Type stack — matches the Spicy Alien Design System.
+ * Type stack — matches the SpicyRx Design System.
  *
  *   Display     Space Grotesk     cosmic, modern, mechanical
  *   Body        Manrope           clean grotesk, legible at any size

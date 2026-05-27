@@ -1,20 +1,20 @@
 /**
- * Spicy Alien site-wide constants.
+ * SpicyRx site-wide constants.
  *
  * Brand strings and external endpoints. The portal URL is read from env so
  * preview / prod can point at different Rimo endpoints if needed.
  */
 
-export const BRAND_NAME = "Spicy Alien";
+export const BRAND_NAME = "SpicyRx";
 export const BRAND_TAGLINE = "Hospital-grade power. Direct to your door.";
-export const SUPPORT_EMAIL = "support@spicyalien.com";
+export const SUPPORT_EMAIL = "support@spicyrx.com";
 export const PRODUCT_NAME = "Hot Sauce";
 
 /**
  * Legal entity name. Used in footer copyright, telehealth consent, and any
  * other place where the contracting entity must be identified by its
- * registered name (not the trade name). "Spicy Alien" is the brand /
- * trade name; "Noel Ventures LLC" is the entity that owns and operates it.
+ * registered name (not the trade name). "SpicyRx" is the brand / trade
+ * name; "Noel Ventures LLC" is the entity that owns and operates it.
  */
 export const LEGAL_ENTITY = "Noel Ventures LLC";
 

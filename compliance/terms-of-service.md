@@ -32,7 +32,7 @@ and to have a jury hear your claims.**
 
 Unless you opt out of arbitration in a timely manner, as outlined in
 these Terms and Conditions, you agree that disputes between you and
-Spicy Alien, or between you and the affiliated medical groups or providers,
+SpicyRx, or between you and the affiliated medical groups or providers,
 arising out of or related to these Terms and Conditions or your use of the
 Service, will be resolved through binding, individual arbitration.
 
@@ -47,17 +47,17 @@ Arbitration will be administered by the American Arbitration Association
 arbitration in Delaware. These Terms and Conditions, and any dispute
 arising out of or related to them, are governed by the laws of the State
 of Delaware without regard to its conflict-of-laws principles. You may
-opt out of arbitration by sending written notice to support@spicyalien.com
+opt out of arbitration by sending written notice to support@spicyrx.com
 within 30 days of first agreeing to these Terms.
 
-## Spicy Alien and the Service
+## SpicyRx and the Service
 
-Spicy Alien and/or its affiliates (collectively, "Spicy Alien," "we," or "us") own
+SpicyRx and/or its affiliates (collectively, "SpicyRx," "we," or "us") own
 and operate the website made available to users. Your access to and use
 of the Website, any part of it, or anything related to it, including its
 content ("Content"), any products or services provided through the
-Website or otherwise by Spicy Alien, and any affiliated websites, software,
-or applications owned or operated by Spicy Alien (collectively, including the
+Website or otherwise by SpicyRx, and any affiliated websites, software,
+or applications owned or operated by SpicyRx (collectively, including the
 Website and the Content, the "Service") are subject to these Terms and
 Conditions ("Terms" or "Agreement").
 
@@ -70,7 +70,7 @@ If you do not accept and agree to this Agreement in its entirety, you are
 prohibited from visiting, accessing, registering with, or using the
 Service or any Content, except to review this Agreement.
 
-The Service may change over time. Spicy Alien may modify or remove any part
+The Service may change over time. SpicyRx may modify or remove any part
 of this Agreement or the Service at its sole discretion, without prior
 notice. Changes become effective when posted on the Website. Unless
 stated otherwise, any new Content added to the Service is subject to this
@@ -84,18 +84,18 @@ constitutes your acceptance of the modified terms.
 
 ## Your Relationship with Us
 
-Spicy Alien offers certain products and services to individuals who register
+SpicyRx offers certain products and services to individuals who register
 as users of the Service ("Users"), which may be sold or provided by
-Spicy Alien, independent medical providers and medical groups, pharmacies, or
+SpicyRx, independent medical providers and medical groups, pharmacies, or
 other vendors.
 
 The Service may provide access to prescription fulfillment services
-through one or more licensed pharmacies with which Spicy Alien has
+through one or more licensed pharmacies with which SpicyRx has
 relationships (collectively, the "Pharmacies"). By using the Service,
 you agree your prescription(s) may be filled and transferred among the
 Pharmacies and authorize the Service to facilitate this on your behalf.
 
-Spicy Alien provides access to DrTelx, an independent telehealth
+SpicyRx provides access to DrTelx, an independent telehealth
 medical group (the "Medical Group"), for the provision of healthcare
 services through the Website. The Medical Group employs or contracts
 with physicians, allied health professionals, and/or other licensed
@@ -111,12 +111,12 @@ We do not control or intervene in the practice of medicine or healthcare
 by the Medical Group or any Provider; each is solely responsible for
 directing the care or treatment they provide.
 
-Spicy Alien does not control or interfere with professional services provided
+SpicyRx does not control or interfere with professional services provided
 by the Pharmacies; each Pharmacy is solely responsible for its
 professional services.
 
-Spicy Alien is not a healthcare provider, and using the Service does not
-create a provider-patient relationship with Spicy Alien.
+SpicyRx is not a healthcare provider, and using the Service does not
+create a provider-patient relationship with SpicyRx.
 
 You may, however, establish a provider-patient relationship with the
 Medical Group and/or one or more Providers.
@@ -126,22 +126,22 @@ audio, visual, audiovisual, messaging services, or email from the Medical
 Group and/or the Providers through the Service related to your diagnosis
 and/or treatment.
 
-Spicy Alien is not responsible for the security or privacy of the
+SpicyRx is not responsible for the security or privacy of the
 communication services you use to receive such communications.
 
 You are solely responsible for monitoring and responding to
-communications; neither Spicy Alien, the Medical Group, nor any Provider is
+communications; neither SpicyRx, the Medical Group, nor any Provider is
 liable for any loss, injury, or claims arising from your failure to read
 or respond, or to follow treatment recommendations or instructions.
 
 Although you are not establishing a provider-patient relationship with
-Spicy Alien, by using the Service you enter into a direct customer
-relationship with Spicy Alien for use of the Service, including purchasing
+SpicyRx, by using the Service you enter into a direct customer
+relationship with SpicyRx for use of the Service, including purchasing
 any non-prescription products or non-medical services sold directly to
 you.
 
 If you are the parent or legal guardian of an individual under 18 who you
-believe has used the Service without your consent, please contact Spicy Alien
-at [support@spicyalien.com](mailto:support@spicyalien.com).
+believe has used the Service without your consent, please contact SpicyRx
+at [support@spicyrx.com](mailto:support@spicyrx.com).
 
 **Effective date:** May 27, 2026

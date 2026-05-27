@@ -11,12 +11,12 @@ const SLUGS = {
   "telehealth-consent": {
     title: "Telehealth Consent",
     description:
-      "Informed consent for the use of telehealth services through the Spicy Alien platform, including ED-specific risk disclosures.",
+      "Informed consent for the use of telehealth services through the SpicyRx platform, including ED-specific risk disclosures.",
   },
   compliance: {
     title: "Compliance & State Availability",
     description:
-      "Where Spicy Alien services are available, our synchronous-visit states, and our pharmacy and provider network.",
+      "Where SpicyRx services are available, our synchronous-visit states, and our pharmacy and provider network.",
   },
 } as const;
 

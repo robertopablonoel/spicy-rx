@@ -131,7 +131,7 @@ export const FAQS = [
   },
   {
     q: "Is the packaging discreet?",
-    a: "Plain unmarked outer package. No \"Spicy Alien\" return address. The brand only appears on the bottle inside.",
+    a: "Plain unmarked outer package. No \"SpicyRx\" return address. The brand only appears on the bottle inside.",
   },
   {
     q: "Who shouldn't take Hot Sauce?",

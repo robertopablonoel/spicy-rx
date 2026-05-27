@@ -12,12 +12,12 @@ const SLUGS = {
   "privacy-policy": {
     title: "Privacy Policy",
     description:
-      "How Spicy Alien and its affiliated medical groups handle personal and health information under HIPAA and applicable state privacy law.",
+      "How SpicyRx and its affiliated medical groups handle personal and health information under HIPAA and applicable state privacy law.",
   },
   "terms-of-service": {
     title: "Terms of Service",
     description:
-      "The agreement governing your access to Spicy Alien and the affiliated medical group and pharmacy services.",
+      "The agreement governing your access to SpicyRx and the affiliated medical group and pharmacy services.",
   },
   "refund-policy": {
     title: "Refund Policy",

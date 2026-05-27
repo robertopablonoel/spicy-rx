@@ -4,7 +4,7 @@ We maintain a 30-day return window from item receipt. Items must remain
 unworn, unused, in their original packaging, with seals and tags intact,
 and accompanied by proof of purchase.
 
-To initiate a return, contact [support@spicyalien.com](mailto:support@spicyalien.com).
+To initiate a return, contact [support@spicyrx.com](mailto:support@spicyrx.com).
 Returns require prior approval; unsolicited packages cannot be accepted.
 Approved returns receive a return shipping label and instructions.
 
@@ -17,7 +17,7 @@ item is defective, damaged, or incorrect so we can resolve the matter.
 
 The following cannot be returned:
 
-- Prescription medications, including Spicy Alien Hot Sauce, once dispensed
+- Prescription medications, including SpicyRx Hot Sauce, once dispensed
   (subject to state board-of-pharmacy rules)
 - Perishable goods
 - Custom or personalized products
@@ -49,12 +49,12 @@ passed since approval and you have not received the refund.
 
 ## "Risk-Free": No Charge If You Don't Qualify
 
-If a Spicy Alien-affiliated clinician reviews your intake and determines
+If a SpicyRx-affiliated clinician reviews your intake and determines
 that Hot Sauce is not appropriate for you, you will not be charged for the
 medication or the clinician consultation.
 
 ## Contact
 
-Refund and return inquiries: [support@spicyalien.com](mailto:support@spicyalien.com)
+Refund and return inquiries: [support@spicyrx.com](mailto:support@spicyrx.com)
 
 **Effective date:** May 27, 2026

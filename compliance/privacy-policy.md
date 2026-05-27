@@ -3,9 +3,9 @@
 ## Introduction
 
 This Privacy Policy explains how personal and health information may be
-collected, used, and disclosed by Spicy Alien and the affiliated medical groups
-that provide care through the Spicy Alien telehealth platform. This policy
-applies to the Spicy Alien website, mobile applications, and all related
+collected, used, and disclosed by SpicyRx and the affiliated medical groups
+that provide care through the SpicyRx telehealth platform. This policy
+applies to the SpicyRx website, mobile applications, and all related
 services (collectively, the "Services").
 
 The Notice of Privacy Practices describes how protected health information
@@ -13,20 +13,20 @@ may be used and disclosed and how you can access this information.
 
 ## Who We Are
 
-Spicy Alien and its subsidiaries own and operate the Services. The platform
+SpicyRx and its subsidiaries own and operate the Services. The platform
 connects patients with healthcare providers for telehealth consultations,
 prescription services, and related healthcare solutions.
 
 ## HIPAA Compliance Statement
 
-Spicy Alien is committed to protecting the privacy and security of health
-information. While Spicy Alien may not itself be a "covered entity" under the
+SpicyRx is committed to protecting the privacy and security of health
+information. While SpicyRx may not itself be a "covered entity" under the
 Health Insurance Portability and Accountability Act of 1996 ("HIPAA"), the
 affiliated medical groups and healthcare providers that deliver care
 through the Services are "covered entities."
 
-Spicy Alien may function as a "business associate" to these covered entities
-in certain contexts. As such, Spicy Alien adheres to applicable HIPAA
+SpicyRx may function as a "business associate" to these covered entities
+in certain contexts. As such, SpicyRx adheres to applicable HIPAA
 regulations and state privacy laws to protect health information.
 
 ## Information We Collect
@@ -75,7 +75,7 @@ management.
 - To prevent a serious threat to health or safety
 - For specialized government functions
 - Workers' compensation cases
-- Business associates who perform functions on behalf of Spicy Alien
+- Business associates who perform functions on behalf of SpicyRx
 
 ## Your Health Information Rights
 
@@ -84,7 +84,7 @@ regarding protected health information:
 
 - **Right to access and receive a copy of your records.** You have the
   right to inspect and obtain a copy of healthcare records maintained by
-  Spicy Alien, with limited exceptions. A written request must be submitted
+  SpicyRx, with limited exceptions. A written request must be submitted
   to the Privacy Officer. A reasonable, cost-based fee may be charged
   for copies.
 - **Right to request an amendment.** If you believe information in your
@@ -96,12 +96,12 @@ regarding protected health information:
   six years prior to your request.
 - **Right to request restrictions.** You have the right to request
   restrictions on certain uses and disclosures of your health
-  information. Spicy Alien is not required to agree to all restriction
+  information. SpicyRx is not required to agree to all restriction
   requests but must comply with requests to restrict disclosure to a
   health plan for payment or healthcare operations purposes when you have
   paid in full out-of-pocket for the item or service.
 - **Right to request confidential communications.** You have the right to
-  request that Spicy Alien communicate with you about medical matters in a
+  request that SpicyRx communicate with you about medical matters in a
   certain way or at a certain location (e.g., only by mail or at a
   specific address).
 - **Right to a paper copy of this notice.** You have the right to receive
@@ -111,7 +111,7 @@ regarding protected health information:
   used, or disclosed in a manner not permitted under HIPAA that
   compromises the security or privacy of your PHI.
 - **Right to file a complaint.** If you believe your privacy rights have
-  been violated, you may file a complaint with the Spicy Alien Privacy Officer
+  been violated, you may file a complaint with the SpicyRx Privacy Officer
   or with the U.S. Department of Health and Human Services Office for
   Civil Rights. You will not be penalized or retaliated against for
   filing a complaint.
@@ -119,7 +119,7 @@ regarding protected health information:
 ## Exercising Your Rights
 
 To exercise any of the rights described above, submit your request through
-the contact form on the Spicy Alien website. The Privacy Officer will review
+the contact form on the SpicyRx website. The Privacy Officer will review
 and respond to your request.
 
 ## State-Specific Privacy Rights
@@ -148,7 +148,7 @@ Officer for specific details.
 
 ## Information Security
 
-Spicy Alien maintains physical, technical, and administrative safeguards to
+SpicyRx maintains physical, technical, and administrative safeguards to
 protect your information, including:
 
 - Encryption of electronic protected health information
@@ -177,12 +177,12 @@ complaint by:
    - [hhs.gov/ocr/privacy/hipaa/complaints](https://www.hhs.gov/ocr/privacy/hipaa/complaints/)
    - 1-877-696-6775
 
-Spicy Alien will not retaliate against you for filing a complaint.
+SpicyRx will not retaliate against you for filing a complaint.
 
 ## Contact Information
 
 If you have questions about this Privacy Policy or our privacy practices,
-contact the Spicy Alien Privacy Officer by emailing [support@spicyalien.com](mailto:support@spicyalien.com)
+contact the SpicyRx Privacy Officer by emailing [support@spicyrx.com](mailto:support@spicyrx.com)
 with the subject line "Privacy Policy Question."
 
 **Effective date:** May 27, 2026

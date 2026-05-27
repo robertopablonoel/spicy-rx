@@ -14,7 +14,7 @@ import { COMPARISON_ROWS } from "@/lib/content";
 export function Comparison() {
   return (
     <section className="mx-auto max-w-[var(--container-max)] px-5 py-[72px] md:px-10 md:py-[120px]">
-      <Eyebrow className="mb-4">The Spicy Alien advantage</Eyebrow>
+      <Eyebrow className="mb-4">The SpicyRx advantage</Eyebrow>
       <h2
         className="font-[family-name:var(--font-display)] font-bold text-fg"
         style={{

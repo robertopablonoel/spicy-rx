@@ -6,7 +6,7 @@ import remarkGfm from "remark-gfm";
 import type { Components } from "react-markdown";
 
 /**
- * Renders one of the markdown documents under /compliance/ as a Spicy Alien
+ * Renders one of the markdown documents under /compliance/ as a SpicyRx
  * legal page. Server component — reads from disk at build/request time and
  * maps each markdown element to a styled DOM node using design-system tokens.
  *

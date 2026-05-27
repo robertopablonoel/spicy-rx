@@ -65,7 +65,7 @@ export function Footer() {
 
         {/*
           Medical Provider Partners disclosure — full-width band. Required
-          regulatory disclosure that Spicy Alien itself doesn't provide
+          regulatory disclosure that SpicyRx itself doesn't provide
           consultations; care is delivered by the partner medical group.
         */}
         <div className="mt-12 max-w-[820px] border-t border-ash pt-8">

@@ -1,11 +1,11 @@
 # Compliance
 
-Spicy Alien services are available only in select U.S. states where our
+SpicyRx services are available only in select U.S. states where our
 affiliated medical group is licensed to prescribe.
 
 ## Service Availability
 
-Spicy Alien services are offered in a curated set of U.S. states. Eligibility
+SpicyRx services are offered in a curated set of U.S. states. Eligibility
 is verified during the intake flow; if your state is not currently
 supported, you will be notified before any clinical review takes place
 and you will not be charged. Availability may change based on provider
@@ -21,7 +21,7 @@ intake before a clinician can review your case.
 
 ## Pharmacy Partners
 
-Spicy Alien fulfills prescriptions through licensed pharmacy partners that
+SpicyRx fulfills prescriptions through licensed pharmacy partners that
 meet state board-of-pharmacy standards. You are free to obtain your
 prescription from any pharmacy of your choice by contacting support and
 notifying your prescribing clinician.
@@ -36,7 +36,7 @@ telehealth medical group, and licensed in your state of residence.
 
 If you have a concern about a medical professional involved in your
 care, you may contact the Medical Board in your state. To report a
-concern to Spicy Alien directly, email [support@spicyalien.com](mailto:support@spicyalien.com)
+concern to SpicyRx directly, email [support@spicyrx.com](mailto:support@spicyrx.com)
 with the subject line "Compliance Concern."
 
 **Effective date:** May 27, 2026
