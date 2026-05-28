@@ -365,61 +365,82 @@ export function DropperBottle() {
           fill="url(#sa-glass)"
         />
 
-        {/* LABEL */}
+        {/* LABEL — fully opaque background, five-line readable hierarchy.
+              HOT SAUCE   (display, ember, 12 — at 76 SVG units wide, this
+                          is the largest size that fits "HOT SAUCE" in
+                          Space Grotesk without overflow)
+              4-IN-1      (mono, paper, 7)
+              SUBLINGUAL  (mono, paper, 7)
+              ── ember divider ──
+              30 ML       (mono, paper, 7)
+            Splitting "4-IN-1 SUBLINGUAL" onto two lines — single-line at
+            any legible mono size overflows the label width. */}
         <rect
           x="42"
-          y="130"
+          y="128"
           width="76"
-          height="92"
+          height="94"
           rx="2"
-          fill="rgba(10,9,7,0.72)"
+          fill="#0A0907"
           stroke="var(--ember)"
-          strokeWidth="1"
-          style={{ filter: "drop-shadow(0 0 8px rgba(0,0,0,0.5))" }}
+          strokeWidth="1.25"
+          style={{ filter: "drop-shadow(0 0 6px rgba(0,0,0,0.6))" }}
         />
         <text
           x="80"
-          y="156"
+          y="152"
           fill="var(--ember)"
           textAnchor="middle"
           fontFamily="var(--font-display)"
           fontWeight="700"
-          fontSize="11"
+          fontSize="12"
           letterSpacing="0.04em"
         >
           HOT SAUCE
         </text>
         <text
           x="80"
-          y="172"
-          fill="var(--ember)"
+          y="170"
+          fill="#F2ECDF"
           textAnchor="middle"
-          opacity="0.6"
           fontFamily="var(--font-mono)"
-          fontSize="6"
-          letterSpacing="0.2em"
+          fontWeight="500"
+          fontSize="7"
+          letterSpacing="0.08em"
         >
-          4-IN-1 SUBLINGUAL · 30 ML
+          4-IN-1
+        </text>
+        <text
+          x="80"
+          y="182"
+          fill="#F2ECDF"
+          textAnchor="middle"
+          fontFamily="var(--font-mono)"
+          fontWeight="500"
+          fontSize="7"
+          letterSpacing="0.08em"
+        >
+          SUBLINGUAL
         </text>
         <line
-          x1="52"
-          y1="184"
-          x2="108"
-          y2="184"
+          x1="58"
+          y1="194"
+          x2="102"
+          y2="194"
           stroke="var(--ember)"
-          strokeWidth="2.5"
+          strokeWidth="1.5"
         />
         <text
           x="80"
-          y="204"
-          fill="var(--ember)"
+          y="213"
+          fill="#F2ECDF"
           textAnchor="middle"
-          opacity="0.7"
           fontFamily="var(--font-mono)"
-          fontSize="5"
-          letterSpacing="0.16em"
+          fontWeight="500"
+          fontSize="7"
+          letterSpacing="0.14em"
         >
-          SIL · TAD · VAR · APO
+          30 ML
         </text>
       </motion.svg>
     </div>
