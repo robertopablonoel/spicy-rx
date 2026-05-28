@@ -3,7 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { BRAND_NAME } from "@/lib/constants";
+import { BRAND_NAME, RIMO_INTAKE_URL } from "@/lib/constants";
+import { ButtonLink } from "@/components/ui/button";
 
 const LINKS = [
   { href: "/", label: "Hot Sauce" },
@@ -71,12 +72,14 @@ export function Navbar() {
           ))}
         </div>
 
-        {/*
-          Right-side nav slot intentionally empty. The previous Sign-in
-          and Start-consultation CTAs are removed pending the Rimo-hosted
-          replacement.
-        */}
-        <div aria-hidden className="w-[1px]" />
+        <ButtonLink
+          href={RIMO_INTAKE_URL}
+          size="sm"
+          data-cta-location="nav_primary"
+        >
+          Start consultation
+          <span aria-hidden>→</span>
+        </ButtonLink>
       </div>
     </nav>
   );

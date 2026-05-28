@@ -1,15 +1,17 @@
-import { ConsultForm } from "./_components/ConsultForm";
+import { redirect } from "next/navigation";
+import { RIMO_INTAKE_URL } from "@/lib/constants";
 
-export const metadata = {
-  title: "Consultation",
-  description:
-    "Private 3-minute intake. A US-licensed clinician reviews your case within 24 hours.",
-};
-
-export default function ConsultPage() {
-  return (
-    <section className="mx-auto max-w-[920px] px-5 pt-[110px] pb-[72px] md:px-10 md:pt-[140px] md:pb-20">
-      <ConsultForm />
-    </section>
-  );
+/**
+ * Legacy /consult route. Redirects to the Rimo-hosted intake surface.
+ *
+ * The previous on-site intake form was a stub written before Rimo
+ * provisioned the SpicyRx-branded sales channel. Now that
+ * `my.spicyrx.com/intake/sh-rhdbd4` is live, the canonical intake path
+ * is external — but we keep this route as a redirect so any deep links
+ * (emails, ads, prior shares) still land users in the right place.
+ *
+ * Server-side redirect via `next/navigation` — Next.js renders a 307.
+ */
+export default function ConsultRedirect() {
+  redirect(RIMO_INTAKE_URL);
 }

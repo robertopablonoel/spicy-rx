@@ -19,9 +19,24 @@ export const PRODUCT_NAME = "Hot Sauce";
 export const LEGAL_ENTITY = "Noel Ventures LLC";
 
 /**
- * Rimo-hosted patient portal. Marketing-site "Sign in" CTAs link here.
- * The /consult flow inside this app handles initial intake; once approved
- * a patient gets a portal account at this URL.
+ * Rimo two-surface architecture:
+ *
+ *   RIMO_INTAKE_URL  — patient-facing sales channel (SpicyRx-branded)
+ *                      where new visitors begin a consultation. Primary
+ *                      target for every Hero / Navbar "Start consultation"
+ *                      CTA on the marketing site.
+ *
+ *   RIMO_PORTAL_URL  — returning-patient portal (Caliber-branded for now).
+ *                      Existing customers log in here after a prescription
+ *                      is issued. Pending Rimo decision on whether to
+ *                      re-provision under spicyrx.com to match the intake brand.
+ *
+ * Both default to the live Rimo-provisioned URLs; override per environment
+ * via Vercel env vars if Rimo cuts a new sales channel or moves the portal.
  */
+export const RIMO_INTAKE_URL =
+  process.env.NEXT_PUBLIC_RIMO_INTAKE_URL ??
+  "https://my.spicyrx.com/intake/sh-rhdbd4/date-of-birth";
+
 export const RIMO_PORTAL_URL =
   process.env.NEXT_PUBLIC_RIMO_PORTAL_URL ?? "https://app.caliberrx.co";

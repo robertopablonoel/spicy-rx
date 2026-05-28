@@ -1,9 +1,10 @@
 import { Eyebrow } from "@/components/ui/eyebrow";
-import { Button, ButtonLink } from "@/components/ui/button";
+import { ButtonLink } from "@/components/ui/button";
 import { Stat } from "@/components/ui/stat";
 import { Divider } from "@/components/ui/divider";
 import { DropperBottle } from "@/components/marketing/DropperBottle";
 import { HERO_STATS } from "@/lib/content";
+import { RIMO_INTAKE_URL } from "@/lib/constants";
 
 /**
  * Asymmetric home hero — 1.2fr / 1fr on desktop, stacks to a single column
@@ -68,19 +69,14 @@ export function Hero() {
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
-            {/*
-              Intake form is on hold pending the Rimo-hosted replacement.
-              Button keeps its visual treatment but does not link anywhere;
-              re-wire to the new flow when ready.
-            */}
-            <Button
-              type="button"
+            <ButtonLink
+              href={RIMO_INTAKE_URL}
               size="lg"
               data-cta-location="hero_primary"
             >
               See if you qualify
               <span aria-hidden>→</span>
-            </Button>
+            </ButtonLink>
             <ButtonLink
               href="/#how-it-works"
               variant="ghost"
