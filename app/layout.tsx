@@ -7,6 +7,7 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import { BRAND_NAME } from "@/lib/constants";
+import { Providers } from "./providers";
 
 /**
  * Type stack — matches the SpicyRx Design System.
@@ -60,7 +61,9 @@ export default function RootLayout({
       lang="en"
       className={`${display.variable} ${body.variable} ${editorial.variable} ${mono.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
