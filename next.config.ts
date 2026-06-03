@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.resolve(__dirname),
   },
+  // Build output dir. Defaults to `.next` (dev + normal builds). The shared
+  // tunnel/prod server runs with NEXT_DIST_DIR=.next-prod so a concurrently
+  // running `next dev` can't clobber the production build it serves from.
+  distDir: process.env.NEXT_DIST_DIR ?? ".next",
 };
 
 export default nextConfig;

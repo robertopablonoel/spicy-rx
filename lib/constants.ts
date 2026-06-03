@@ -40,3 +40,28 @@ export const RIMO_INTAKE_URL =
 
 export const RIMO_PORTAL_URL =
   process.env.NEXT_PUBLIC_RIMO_PORTAL_URL ?? "https://app.caliberrx.co";
+
+/* =============================================================
+   PASSION — female product line (second line under the SpicyRx brand).
+
+   Status: DESIGN SPIKE. "Passion" is the Rimo offering name and is a
+   PLACEHOLDER consumer name (subject to rebrand, exactly like "Hot Sauce"
+   stands in for "Quattro"). Formulation per Rimo: Tadalafil 10mg /
+   Bremelanotide 10mg / Pregnenolone 10mg, PRN, 12 tablets.
+   ============================================================= */
+
+export const PASSION_PRODUCT_NAME = "Passion"; // placeholder — rebrand TBD
+export const PASSION_TAGLINE = "Desire, on your terms.";
+
+/**
+ * Passion intake channel.
+ *
+ * TODO(rimo): Passion is a separate Rimo offering and will get its OWN
+ * sales-channel ID once Roberto provisions it (Cole doesn't yet have
+ * access to the SpicyRx Rimo workspace where channels are created).
+ * Until then this falls back to the Hot Sauce intake URL so the CTAs
+ * are wired end-to-end — repoint NEXT_PUBLIC_RIMO_INTAKE_PASSION_URL
+ * the moment the real channel exists.
+ */
+export const PASSION_INTAKE_URL =
+  process.env.NEXT_PUBLIC_RIMO_INTAKE_PASSION_URL ?? RIMO_INTAKE_URL;
