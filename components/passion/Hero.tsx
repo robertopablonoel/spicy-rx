@@ -2,16 +2,13 @@ import { Eyebrow } from "@/components/ui/eyebrow";
 import { ButtonLink } from "@/components/ui/button";
 import { Stat } from "@/components/ui/stat";
 import { Divider } from "@/components/ui/divider";
-import { DropperBottle } from "@/components/marketing/DropperBottle";
-import { IntakeLink } from "@/components/marketing/IntakeLink";
-import { HERO_STATS } from "@/lib/content";
+import { PillBottle } from "@/components/passion/PillBottle";
+import { IntakeLink } from "@/components/passion/IntakeLink";
+import { HERO_STATS } from "@/lib/content-passion";
 
 /**
- * Asymmetric home hero — 1.2fr / 1fr on desktop, stacks to a single column
- * on mobile. The DropperBottle (client island) sits in the right column on
- * desktop and below the copy on mobile.
- *
- * Headline follows the canonical triplet → editorial pattern.
+ * Passion home hero — same asymmetric 1.2fr/1fr layout as Hot Sauce, but the
+ * right column is the PillBottle (tablets) and the copy is Addyi-voiced.
  */
 export function Hero() {
   return (
@@ -36,7 +33,7 @@ export function Hero() {
         {/* LEFT: copy */}
         <div className="relative">
           <Eyebrow className="mb-5">
-            USA-made · Clinician-prescribed · 4-in-1
+            For women · Clinician-prescribed · On-demand
           </Eyebrow>
 
           <h1
@@ -47,34 +44,31 @@ export function Hero() {
               lineHeight: 0.92,
             }}
           >
-            Faster onset.
+            Desire,
             <br />
-            Peak strength.
-            <br />
-            36-hour window.
-            <br />
+            on your{" "}
             <span className="font-[family-name:var(--font-editorial)] italic font-normal text-ember">
-              Plus desire.
+              own terms.
             </span>
           </h1>
 
           <p className="mt-7 max-w-[520px] text-base leading-[1.5] text-mist md:text-[19px]">
-            Hot Sauce is a 4-in-1 sublingual that stacks the active
-            ingredients in Viagra, Cialis, and Levitra —{" "}
+            Passion is a clinician-prescribed treatment for low sexual desire —{" "}
             <em className="not-italic font-semibold text-fg">
-              plus apomorphine
-            </em>{" "}
-            to ignite desire. Hits in 15 minutes. Goes the whole weekend.
-            Clinician-prescribed, shipped discreetly.
+              taken only when you want it
+            </em>
+            , not every single day. Three actives that work on desire,
+            arousal, and the baseline underneath. Because wanting isn&apos;t a
+            flaw — it&apos;s biology.
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <IntakeLink size="lg" data-cta-location="hero_primary">
-              See if you qualify
+              See if Passion is right for you
               <span aria-hidden>→</span>
             </IntakeLink>
             <ButtonLink
-              href="/#how-it-works"
+              href="/passion#how-it-works"
               variant="ghost"
               size="lg"
               data-cta-location="hero_secondary"
@@ -96,9 +90,9 @@ export function Hero() {
           </div>
         </div>
 
-        {/* RIGHT: dropper bottle (client island) */}
+        {/* RIGHT: pill bottle (client island) */}
         <div className="relative flex items-center justify-center">
-          <DropperBottle />
+          <PillBottle />
         </div>
       </div>
     </section>

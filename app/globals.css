@@ -184,3 +184,39 @@
     animation: none !important;
   }
 }
+
+/* =============================================================
+   PASSION — female product line theme override.
+
+   The marketing components reference the accent through CSS vars
+   (text-ember → var(--ember), bg-hot → var(--hot), --grad-capsaicin,
+   --border-hot, --sh-heat). Remapping those vars on a scoped wrapper
+   pivots the whole subtree from capsaicin heat to plasma pink without
+   touching a single component — var() resolves lazily at use, so the
+   cascade does the work. Applied via <div data-theme="passion"> in
+   app/passion/layout.tsx. The Hot Sauce site is untouched.
+   ============================================================= */
+
+[data-theme="passion"] {
+  --hot:      var(--plasma);              /* #FF2E8A */
+  --hot-deep: #C01F66;
+  --ember:    #FF6FB0;                    /* lighter rose for editorial accents */
+  --serum:    #F5B0D5;                    /* review stars → soft rose-gold */
+  --grad-capsaicin: var(--grad-plasma);   /* pink → ultraviolet */
+  --border-hot: rgba(255, 46, 138, 0.4);
+  --sh-heat:    0 0 0 1px rgba(255,46,138,0.35), 0 0 32px rgba(255,46,138,0.35);
+  --sh-heat-lg: 0 0 0 1px rgba(255,46,138,0.4),  0 0 80px rgba(255,46,138,0.5);
+}
+
+/* =============================================================
+   Audience chip — slide-up entrance (CSS, so it renders reliably
+   and never gets stuck invisible). Respects reduced motion.
+   ============================================================= */
+@keyframes sa-chip-in {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.sa-chip { animation: sa-chip-in 0.45s var(--ease-out) both; }
+@media (prefers-reduced-motion: reduce) {
+  .sa-chip { animation: none; }
+}

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" fill="none">
+
+  <defs>
+    <linearGradient id="plasma" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFB3D9"></stop>
+      <stop offset="0.45" stop-color="#FF6FB0"></stop>
+      <stop offset="1" stop-color="#FF2E8A"></stop>
+    </linearGradient>
+  </defs>
+
+  <path d="M50 4 C50 4, 12 50, 12 78 C12 98, 29 114, 50 114 C71 114, 88 98, 88 78 C88 50, 50 4, 50 4 Z" fill="url(#plasma)"></path>
+</svg>

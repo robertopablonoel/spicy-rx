@@ -3,6 +3,7 @@
 import { Suspense, useEffect } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { capturePageview, initPostHog } from "@/lib/analytics";
+import { captureAttribution } from "@/lib/attribution";
 
 /**
  * Root client provider — initializes PostHog and manually captures
@@ -19,6 +20,9 @@ import { capturePageview, initPostHog } from "@/lib/analytics";
 export function Providers({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     initPostHog();
+    // Capture ad click-IDs + UTMs from the landing URL on first load,
+    // so CTA clicks can forward them to the Rimo intake.
+    captureAttribution();
   }, []);
 
   return (

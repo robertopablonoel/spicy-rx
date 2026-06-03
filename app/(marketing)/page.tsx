@@ -5,6 +5,7 @@ import { HowItWorks } from "@/components/marketing/HowItWorks";
 import { PullQuote } from "@/components/marketing/PullQuote";
 import { Testimonials } from "@/components/marketing/Testimonials";
 import { FAQ } from "@/components/marketing/FAQ";
+import { AudienceChip } from "@/components/AudienceChip";
 
 export default function HomePage() {
   return (
@@ -16,6 +17,7 @@ export default function HomePage() {
       <PullQuote />
       <Testimonials />
       <FAQ />
+      <AudienceChip current="men" />
     </>
   );
 }

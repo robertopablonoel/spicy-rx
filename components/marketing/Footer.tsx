@@ -18,7 +18,12 @@ const LEGAL_LINKS = [
  *   Row 2: Medical Provider Partners disclosure (full-width band)
  *   Row 3: mono copyright + batch readout
  */
-export function Footer() {
+export function Footer({
+  logoSrc = "/brand/logo-mark.svg",
+}: {
+  /** Override the brand mark — e.g. the plasma-pink variant on /passion. */
+  logoSrc?: string;
+} = {}) {
   return (
     <footer className="border-t border-ash bg-cosmos">
       <div className="mx-auto max-w-[var(--container-max)] px-5 pt-16 pb-8 md:px-10">
@@ -26,7 +31,7 @@ export function Footer() {
           <div>
             <div className="mb-4 flex items-center gap-2.5">
               <Image
-                src="/brand/logo-mark.svg"
+                src={logoSrc}
                 alt=""
                 width={28}
                 height={34}
