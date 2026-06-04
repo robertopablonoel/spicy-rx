@@ -14,9 +14,9 @@ export const PRODUCT_NAME = "Hot Sauce";
  * Legal entity name. Used in footer copyright, telehealth consent, and any
  * other place where the contracting entity must be identified by its
  * registered name (not the trade name). "SpicyRx" is the brand / trade
- * name; "Noel Ventures LLC" is the entity that owns and operates it.
+ * name; "Cubes Company LLC" is the entity that owns and operates it.
  */
-export const LEGAL_ENTITY = "Noel Ventures LLC";
+export const LEGAL_ENTITY = "Cubes Company LLC";
 
 /**
  * Rimo two-surface architecture:
