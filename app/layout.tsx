@@ -44,11 +44,11 @@ const mono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: `${BRAND_NAME} — Faster onset. Peak strength. 36-hour window.`,
+    default: `${BRAND_NAME} — Clinician-prescribed. Compounded in the USA.`,
     template: `%s · ${BRAND_NAME}`,
   },
   description:
-    "Hot Sauce is a 4-in-1 sublingual that stacks the active ingredients in Viagra, Cialis, and Levitra — plus apomorphine to ignite desire. Hits in 15 minutes. Goes the whole weekend. Clinician-prescribed, shipped discreetly.",
+    "Hot Sauce is a clinician-prescribed 4-in-1 sublingual, compounded in the USA and shipped discreetly. A US-licensed clinician reviews every intake — no clinic visit required.",
 };
 
 export default function RootLayout({
