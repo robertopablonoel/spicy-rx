@@ -91,15 +91,36 @@ export function getStoredAttribution(): Attribution {
 }
 
 /**
+ * Read attribution params straight off the current URL. Used as a fallback
+ * so forwarding doesn't depend on captureAttribution() having run first —
+ * on a first visit React fires child effects before the parent Providers
+ * effect, so a CTA can resolve its href before the landing params are
+ * persisted. Reading live params here closes that race (and also catches
+ * click-IDs that arrive on an SPA route transition).
+ */
+function liveAttribution(): Attribution {
+  if (typeof window === "undefined") return {};
+  const live: Attribution = {};
+  const params = new URL(window.location.href).searchParams;
+  for (const key of PARAM_KEYS) {
+    const value = params.get(key);
+    if (value) live[key] = value;
+  }
+  return live;
+}
+
+/**
  * Append stored attribution params to a destination URL (the Rimo intake).
+ * Stored (persisted last-touch) context wins; live URL params fill any gaps
+ * so a first-visit click still forwards before capture has persisted them.
  * Existing params on the URL are not overwritten.
  */
 export function withAttribution(url: string): string {
-  const stored = getStoredAttribution();
-  if (Object.keys(stored).length === 0) return url;
+  const merged = { ...liveAttribution(), ...getStoredAttribution() };
+  if (Object.keys(merged).length === 0) return url;
   try {
     const target = new URL(url);
-    for (const [key, value] of Object.entries(stored)) {
+    for (const [key, value] of Object.entries(merged)) {
       if (!target.searchParams.has(key)) target.searchParams.set(key, value);
     }
     return target.toString();
