@@ -3,8 +3,9 @@ import { Eyebrow } from "@/components/ui/eyebrow";
 /**
  * Full-bleed capsaicin gradient band — used ONCE per page, max.
  *
- * The "Hospital-grade power. Direct to your door." anchor. Sits between
- * HowItWorks and Testimonials on the home page.
+ * The brand-statement anchor between HowItWorks and the FAQ. Compliance
+ * pass 2026-06-05: no potency/outcome language ("hospital-grade power",
+ * "the power of four meds") pre-LegitScript.
  */
 export function PullQuote() {
   return (
@@ -17,7 +18,7 @@ export function PullQuote() {
           className="mb-6"
           style={{ color: "rgba(10,9,7,0.7)" }}
         >
-          Hospital-grade power. Direct to your door.
+          Clinician-prescribed. Direct to your door.
         </Eyebrow>
         <blockquote
           className="font-[family-name:var(--font-display)] font-bold text-void"
@@ -27,7 +28,7 @@ export function PullQuote() {
             lineHeight: 0.98,
           }}
         >
-          The power of four meds.
+          Four actives.
           <br />
           <span className="font-[family-name:var(--font-editorial)] italic font-normal">
             One sublingual drop.

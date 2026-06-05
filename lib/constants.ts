@@ -6,9 +6,27 @@
  */
 
 export const BRAND_NAME = "SpicyRx";
-export const BRAND_TAGLINE = "Hospital-grade power. Direct to your door.";
+// Compliance 2026-06-05: "Hospital-grade power…" retired pre-LegitScript
+// (potency claim). Revisit post-approval.
+export const BRAND_TAGLINE = "Clinician-prescribed. Direct to your door.";
 export const SUPPORT_EMAIL = "support@spicyrx.com";
 export const PRODUCT_NAME = "Hot Sauce";
+
+/**
+ * Public contact info — REQUIRED by LegitScript (an email address alone is
+ * insufficient; a phone number and mailing address must be visible to
+ * site users). Rendered in the footer Contact block.
+ *
+ * TODO(cole/roberto): replace BOTH placeholders with the real business
+ * line + business mailing address before the LegitScript re-review.
+ * Per standing policy these must be BUSINESS contacts — never personal
+ * phone numbers. Env-overridable so prod can be set without a code change.
+ */
+export const SUPPORT_PHONE =
+  process.env.NEXT_PUBLIC_SUPPORT_PHONE ?? "+1 (XXX) XXX-XXXX";
+export const BUSINESS_ADDRESS =
+  process.env.NEXT_PUBLIC_BUSINESS_ADDRESS ??
+  "Noel Ventures LLC\n[business mailing address pending]";
 
 /**
  * Legal entity name. Used in footer copyright, telehealth consent, and any

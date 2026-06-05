@@ -47,25 +47,24 @@ export function Hero() {
               lineHeight: 0.92,
             }}
           >
-            Faster onset.
+            One formula.
             <br />
-            Peak strength.
+            Four actives.
             <br />
-            36-hour window.
+            Zero waiting rooms.
             <br />
             <span className="font-[family-name:var(--font-editorial)] italic font-normal text-ember">
-              Plus desire.
+              Prescribed online.
             </span>
           </h1>
 
           <p className="mt-7 max-w-[520px] text-base leading-[1.5] text-mist md:text-[19px]">
-            Hot Sauce is a 4-in-1 sublingual that stacks the active
-            ingredients in Viagra, Cialis, and Levitra —{" "}
+            Hot Sauce is a clinician-prescribed 4-in-1 sublingual,{" "}
             <em className="not-italic font-semibold text-fg">
-              plus apomorphine
+              compounded in the USA
             </em>{" "}
-            to ignite desire. Hits in 15 minutes. Goes the whole weekend.
-            Clinician-prescribed, shipped discreetly.
+            and shipped discreetly. A US-licensed clinician reviews every
+            intake — no clinic visit required.
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">

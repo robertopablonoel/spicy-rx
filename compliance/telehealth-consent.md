@@ -42,4 +42,74 @@ SpicyRx will use its pharmacy partners to fulfill your order directly to your do
 
 If you have a concern about a medical professional, you may contact the Medical Board in your state regarding your concerns.
 
+## State-Specific Disclosures
+
+The following disclosures apply to you based on the state in which you are located at the time of your telehealth encounter.
+
+### Alaska
+
+You have the right to obtain a copy of the records of your telehealth encounter and to have those records shared with your primary care physician. If you have a complaint regarding a licensed clinician, you may contact the Alaska Division of Corporations, Business and Professional Licensing.
+
+### Connecticut
+
+You have the right to request that the records of your telehealth encounter be shared with your primary care physician.
+
+### Florida
+
+As a Florida resident, you are entitled to the protections set forth in the Florida Patient's Bill of Rights and Responsibilities, Section 381.026, Florida Statutes.
+
+### Iowa
+
+If you have a complaint regarding a licensed clinician, you may file a complaint with the Iowa Board of Medicine.
+
+### Idaho
+
+If you have a complaint regarding a licensed clinician, you may file a complaint with the Idaho Board of Medicine through its consumer complaint process.
+
+### Indiana
+
+If you have a complaint regarding a licensed clinician, you may file a complaint with the Indiana Professional Licensing Agency through its public complaint portal.
+
+### Kansas
+
+Upon your consent, a report of your telemedicine encounter will be sent to your designated primary care physician within three business days of the encounter.
+
+### Kentucky
+
+If you have a complaint regarding a licensed clinician, you may file a complaint with the Kentucky Board of Medical Licensure.
+
+### Maine
+
+If you have a complaint regarding a licensed clinician, you may file a complaint with the Maine Board of Licensure in Medicine (for physicians, M.D.) or the Maine Board of Osteopathic Licensure (for osteopathic physicians, D.O.).
+
+### New Hampshire
+
+You have the right to obtain the records of your telehealth encounter and to have those records shared with your primary care physician or other treating provider.
+
+### Ohio
+
+You have the right to request that the records of your telehealth encounter be shared with your primary care physician.
+
+### Oklahoma
+
+If you have a complaint regarding a licensed clinician, you may file a complaint with the Oklahoma State Board of Medical Licensure and Supervision (for physicians, M.D.) or the Oklahoma State Board of Osteopathic Examiners (for osteopathic physicians, D.O.).
+
+### Rhode Island
+
+If you have a complaint regarding a licensed clinician, you may file a complaint with the Rhode Island Department of Health.
+
+### South Carolina
+
+You control the distribution of your medical records. Upon your consent, your medical records may be shared with your treating healthcare practitioners.
+
+### Texas
+
+Upon your consent, your medical records will be shared with your designated primary care physician within 72 hours of the encounter. If you have a complaint regarding a licensed clinician, you may file a complaint with the Texas Medical Board: complaints may be submitted by calling the Board's complaint hotline at 1-800-201-9353 or online at www.tmb.state.tx.us. AVISO: Si usted desea presentar una queja en contra de un médico, puede llamar al 1-800-201-9353 o visitar www.tmb.state.tx.us.
+
+### Vermont
+
+You have the right to receive a real-time consultation with your Provider. If you have a complaint regarding a licensed clinician, you may file a complaint with the Vermont Board of Medical Practice (for physicians, M.D.) or the Vermont Board of Osteopathic Examiners (for osteopathic physicians, D.O.).
+
+## Acknowledgment
+
 SpicyRx does not provide doctor consultations; consultations are done through DrTelx.

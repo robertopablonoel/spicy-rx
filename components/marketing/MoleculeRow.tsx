@@ -17,7 +17,7 @@ export function MoleculeRow() {
     >
       <div className="mb-12 flex flex-col gap-6 md:mb-14 md:flex-row md:items-end md:justify-between">
         <div>
-          <Eyebrow className="mb-4">The 4-in-1 breakthrough</Eyebrow>
+          <Eyebrow className="mb-4">The 4-in-1 formulation</Eyebrow>
           <h2
             className="font-[family-name:var(--font-display)] font-bold text-fg"
             style={{
@@ -26,17 +26,17 @@ export function MoleculeRow() {
               lineHeight: 1,
             }}
           >
-            One solution.
+            One formula.
             <br />
             <span className="font-[family-name:var(--font-editorial)] italic font-normal text-ember">
-              Four powerful ingredients.
+              Four active ingredients.
             </span>
           </h2>
         </div>
         <p className="max-w-[360px] text-sm leading-[1.6] text-mist">
-          The active ingredients in Viagra, Cialis, and Levitra — engineered
-          to onset fast, hit peak strength, and last the whole weekend.
-          Plus apomorphine for the half no one else covers.
+          Sildenafil, tadalafil, vardenafil, and apomorphine — compounded
+          into a single sublingual liquid. Your prescribing clinician
+          determines whether it&apos;s appropriate for you.
         </p>
       </div>
 

@@ -5,7 +5,7 @@ import { StatBlock } from "./_components/StatBlock";
 export const metadata = {
   title: "Science",
   description:
-    "Sublingual absorption skips hepatic first-pass. Hot Sauce hits plasma in 10–15 minutes at roughly half the systemic dose of the oral equivalent.",
+    "What's inside Hot Sauce: four active ingredients, compounded in a 503A pharmacy from USP-grade ingredients, third-party assayed and lot-traced.",
 };
 
 const SOURCING_ITEMS = [
@@ -27,17 +27,17 @@ export default function SciencePage() {
           lineHeight: 0.95,
         }}
       >
-        Sublingual changes
+        Compounded with
         <br />
         <span className="font-[family-name:var(--font-editorial)] italic font-normal text-ember">
-          everything.
+          discipline.
         </span>
       </h1>
       <p className="mt-7 max-w-[720px] text-base leading-[1.5] text-mist md:text-[19px]">
-        Oral PDE5 inhibitors pass through the liver before they reach
-        circulation. We avoid that. Hot Sauce is absorbed through capillaries
-        under the tongue, hitting plasma in 10–15 minutes at roughly half the
-        systemic dose of the oral equivalent.
+        Hot Sauce is a compounded sublingual formulation — taken under the
+        tongue, as directed by your prescribing clinician. Here is exactly
+        what&apos;s inside it, where it comes from, and how every batch is
+        verified.
       </p>
 
       {/* 2x2 stat grid */}

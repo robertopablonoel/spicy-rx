@@ -1,6 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BRAND_NAME, LEGAL_ENTITY } from "@/lib/constants";
+import {
+  BRAND_NAME,
+  LEGAL_ENTITY,
+  SUPPORT_EMAIL,
+  SUPPORT_PHONE,
+  BUSINESS_ADDRESS,
+} from "@/lib/constants";
 import { Pill } from "@/components/ui/pill";
 
 const LEGAL_LINKS = [
@@ -64,6 +70,27 @@ export function Footer({
                   {l.label}
                 </Link>
               ))}
+            </div>
+
+            {/* Contact block — required by LegitScript (email alone is
+                insufficient; phone + mailing address must be user-visible). */}
+            <p className="mt-8 mb-4 font-[family-name:var(--font-mono)] text-[11px] font-medium uppercase tracking-[0.14em] text-ember">
+              Contact
+            </p>
+            <div className="flex flex-col gap-2 text-sm text-mist">
+              <a
+                href={`mailto:${SUPPORT_EMAIL}`}
+                className="transition-colors hover:text-fg"
+              >
+                {SUPPORT_EMAIL}
+              </a>
+              <a
+                href={`tel:${SUPPORT_PHONE.replace(/[^+\d]/g, "")}`}
+                className="transition-colors hover:text-fg"
+              >
+                {SUPPORT_PHONE}
+              </a>
+              <span className="whitespace-pre-line">{BUSINESS_ADDRESS}</span>
             </div>
           </div>
         </div>

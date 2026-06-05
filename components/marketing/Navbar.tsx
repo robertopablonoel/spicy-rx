@@ -11,7 +11,8 @@ const LINKS = [
   { href: "/science", label: "Science" },
   { href: "/#how-it-works", label: "How it works" },
   { href: "/#faq", label: "FAQ" },
-  { href: "/passion", label: "For women" },
+  // "/passion" link removed 2026-06-05 — page offline for the LegitScript
+  // compliance pass (see app/passion/page.tsx). Restore with the page.
 ];
 
 /**
