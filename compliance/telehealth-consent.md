@@ -8,7 +8,7 @@ IF YOU ARE EXPERIENCING A LIFE-THREATENING SITUATION SUCH AS CONTEMPLATING SUICI
 
 ## Purpose
 
-The purpose of this consent form ("Consent") is to provide you with information about telehealth and to obtain your informed consent to the use of telehealth in the delivery of healthcare services to you by physicians, physician assistants, nurse practitioners ("Providers") using the online platforms owned and operated by Noel Ventures LLC (the "Service"). In this Consent, the terms "you" and "yours" refer to the person using the Service.
+The purpose of this consent form ("Consent") is to provide you with information about telehealth and to obtain your informed consent to the use of telehealth in the delivery of healthcare services to you by physicians, physician assistants, nurse practitioners ("Providers") using the online platforms owned and operated by Cubes Company LLC (the "Service"). In this Consent, the terms "you" and "yours" refer to the person using the Service.
 
 ## Use of Telehealth
 
