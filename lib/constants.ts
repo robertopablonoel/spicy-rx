@@ -26,7 +26,7 @@ export const SUPPORT_PHONE =
   process.env.NEXT_PUBLIC_SUPPORT_PHONE ?? "+1 (XXX) XXX-XXXX";
 export const BUSINESS_ADDRESS =
   process.env.NEXT_PUBLIC_BUSINESS_ADDRESS ??
-  "Noel Ventures LLC\n[business mailing address pending]";
+  "Cubes Company LLC\n[business mailing address pending]";
 
 /**
  * Legal entity name. Used in footer copyright, telehealth consent, and any
