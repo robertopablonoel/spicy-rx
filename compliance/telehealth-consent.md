@@ -8,7 +8,7 @@ IF YOU ARE EXPERIENCING A LIFE-THREATENING SITUATION SUCH AS CONTEMPLATING SUICI
 
 ## Purpose
 
-The purpose of this consent form ("Consent") is to provide you with information about telehealth and to obtain your informed consent to the use of telehealth in the delivery of healthcare services to you by physicians, physician assistants, nurse practitioners ("Providers") using the online platforms owned and operated by Cubes Company LLC (the "Service"). In this Consent, the terms "you" and "yours" refer to the person using the Service.
+The purpose of this consent form ("Consent") is to provide you with information about telehealth and to obtain your informed consent to the use of telehealth in the delivery of healthcare services to you by physicians, physician assistants, nurse practitioners ("Providers") using the online platforms owned and operated by The Cubes Company LLC (the "Service"). In this Consent, the terms "you" and "yours" refer to the person using the Service.
 
 ## Use of Telehealth
 
@@ -41,6 +41,18 @@ Healthcare services provided to you by Providers via the Service will be provide
 SpicyRx will use its pharmacy partners to fulfill your order directly to your door. You are free to obtain your prescription from any pharmacy of your choice by contacting our support team and notifying your prescribing healthcare professional directly using the Platform and your secure messaging. Prescriptions may be filled by and transferred between any pharmacy partners on your behalf. You must pay the full amount of the costs associated with use of the Service, including any prescription you may receive, and you will not attempt to submit a claim to Medicare, any other federal payor, or any state or private insurer.
 
 If you have a concern about a medical professional, you may contact the Medical Board in your state regarding your concerns.
+
+## Service Availability
+
+SpicyRx provides telehealth consultation and prescription fulfillment services solely within the United States. Services are available to patients who are physically located in one of the U.S. states or jurisdictions listed below at the time services are rendered. SpicyRx does not offer services in any U.S. territory (including, without limitation, Puerto Rico, Guam, the U.S. Virgin Islands, American Samoa, and the Northern Mariana Islands) or in any location outside the United States.
+
+Services are currently available in the following forty-six (46) states and the District of Columbia:
+
+Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware, District of Columbia, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana, Maine, Maryland, Michigan, Minnesota, Mississippi, Missouri, Montana, Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina, North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, South Carolina, South Dakota, Tennessee, Texas, Utah, Virginia, Washington, West Virginia, Wisconsin, and Wyoming.
+
+Services are not available in Alabama, Massachusetts, Rhode Island, or Vermont.
+
+Service availability is subject to change based on applicable federal and state laws, regulations, and licensure. SpicyRx reserves the right to modify the list of available jurisdictions at any time.
 
 ## State-Specific Disclosures
 

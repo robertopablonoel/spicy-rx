@@ -26,15 +26,17 @@ export const SUPPORT_PHONE =
   process.env.NEXT_PUBLIC_SUPPORT_PHONE ?? "+1 (XXX) XXX-XXXX";
 export const BUSINESS_ADDRESS =
   process.env.NEXT_PUBLIC_BUSINESS_ADDRESS ??
-  "Cubes Company LLC\n[business mailing address pending]";
+  "The Cubes Company LLC\n[business mailing address pending]";
 
 /**
  * Legal entity name. Used in footer copyright, telehealth consent, and any
  * other place where the contracting entity must be identified by its
  * registered name (not the trade name). "SpicyRx" is the brand / trade
- * name; "Cubes Company LLC" is the entity that owns and operates it.
+ * name; "The Cubes Company LLC" is the entity that owns and operates it
+ * (Delaware LLC, file no. 3296198; EIN 99-2049520 — the IRS recorded the
+ * EIN under "Cubes Company LLC", dropping the leading "The").
  */
-export const LEGAL_ENTITY = "Cubes Company LLC";
+export const LEGAL_ENTITY = "The Cubes Company LLC";
 
 /**
  * Rimo two-surface architecture:
