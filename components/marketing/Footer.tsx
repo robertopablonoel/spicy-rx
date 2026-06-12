@@ -90,7 +90,18 @@ export function Footer({
               >
                 {SUPPORT_PHONE}
               </a>
-              <span className="whitespace-pre-line">{BUSINESS_ADDRESS}</span>
+              {/* Split on <br>, literal "\n", real newlines, or pipes so the
+                  address renders as separate lines regardless of how the
+                  NEXT_PUBLIC_BUSINESS_ADDRESS env var is formatted. */}
+              <span>
+                {BUSINESS_ADDRESS.split(/\s*(?:<br\s*\/?>|\\n|\n|\|)\s*/i)
+                  .filter(Boolean)
+                  .map((line, i) => (
+                    <span key={i} className="block">
+                      {line}
+                    </span>
+                  ))}
+              </span>
             </div>
           </div>
         </div>
