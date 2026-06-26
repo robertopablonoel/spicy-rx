@@ -132,8 +132,29 @@ export function Footer({
           </p>
         </div>
 
-        <div className="mt-10 border-t border-ash pt-6 font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.1em] text-fog">
-          <span>© {new Date().getFullYear()} {LEGAL_ENTITY}</span>
+        <div className="mt-10 flex flex-col-reverse items-start justify-between gap-6 border-t border-ash pt-6 sm:flex-row sm:items-center">
+          <span className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.1em] text-fog">
+            © {new Date().getFullYear()} {LEGAL_ENTITY}
+          </span>
+          {/* LegitScript Healthcare Certification seal — must link directly to
+              the public verification page (LegitScript Seal FAQ). Uses their
+              hosted seal image so it stays current; plain <img> avoids adding
+              static.legitscript.com to next.config image domains. */}
+          <a
+            href="https://www.legitscript.com/websites/?checker_keywords=spicyrx.com"
+            target="_blank"
+            rel="noopener"
+            title="Verify LegitScript Approval for spicyrx.com"
+            className="shrink-0"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://static.legitscript.com/seals/50685797.png"
+              alt="LegitScript-certified — verify approval for spicyrx.com"
+              width={66}
+              height={71}
+            />
+          </a>
         </div>
       </div>
     </footer>
