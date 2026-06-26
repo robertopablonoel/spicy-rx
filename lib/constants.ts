@@ -62,6 +62,33 @@ export const RIMO_PORTAL_URL =
   process.env.NEXT_PUBLIC_RIMO_PORTAL_URL ?? "https://app.caliberrx.co";
 
 /* =============================================================
+   GOOGLE ADS — conversion tracking.
+
+   The marketing site never sees the purchase (the card submit happens on
+   Rimo, my.spicyrx.com). The site-side tag's jobs are (1) the gclid
+   conversion-linker, and (2) an upper-funnel "Begin Consultation"
+   conversion fired on CTA click — the launch optimization signal until
+   Rimo-side Purchase reporting (offline import keyed on the forwarded
+   gclid) is wired. Remarketing/personalization stays OFF — Google bars
+   personalized ads for ED / sensitive health (see GoogleAds.tsx).
+
+   The conversion ID is PUBLIC (it ships in every advertiser's page source),
+   so it's hardcoded as the default and ships live on deploy — no Vercel
+   env var required. Env-overridable if it ever needs to change per env.
+   ============================================================= */
+export const GOOGLE_ADS_ID =
+  process.env.NEXT_PUBLIC_GOOGLE_ADS_ID ?? "AW-18275822466";
+
+/**
+ * Conversion label for the upper-funnel "Begin Consultation" action.
+ * Created in the Google Ads UI (Goals → Conversions → new Website action,
+ * gtag event method) — paste the label here or set the env var. While it's
+ * empty the base tag is still live; the CTA conversion event safely no-ops.
+ */
+export const GOOGLE_ADS_CONSULT_LABEL =
+  process.env.NEXT_PUBLIC_GOOGLE_ADS_CONSULT_LABEL ?? "";
+
+/* =============================================================
    PASSION — female product line (second line under the SpicyRx brand).
 
    Status: DESIGN SPIKE. "Passion" is the Rimo offering name and is a

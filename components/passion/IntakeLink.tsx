@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { ButtonLink, type ButtonLinkProps } from "@/components/ui/button";
 import { PASSION_INTAKE_URL } from "@/lib/constants";
 import { withAttribution } from "@/lib/attribution";
+import { trackBeginConsultation } from "@/lib/google-ads";
 
 /**
  * Passion's "Start your visit / See if it's right for you" CTA.
@@ -15,6 +16,7 @@ import { withAttribution } from "@/lib/attribution";
  */
 export function IntakeLink({
   children,
+  onClick,
   ...props
 }: Omit<ButtonLinkProps, "href">) {
   const [href, setHref] = useState(PASSION_INTAKE_URL);
@@ -24,7 +26,14 @@ export function IntakeLink({
   }, []);
 
   return (
-    <ButtonLink href={href} {...props}>
+    <ButtonLink
+      href={href}
+      onClick={(e) => {
+        trackBeginConsultation();
+        onClick?.(e);
+      }}
+      {...props}
+    >
       {children}
     </ButtonLink>
   );

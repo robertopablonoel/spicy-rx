@@ -8,6 +8,7 @@ import {
 import "./globals.css";
 import { BRAND_NAME } from "@/lib/constants";
 import { Providers } from "./providers";
+import { GoogleAds } from "@/components/analytics/GoogleAds";
 
 /**
  * Type stack — matches the SpicyRx Design System.
@@ -62,6 +63,7 @@ export default function RootLayout({
       className={`${display.variable} ${body.variable} ${editorial.variable} ${mono.variable}`}
     >
       <body>
+        <GoogleAds />
         <Providers>{children}</Providers>
       </body>
     </html>
