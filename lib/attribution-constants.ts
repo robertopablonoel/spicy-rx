@@ -15,6 +15,7 @@ export const PARAM_KEYS = [
   "utm_campaign",
   "utm_content",
   "utm_term",
+  "sc_order", // Spicy Cubes checkout_token — forwarded onto the Rimo intake URL for cross-brand order attribution
 ] as const;
 
 export const STORAGE_KEY = "spicyrx_attribution";
