@@ -58,6 +58,18 @@ export const RIMO_INTAKE_URL =
   process.env.NEXT_PUBLIC_RIMO_INTAKE_URL ??
   "https://my.spicyrx.com/intake/sh-rhdbd4/date-of-birth";
 
+/**
+ * Form A/B test — arm B intake (new Rimo channel). Arm A is RIMO_INTAKE_URL.
+ * Visitors are sticky-assigned 50/50 in lib/form-ab.ts; the assignment is
+ * persisted as `form_arm` inside the spicyrx_attribution cookie so
+ * rx-datachain can join cohort → order token across the my.spicyrx.com hop.
+ * Note: no first-step slug here (unlike arm A) — the new channel's step
+ * slugs are unknown; Rimo resolves the bare channel URL to its first step.
+ */
+export const RIMO_INTAKE_URL_B =
+  process.env.NEXT_PUBLIC_RIMO_INTAKE_URL_B ??
+  "https://my.spicyrx.com/intake/qmv-07cx6s";
+
 export const RIMO_PORTAL_URL =
   process.env.NEXT_PUBLIC_RIMO_PORTAL_URL ?? "https://app.caliberrx.co";
 

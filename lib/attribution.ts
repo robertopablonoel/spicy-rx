@@ -25,6 +25,7 @@ import {
   STORAGE_KEY,
   COOKIE_NAME,
   COOKIE_MAX_AGE,
+  FORM_ARM_KEY,
 } from "@/lib/attribution-constants";
 
 type Attribution = Record<string, string>;
@@ -56,6 +57,13 @@ export function captureAttribution(): void {
   // No attribution params on this visit → keep whatever we already had.
   if (Object.keys(incoming).length === 0) return;
 
+  // The A/B form arm is sticky, not last-touch: carry it across the
+  // snapshot replacement so a later UTM-carrying visit can't wipe the
+  // visitor's assigned arm. Read it from the cookie (not sessionStorage)
+  // — the cookie is the arm's source of truth across sessions.
+  const arm = readCookieAttribution()[FORM_ARM_KEY];
+  if (arm) incoming[FORM_ARM_KEY] = arm;
+
   const serialized = JSON.stringify(incoming);
   try {
     sessionStorage.setItem(STORAGE_KEY, serialized);
@@ -65,6 +73,21 @@ export function captureAttribution(): void {
   document.cookie =
     `${COOKIE_NAME}=${encodeURIComponent(serialized)}` +
     `; Path=/; Max-Age=${COOKIE_MAX_AGE}; SameSite=Lax${cookieDomainAttr()}`;
+}
+
+function readCookieAttribution(): Attribution {
+  if (typeof window === "undefined") return {};
+  const match = document.cookie.match(
+    new RegExp(`(?:^|; )${COOKIE_NAME}=([^;]*)`),
+  );
+  if (match) {
+    try {
+      return JSON.parse(decodeURIComponent(match[1]));
+    } catch {
+      return {};
+    }
+  }
+  return {};
 }
 
 export function getStoredAttribution(): Attribution {
@@ -77,17 +100,42 @@ export function getStoredAttribution(): Attribution {
     // fall through to cookie
   }
 
-  const match = document.cookie.match(
-    new RegExp(`(?:^|; )${COOKIE_NAME}=([^;]*)`),
-  );
-  if (match) {
-    try {
-      return JSON.parse(decodeURIComponent(match[1]));
-    } catch {
-      return {};
-    }
+  return readCookieAttribution();
+}
+
+/**
+ * The visitor's sticky A/B form arm, read straight from the cookie — the
+ * cookie (not sessionStorage) is the arm's source of truth, so a stale
+ * same-session snapshot written before assignment can't shadow it.
+ */
+export function getStoredFormArm(): string | undefined {
+  return readCookieAttribution()[FORM_ARM_KEY];
+}
+
+/**
+ * Write the A/B form arm into the attribution cookie (and mirror it into
+ * the sessionStorage snapshot) SYNCHRONOUSLY. Called at assignment and
+ * re-asserted in the CTA's onClick, so the arm is durably in the
+ * `.spicyrx.com` cookie the instant the redirect to Rimo happens.
+ */
+export function persistFormArm(arm: string): void {
+  if (typeof window === "undefined") return;
+
+  const forCookie = { ...readCookieAttribution(), [FORM_ARM_KEY]: arm };
+  document.cookie =
+    `${COOKIE_NAME}=${encodeURIComponent(JSON.stringify(forCookie))}` +
+    `; Path=/; Max-Age=${COOKIE_MAX_AGE}; SameSite=Lax${cookieDomainAttr()}`;
+
+  try {
+    const fromSession = sessionStorage.getItem(STORAGE_KEY);
+    const forSession = {
+      ...(fromSession ? JSON.parse(fromSession) : {}),
+      [FORM_ARM_KEY]: arm,
+    };
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(forSession));
+  } catch {
+    // sessionStorage unavailable / malformed snapshot — cookie already set.
   }
-  return {};
 }
 
 /**
@@ -113,15 +161,19 @@ function liveAttribution(): Attribution {
  * Append stored attribution params to a destination URL (the Rimo intake).
  * Stored (persisted last-touch) context wins; live URL params fill any gaps
  * so a first-visit click still forwards before capture has persisted them.
- * Existing params on the URL are not overwritten.
+ * Existing params on the URL are not overwritten. Only PARAM_KEYS are
+ * forwarded — internal fields in the snapshot (the A/B `form_arm`) never
+ * leak onto the URL; the arm rides utm_term via lib/form-ab-shared instead.
  */
 export function withAttribution(url: string): string {
   const merged = { ...liveAttribution(), ...getStoredAttribution() };
-  if (Object.keys(merged).length === 0) return url;
   try {
     const target = new URL(url);
-    for (const [key, value] of Object.entries(merged)) {
-      if (!target.searchParams.has(key)) target.searchParams.set(key, value);
+    for (const key of PARAM_KEYS) {
+      const value = merged[key];
+      if (value && !target.searchParams.has(key)) {
+        target.searchParams.set(key, value);
+      }
     }
     return target.toString();
   } catch {
