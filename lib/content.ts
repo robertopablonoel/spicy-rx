@@ -135,3 +135,37 @@ export const SCIENCE_STATS = [
     body: "A single dropper-bottle formulation, taken as directed by your prescribing clinician.",
   },
 ] as const;
+
+/**
+ * Hot Sauce (men's) peer testimonials — restored so the men's home mirrors the
+ * Passion page (each line shows its own four reviews). Removed in the 2026-06-05
+ * LegitScript pass as fabricated patient reviews; reinstated per Cole for the
+ * preview. COMPLIANCE: still illustrative (not real patients) — must clear a
+ * compliance pass with the Passion testimonials before go-live.
+ */
+export const TESTIMONIALS = [
+  {
+    name: "Ethan H.",
+    city: "Austin, TX",
+    title: "The desire piece is the difference",
+    body: `"I've been on sildenafil for years. The apomorphine is the part I didn't know I was missing — it's the actual want, not just the mechanics."`,
+  },
+  {
+    name: "Doug R.",
+    city: "Brooklyn, NY",
+    title: "15 minutes is real",
+    body: `"Skeptical the timing claim was marketing. It isn't. Sublingual hits in the time it takes to pour a glass of wine."`,
+  },
+  {
+    name: "Amir R.",
+    city: "San Diego, CA",
+    title: "Worth not waiting an hour",
+    body: `"The 36-hour window means I stopped scheduling around a pill. One drop on Friday and I'm good through Sunday brunch."`,
+  },
+  {
+    name: "Frank N.",
+    city: "Chicago, IL",
+    title: "Direct, professional, discreet",
+    body: `"Intake took three minutes, doctor reviewed the same day, package arrived in plain wrap. No pharmacy line, no awkwardness."`,
+  },
+] as const;
