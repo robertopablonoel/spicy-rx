@@ -3,19 +3,18 @@
 import { motion, useReducedMotion } from "framer-motion";
 
 /**
- * Hero vessel for Passion (PT-141) — the ACCURATE presentation: a refrigerated
- * multi-dose glass VIAL (rubber stopper + crimp cap, rose plasma liquid) with an
- * insulin SYRINGE resting below it, i.e. the compounded-bremelanotide kit that
- * actually ships (vial + syringe + swabs, self-drawn subcutaneously). Replaces
- * the earlier auto-injector-pen concept, which was wrong for a compounding-
- * pharmacy product (a reconstituted vial "use within 28 days" is exactly Rimo's
- * 1-dose-per-28-days plan — a multi-dose vial, not a single-dose pen).
+ * Hero vessel for Passion (PT-141) — a classic peptide VIAL: squat tinted-glass
+ * body, rounded shoulder, a knurled aluminum crimp collar under a mauve flip-off
+ * cap, and a wrap label. This is the presentation compounded bremelanotide
+ * actually ships in (a multi-dose vial you draw from with an insulin syringe).
+ * Modeled on a standard peptide vial silhouette, rendered in the Passion theme.
  *
- * Visual language kept intact from the old vessel: neon-pink outline
- * (var(--ember)), opaque plasma-tinted glass, subtle background afterglow, a
- * clean black label panel, sparse bokeh.
+ * Visual language kept from the prior vessel: neon-pink outline (var(--ember)),
+ * opaque plasma-tinted glass, subtle background afterglow, a clean black label
+ * panel, sparse bokeh. Geometry was iterated against a real rendered image so
+ * the shapes line up (viewBox 0 33 160 240; vial centered at x=80).
  *
- * Motion: whole-kit sway + gentle particle twinkle. useReducedMotion() renders
+ * Motion: whole-vial sway + gentle particle twinkle. useReducedMotion() renders
  * static. Deterministic golden-angle distribution → no hydration drift.
  */
 
@@ -36,9 +35,12 @@ const DOTS = Array.from({ length: 12 }, (_, i) => {
   };
 });
 
-// Vial — straight-sided glass body with a sloped shoulder up to a short neck.
-const VIAL_BODY =
-  "M62 150 L62 202 C62 206 65 209 69 209 L91 209 C95 209 98 206 98 202 L98 150 C98 141 91 135 80 135 C69 135 62 141 62 150 Z";
+// Peptide-vial glass — short neck, rounded shoulder into a straight body, round base.
+const GLASS_PATH =
+  "M71 107 L89 107 L89 115 C89 123 117 125 117 138 L117 208 C117 214 112 218 105 218 L55 218 C48 218 43 214 43 208 L43 138 C43 125 71 123 71 115 Z";
+
+// Vertical knurl ticks across the aluminum crimp collar.
+const KNURL = [67, 71, 75, 79, 83, 87, 91];
 
 export function VialKit() {
   const reduced = useReducedMotion();
@@ -84,7 +86,7 @@ export function VialKit() {
         ))}
       </svg>
 
-      {/* THE KIT — Framer Motion sway */}
+      {/* THE VIAL — Framer Motion sway */}
       <motion.svg
         width="373"
         height="560"
@@ -102,7 +104,7 @@ export function VialKit() {
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       >
         <defs>
-          {/* Opaque glass body — cylindrical shading, faint plasma tint */}
+          {/* Opaque tinted glass — cylindrical shading, faint plasma tint */}
           <linearGradient id="pa-body" x1="0" y1="0" x2="1" y2="0">
             <stop offset="0" stopColor="#140E16" />
             <stop offset="0.18" stopColor="#2C2030" />
@@ -110,80 +112,69 @@ export function VialKit() {
             <stop offset="0.82" stopColor="#241A28" />
             <stop offset="1" stopColor="#0E0A12" />
           </linearGradient>
-          {/* Crimp cap — orchid/mauve metal, bridges the pink + purple palette */}
+          {/* Flip-off cap — orchid/mauve plastic */}
           <linearGradient id="pa-cap" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0" stopColor="#C98AC6" />
             <stop offset="0.5" stopColor="#9A5AA0" />
             <stop offset="1" stopColor="#653C6E" />
           </linearGradient>
-          {/* Liquid — rose plasma */}
+          {/* Aluminum crimp collar — brushed silver-mauve */}
+          <linearGradient id="pa-crimp" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stopColor="#6E5A72" />
+            <stop offset="0.5" stopColor="#C9B0CC" />
+            <stop offset="1" stopColor="#5A4860" />
+          </linearGradient>
+          {/* Liquid — muted rose plasma */}
           <linearGradient id="pa-liquid" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="rgba(255,46,138,0.82)" />
-            <stop offset="1" stopColor="rgba(201,102,200,0.55)" />
+            <stop offset="0" stopColor="rgba(255,46,138,0.66)" />
+            <stop offset="1" stopColor="rgba(180,96,200,0.42)" />
           </linearGradient>
           <linearGradient id="pa-sheen" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0" stopColor="rgba(255,255,255,0.16)" />
             <stop offset="1" stopColor="rgba(255,255,255,0)" />
           </linearGradient>
           <clipPath id="pa-body-clip">
-            <path d={VIAL_BODY} />
+            <path d={GLASS_PATH} />
           </clipPath>
         </defs>
 
-        {/* ── INSULIN SYRINGE — resting below the vial, gentle uphill tilt ── */}
-        <g transform="translate(26 232) rotate(-8)" opacity="0.92">
-          {/* thumb rest */}
-          <rect x="0" y="-8" width="4.5" height="16" rx="1.5" fill="url(#pa-body)" stroke="var(--ember)" strokeWidth="0.9" />
-          {/* plunger rod */}
-          <rect x="4.5" y="-1.6" width="36" height="3.2" fill="url(#pa-body)" stroke="var(--ember)" strokeWidth="0.6" />
-          {/* barrel */}
-          <rect x="40" y="-6.5" width="54" height="13" rx="3" fill="url(#pa-body)" stroke="var(--ember)" strokeWidth="1" />
-          {/* barrel liquid */}
-          <rect x="44" y="-4.2" width="40" height="8.4" rx="2" fill="url(#pa-liquid)" />
-          {/* graduation ticks */}
-          {[52, 60, 68, 76, 84].map((x) => (
-            <line key={x} x1={x} y1="-6.5" x2={x} y2="-2.5" stroke="var(--ember)" strokeWidth="0.5" opacity="0.6" />
+        {/* FLIP-OFF CAP — plastic top, sits flush on the crimp */}
+        <rect x="67" y="77" width="26" height="13" rx="5" fill="url(#pa-cap)" stroke="#A86EAE" strokeWidth="1" />
+        <ellipse cx="80" cy="79.5" rx="8.5" ry="2.4" fill="#B87ABE" />
+
+        {/* ALUMINUM CRIMP COLLAR — knurled, with a rolled bottom lip */}
+        <rect x="63" y="89" width="34" height="18" rx="2.5" fill="url(#pa-crimp)" stroke="#8A6E90" strokeWidth="0.8" />
+        <g stroke="#4A3A50" strokeWidth="0.5" opacity="0.55">
+          {KNURL.map((x) => (
+            <line key={x} x1={x} y1="91" x2={x} y2="105" />
           ))}
-          {/* tip cone → hub */}
-          <path d="M94 -6.5 L94 6.5 L100 2.2 L100 -2.2 Z" fill="url(#pa-cap)" stroke="var(--ember)" strokeWidth="0.6" />
-          {/* needle */}
-          <line x1="100" y1="0" x2="120" y2="0" stroke="#C9A6FF" strokeWidth="1.1" strokeLinecap="round" />
         </g>
+        <line x1="64" y1="103.5" x2="96" y2="103.5" stroke="#3A2E40" strokeWidth="0.8" opacity="0.7" />
 
-        {/* ── VIAL ── crimp cap (drawn first, behind body top) */}
-        {/* crimp cap band */}
-        <rect x="68" y="104" width="24" height="11" rx="1.5" fill="url(#pa-cap)" stroke="#A86EAE" strokeWidth="1" />
-        {/* flip-top center hub */}
-        <ellipse cx="80" cy="103" rx="6" ry="2.4" fill="url(#pa-cap)" stroke="#A86EAE" strokeWidth="0.8" />
-        {/* rubber stopper (neck) */}
-        <rect x="71" y="115" width="18" height="9" rx="1" fill="#3A2E3E" stroke="var(--ember)" strokeWidth="0.8" strokeOpacity="0.5" />
-        {/* neck below stopper into shoulder */}
-        <rect x="72" y="124" width="16" height="12" fill="url(#pa-body)" />
-
-        {/* OPAQUE GLASS BODY */}
-        <path d={VIAL_BODY} fill="url(#pa-body)" />
+        {/* GLASS BODY */}
+        <path d={GLASS_PATH} fill="url(#pa-body)" />
         <g clipPath="url(#pa-body-clip)">
-          {/* liquid fill (partial) */}
-          <rect x="62" y="160" width="36" height="49" fill="url(#pa-liquid)" />
-          <line x1="62" y1="160" x2="98" y2="160" stroke="rgba(255,255,255,0.4)" strokeWidth="0.8" />
+          {/* liquid fill + meniscus */}
+          <rect x="43" y="136" width="74" height="82" fill="url(#pa-liquid)" />
+          <line x1="43" y1="136" x2="117" y2="136" stroke="rgba(255,255,255,0.35)" strokeWidth="0.8" />
           {/* shoulder sheen */}
           <path
-            d="M62 150 C62 141 71 135 80 135 C89 135 98 141 98 150 L98 162 C86 154 74 154 62 162 Z"
+            d="M71 115 C57 120 43 126 43 138 L43 150 C60 140 100 140 117 150 L117 138 C117 126 103 120 89 115 Z"
             fill="url(#pa-sheen)"
-            opacity="0.4"
+            opacity="0.42"
           />
           {/* vertical highlight streak */}
-          <rect x="67" y="142" width="5" height="64" rx="2.5" fill="rgba(255,235,245,0.13)" />
+          <rect x="51" y="128" width="6" height="88" rx="3" fill="rgba(255,235,245,0.13)" />
         </g>
-        <path d={VIAL_BODY} fill="none" stroke="var(--ember)" strokeWidth="1.25" strokeLinejoin="round" />
+        <path d={GLASS_PATH} fill="none" stroke="var(--ember)" strokeWidth="1.25" strokeLinejoin="round" />
 
         {/* LABEL — clean black panel, Hot-Sauce structure */}
         <rect
-          x="63"
-          y="158"
-          width="34"
-          height="44"
-          rx="3"
+          x="48"
+          y="148"
+          width="64"
+          height="66"
+          rx="4"
           fill="rgba(6,5,7,0.92)"
           stroke="var(--ember)"
           strokeWidth="0.75"
@@ -191,13 +182,13 @@ export function VialKit() {
         />
         <text
           x="80"
-          y="172"
+          y="168"
           fill="var(--ember)"
           textAnchor="middle"
           fontFamily="var(--font-display)"
           fontWeight="700"
-          fontSize="9"
-          letterSpacing="0.02em"
+          fontSize="13"
+          letterSpacing="0.01em"
         >
           PASSION
         </text>
@@ -208,20 +199,20 @@ export function VialKit() {
           textAnchor="middle"
           opacity="0.65"
           fontFamily="var(--font-mono)"
-          fontSize="3.4"
-          letterSpacing="0.07em"
+          fontSize="4.8"
+          letterSpacing="0.06em"
         >
           PT-141 · ON-DEMAND
         </text>
-        <line x1="68" y1="189" x2="92" y2="189" stroke="var(--ember)" strokeWidth="1.5" opacity="0.8" />
+        <line x1="64" y1="191" x2="96" y2="191" stroke="var(--ember)" strokeWidth="1.6" opacity="0.8" />
         <text
           x="80"
-          y="199"
+          y="205"
           fill="var(--ember)"
           textAnchor="middle"
           opacity="0.85"
           fontFamily="var(--font-mono)"
-          fontSize="4.2"
+          fontSize="5.6"
           letterSpacing="0.1em"
         >
           28-DAY VIAL
