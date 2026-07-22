@@ -77,8 +77,10 @@ export const RIMO_PORTAL_URL =
    PASSION — female product line (second line under the SpicyRx brand).
 
    Product: PT-141 (bremelanotide), an on-demand SUBCUTANEOUS INJECTION for
-   low sexual desire in women, delivered via a prefilled auto-injector pen.
-   Rimo offering title: "PT-141 Injections" (dose plan "PT-141 Standard").
+   low sexual desire in women, supplied as a refrigerated multi-dose vial that
+   the patient draws with an insulin syringe (NOT a prefilled pen — a
+   reconstituted vial is used within 28 days, matching the "1 dose = 28 days"
+   Rimo plan). Rimo offering title: "PT-141 Injections" (plan "PT-141 Standard").
    Consumer brand kept as "Passion" (Cole's call — same pattern as "Hot Sauce"
    standing in for internal "Quattro"). Pharmacy: Striker Pharmacy (Katy, TX);
    provider network: DrTelx. Pricing (per Rimo): 1mo $185 / 3mo $495 / 6mo $888.

@@ -2,13 +2,13 @@ import { Eyebrow } from "@/components/ui/eyebrow";
 import { ButtonLink } from "@/components/ui/button";
 import { Stat } from "@/components/ui/stat";
 import { Divider } from "@/components/ui/divider";
-import { InjectorPen } from "@/components/passion/InjectorPen";
+import { VialKit } from "@/components/passion/VialKit";
 import { IntakeLink } from "@/components/passion/IntakeLink";
 import { HERO_STATS } from "@/lib/content-passion";
 
 /**
  * Passion home hero — same asymmetric 1.2fr/1fr layout as Hot Sauce, but the
- * right column is the InjectorPen (prefilled auto-injector) and the copy is
+ * right column is the VialKit (vial + insulin syringe) and the copy is
  * Addyi-voiced for the PT-141 injectable.
  */
 export function Hero() {
@@ -91,9 +91,9 @@ export function Hero() {
           </div>
         </div>
 
-        {/* RIGHT: injector pen (client island) */}
+        {/* RIGHT: vial + syringe kit (client island) */}
         <div className="relative flex items-center justify-center">
-          <InjectorPen />
+          <VialKit />
         </div>
       </div>
     </section>

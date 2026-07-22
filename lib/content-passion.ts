@@ -3,8 +3,12 @@
  *
  * PRODUCT (Rimo offering "PT-141 Injections", consumer brand kept as "Passion"):
  * on-demand SUBCUTANEOUS INJECTION of PT-141 (bremelanotide) — a single active,
- * delivered via a prefilled auto-injector pen. Replaces the earlier 3-tablet
- * design-spike formulation. Positioning per Cole: KEEP the female Passion voice
+ * supplied as a REFRIGERATED multi-dose VIAL that you draw with an insulin
+ * syringe (the compounded-bremelanotide kit that actually ships: vial + sterile
+ * syringes + alcohol swabs). NOT a prefilled pen — a reconstituted vial is used
+ * within 28 days, which is exactly Rimo's "1 dose = 28 days" plan. Replaces the
+ * earlier 3-tablet design spike. Positioning per Cole: KEEP the female Passion
+ * voice
  * (bremelanotide = Vyleesi, FDA-approved for premenopausal women with HSDD, so a
  * female-libido framing is clinically legitimate). The wedge is unchanged:
  * ON-DEMAND, not a daily pill.
@@ -67,7 +71,7 @@ export const INGREDIENTS = [
     role: "Non-hormonal",
     name: "Doesn't touch your hormones",
     mechanism:
-      "PT-141 isn't a hormone and isn't a blood-flow drug. It's a targeted peptide that speaks to the desire pathway directly — delivered through a prefilled pen you use at home.",
+      "PT-141 isn't a hormone and isn't a blood-flow drug. It's a targeted peptide that speaks to the desire pathway directly — drawn from a small vial with a fine insulin-syringe needle you use at home.",
   },
 ] as const;
 
@@ -101,7 +105,7 @@ export const HOW_IT_WORKS_STEPS = [
   {
     n: "03",
     title: "Arrives ready to use",
-    body: "A plain, unmarked package with everything you need — prefilled pens, alcohol swabs, and a simple first-dose guide. Refill on your terms; pause or cancel whenever you like.",
+    body: "A plain, unmarked package with everything you need — your vial, sterile insulin syringes, alcohol swabs, and a simple first-dose guide. Keep it in the fridge. Refill on your terms; pause or cancel whenever you like.",
     meta: "2 days",
   },
 ] as const;
@@ -171,15 +175,15 @@ export const TESTIMONIALS = [
   {
     name: "Elena M.",
     city: "Chicago, IL",
-    title: "The pen was easier than I feared",
-    body: `"I was nervous about an injection. The first-dose guide and the little pen made it a two-second thing — barely a pinch."`,
+    title: "Easier than I feared",
+    body: `"I was nervous about an injection. The first-dose guide walked me through it — drawing the dose and the tiny needle turned out to be barely a pinch."`,
   },
 ] as const;
 
 export const FAQS = [
   {
     q: "What is Passion?",
-    a: "Passion is a clinician-prescribed, on-demand treatment for low sexual desire in women. It delivers PT-141 (bremelanotide) — a targeted peptide that works on the brain's desire pathway — through a small, prefilled injection you use only when you want it.",
+    a: "Passion is a clinician-prescribed, on-demand treatment for low sexual desire in women. It delivers PT-141 (bremelanotide) — a targeted peptide that works on the brain's desire pathway — as a small subcutaneous injection you draw from a vial and give yourself, only when you want it.",
   },
   {
     q: "How is it different from a daily pill?",
@@ -187,7 +191,11 @@ export const FAQS = [
   },
   {
     q: "It's an injection — does it hurt?",
-    a: "It's a small subcutaneous injection you give yourself with a prefilled pen, using a very thin needle in the abdomen or thigh. Most people describe it as a quick pinch. Your kit includes a simple first-dose guide, and support is a message away.",
+    a: "It's a small subcutaneous injection you give yourself, using a very fine insulin-syringe needle in the abdomen or thigh. You draw your dose from the vial, swab, and inject — most people describe it as a quick pinch. Your kit includes a simple first-dose guide, and support is a message away.",
+  },
+  {
+    q: "How do I store it?",
+    a: "Your vial is kept refrigerated (in the door is fine) and protected from light — never frozen. It ships in discreet, temperature-conscious packaging, and the first-dose guide covers storage and how long a vial lasts once you start it.",
   },
   {
     q: "How often can I use it?",

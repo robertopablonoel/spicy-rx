@@ -5,7 +5,8 @@ import { PRICING_TIERS } from "@/lib/content-passion";
 /**
  * Passion pricing — three subscription tiers (Rimo dose plan "PT-141 Standard").
  * New section for the injectable line; there was no pricing block on the old
- * tablet design spike. Styling reuses the Passion theme tokens: the featured
+ * tablet design spike. Each tier is a multi-dose vial (28-day supply). Styling
+ * reuses the Passion theme tokens: the featured
  * tier gets the plasma-pink tinted border/wash already used by the Comparison
  * highlight column (var(--border-hot) resolves to pink inside [data-theme]).
  *
