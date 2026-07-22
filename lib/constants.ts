@@ -94,14 +94,21 @@ export const PASSION_PRODUCT_NAME = "Passion";
 export const PASSION_TAGLINE = "Desire, on your terms.";
 
 /**
- * Passion (PT-141) intake channel.
+ * Passion (PT-141) intake channel — LIVE.
  *
- * TODO(rimo): the PT-141 offering gets its OWN Rimo sales-channel/intake ID
- * once it is provisioned + activated. Until then this falls back to the Hot
- * Sauce intake URL so the CTAs are wired end-to-end — set
- * NEXT_PUBLIC_RIMO_INTAKE_PASSION_URL to the real PT-141 intake URL the moment
- * the channel exists (Stage-2 will also tag this funnel distinctly for
- * attribution). The exact PT-141 intake form ID is still OPEN (see Cole).
+ * The PT-141 offering is now provisioned + activated in Rimo (Cole, 2026-07-22),
+ * with its OWN intake form `pt-89gox1` — distinct from Hot Sauce (`sh-rhdbd4`)
+ * and the form-A/B arm B (`qmv-07cx6s`). Bare channel URL (no first-step slug);
+ * Rimo resolves it to the form's first step, same as arm B. Env-overridable so
+ * preview/prod can point elsewhere without a code change. The intake screens
+ * eligibility (DOB, health history, state) server-side, so no CTA on the
+ * marketing page can route an ineligible patient to a sale.
+ *
+ * Attribution: the Passion IntakeLink forwards PARAM_KEYS onto this URL via
+ * withAttribution() — click-IDs + UTMs ride to Rimo exactly as on Hot Sauce.
+ * (Stage 2 will additionally tag this funnel distinctly for cross-line
+ * attribution; not wired yet.)
  */
 export const PASSION_INTAKE_URL =
-  process.env.NEXT_PUBLIC_RIMO_INTAKE_PASSION_URL ?? RIMO_INTAKE_URL;
+  process.env.NEXT_PUBLIC_RIMO_INTAKE_PASSION_URL ??
+  "https://my.spicyrx.com/intake/pt-89gox1";
