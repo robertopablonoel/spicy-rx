@@ -76,24 +76,30 @@ export const RIMO_PORTAL_URL =
 /* =============================================================
    PASSION — female product line (second line under the SpicyRx brand).
 
-   Status: DESIGN SPIKE. "Passion" is the Rimo offering name and is a
-   PLACEHOLDER consumer name (subject to rebrand, exactly like "Hot Sauce"
-   stands in for "Quattro"). Formulation per Rimo: Tadalafil 10mg /
-   Bremelanotide 10mg / Pregnenolone 10mg, PRN, 12 tablets.
+   Product: PT-141 (bremelanotide), an on-demand SUBCUTANEOUS INJECTION for
+   low sexual desire in women, delivered via a prefilled auto-injector pen.
+   Rimo offering title: "PT-141 Injections" (dose plan "PT-141 Standard").
+   Consumer brand kept as "Passion" (Cole's call — same pattern as "Hot Sauce"
+   standing in for internal "Quattro"). Pharmacy: Striker Pharmacy (Katy, TX);
+   provider network: DrTelx. Pricing (per Rimo): 1mo $185 / 3mo $495 / 6mo $888.
+
+   Status: reskin complete on branch; NOT live. Go-live gated on (a) the Rimo
+   PT-141 offering being ACTIVATED (currently inactive — Cole's Rimo click) and
+   (b) a LegitScript compliance pass on the restored claim classes.
    ============================================================= */
 
-export const PASSION_PRODUCT_NAME = "Passion"; // placeholder — rebrand TBD
+export const PASSION_PRODUCT_NAME = "Passion";
 export const PASSION_TAGLINE = "Desire, on your terms.";
 
 /**
- * Passion intake channel.
+ * Passion (PT-141) intake channel.
  *
- * TODO(rimo): Passion is a separate Rimo offering and will get its OWN
- * sales-channel ID once Roberto provisions it (Cole doesn't yet have
- * access to the SpicyRx Rimo workspace where channels are created).
- * Until then this falls back to the Hot Sauce intake URL so the CTAs
- * are wired end-to-end — repoint NEXT_PUBLIC_RIMO_INTAKE_PASSION_URL
- * the moment the real channel exists.
+ * TODO(rimo): the PT-141 offering gets its OWN Rimo sales-channel/intake ID
+ * once it is provisioned + activated. Until then this falls back to the Hot
+ * Sauce intake URL so the CTAs are wired end-to-end — set
+ * NEXT_PUBLIC_RIMO_INTAKE_PASSION_URL to the real PT-141 intake URL the moment
+ * the channel exists (Stage-2 will also tag this funnel distinctly for
+ * attribution). The exact PT-141 intake form ID is still OPEN (see Cole).
  */
 export const PASSION_INTAKE_URL =
   process.env.NEXT_PUBLIC_RIMO_INTAKE_PASSION_URL ?? RIMO_INTAKE_URL;

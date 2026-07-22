@@ -3,9 +3,10 @@ import { Eyebrow } from "@/components/ui/eyebrow";
 import { INGREDIENTS } from "@/lib/content-passion";
 
 /**
- * 3-up ingredient grid for Passion — same lab-schematic hairline grid as Hot
- * Sauce's MoleculeRow, but three actives instead of four and an Addyi-voiced
- * header. Molecule art is loaded per-ingredient via `mol` (plasma-pink SVGs).
+ * 3-up grid for Passion — same lab-schematic hairline grid as Hot Sauce's
+ * MoleculeRow. PT-141 is a SINGLE active, so the three cards are FACETS of the
+ * one molecule (pathway / timing / design), not three ingredients. Molecule art
+ * renders only on the card that carries a `mol` path; the others are text-only.
  *
  * Responsive: 3 cols → 1 col at <=768px (the 3-up grid doesn't halve cleanly).
  */
@@ -26,17 +27,17 @@ export function IngredientRow() {
               lineHeight: 1,
             }}
           >
-            One dose.
+            One molecule.
             <br />
             <span className="font-[family-name:var(--font-editorial)] italic font-normal text-ember">
-              Three working parts.
+              One pathway.
             </span>
           </h2>
         </div>
         <p className="max-w-[360px] text-sm leading-[1.6] text-mist">
-          Most treatments target one piece of the picture. Passion addresses
-          desire, physical arousal, and the hormonal baseline beneath them —
-          together, in a single on-demand dose.
+          Most treatments chase the physical response. Passion goes upstream —
+          PT-141 works on the brain&apos;s desire pathway itself, on-demand and
+          non-hormonal, in a single dose you use only when you want it.
         </p>
       </div>
 
@@ -47,13 +48,22 @@ export function IngredientRow() {
               {ing.slot}
             </p>
             <div className="mt-3 h-16 md:mt-4 md:h-20">
-              <Image
-                src={ing.mol}
-                alt=""
-                width={200}
-                height={120}
-                className="h-full w-auto"
-              />
+              {ing.mol ? (
+                <Image
+                  src={ing.mol}
+                  alt=""
+                  width={200}
+                  height={120}
+                  className="h-full w-auto"
+                />
+              ) : (
+                <span
+                  aria-hidden
+                  className="flex h-full items-center font-[family-name:var(--font-display)] text-[52px] font-bold leading-none text-ember/25 md:text-[64px]"
+                >
+                  {ing.slot === "The timing" ? "45″" : "1×"}
+                </span>
+              )}
             </div>
             <h3
               className="mt-4 font-[family-name:var(--font-display)] font-semibold text-fg md:mt-5"

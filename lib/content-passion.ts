@@ -1,69 +1,86 @@
 /**
- * Passion — female product line content tables (DESIGN SPIKE).
+ * Passion — female product line content tables (PT-141 injectable).
  *
- * Mirrors the shape of lib/content.ts so the Passion section components are
- * near-clones of the Hot Sauce ones — only the copy and the accent (plasma
- * pink, via the [data-theme="passion"] override) differ.
+ * PRODUCT (Rimo offering "PT-141 Injections", consumer brand kept as "Passion"):
+ * on-demand SUBCUTANEOUS INJECTION of PT-141 (bremelanotide) — a single active,
+ * delivered via a prefilled auto-injector pen. Replaces the earlier 3-tablet
+ * design-spike formulation. Positioning per Cole: KEEP the female Passion voice
+ * (bremelanotide = Vyleesi, FDA-approved for premenopausal women with HSDD, so a
+ * female-libido framing is clinically legitimate). The wedge is unchanged:
+ * ON-DEMAND, not a daily pill.
  *
  * Voice: modeled on Addyi (addyi.com) — warm, second-person, woman-to-woman,
- * destigmatizing ("it's biology, not a flaw"), peer testimonials. Confident
- * on the science, never bro-y, no competitor-bashing. The product narrative's
- * edge over the "daily pink pill": Passion is ON-DEMAND, not a daily pill.
+ * destigmatizing ("it's biology, not a flaw"), peer testimonials. Confident on
+ * the science, never bro-y, no competitor-bashing (the comparison is against
+ * "the daily pill" as a CATEGORY — Addyi is never named).
  *
- * Formulation (Rimo offering "Passion"): Tadalafil 10mg / Bremelanotide 10mg /
- * Pregnenolone 10mg, PRN, 12 tablets. All copy/pricing is placeholder.
+ * Pharmacy: Striker Pharmacy (Katy, TX). Provider network: DrTelx.
+ *
+ * OPEN ITEMS (safe placeholders used; flagged to Cole/Rimo):
+ *   - Doses-per-vial: Cole confirmed "monthly supply = multiple doses", but the
+ *     exact injection count per 28-day vial is unconfirmed. Copy therefore says
+ *     "a 28-day supply of on-demand doses" WITHOUT a hard number. Add a count
+ *     ("up to N injections per supply") once Rimo confirms the vial yield.
+ *   - Dosing ceiling (≤1 per 24 hr, ≤8 per month) is the Vyleesi label bound —
+ *     safe to state; confirm it matches the compounded product before go-live.
  */
 
+/**
+ * Hero stat row — kept to three neutral, non-efficacy facts (the page was pulled
+ * once for outcome claims; stats stay factual).
+ */
 export const HERO_STATS = [
   { label: "Taken", value: "On-demand" },
-  { label: "Active ingredients", value: "3" },
+  { label: "The active", value: "PT-141" },
   { label: "Clinic visits", value: "0" },
 ] as const;
 
 /**
- * The three actives in Passion. Same field shape as Hot Sauce's INGREDIENTS,
- * plus `mol` (svg path) since these molecules differ. Order tells a story:
- * desire → arousal → foundation.
+ * PT-141 is a SINGLE active, so the old "three actives" grid is repurposed into
+ * three FACETS of the one molecule (pathway / timing / design). Same card shape
+ * as before so IngredientRow stays a near-clone of Hot Sauce's MoleculeRow. Only
+ * the first card carries molecule art (`mol`); the others render text-only.
  */
 export const INGREDIENTS = [
   {
     key: "bremelanotide",
     mol: "/brand/mol-bremelanotide.svg",
-    slot: "The desire",
-    role: "Reignites wanting",
-    name: "Bremelanotide",
+    slot: "The pathway",
+    role: "Works in the brain",
+    name: "PT-141 · Bremelanotide",
     mechanism:
-      "Activates the melanocortin pathway in the brain — the system that governs sexual desire itself, not just the physical response.",
+      "PT-141 activates the melanocortin pathway — the brain system that governs sexual desire itself, not blood flow. It works upstream of the physical response, where wanting actually begins.",
   },
   {
-    key: "tadalafil",
-    mol: "/brand/mol-tadalafil-p.svg",
-    slot: "The flow",
-    role: "Heightens arousal",
-    name: "Tadalafil",
+    key: "on-demand",
+    mol: null,
+    slot: "The timing",
+    role: "On-demand, not daily",
+    name: "Take it before the moment",
     mechanism:
-      "Increases blood flow to intimate tissue, amplifying physical sensation and how readily your body responds.",
+      "A single small injection about 45 minutes ahead of intimacy — used only in the window that matters to you. No daily pill to remember, no weeks-long ramp before anything shifts.",
   },
   {
-    key: "pregnenolone",
-    mol: "/brand/mol-pregnenolone.svg",
-    slot: "The foundation",
-    role: "Steadies the baseline",
-    name: "Pregnenolone",
+    key: "non-hormonal",
+    mol: null,
+    slot: "The design",
+    role: "Non-hormonal",
+    name: "Doesn't touch your hormones",
     mechanism:
-      "A neurosteroid precursor that supports hormone balance and mood — the groundwork desire is built on.",
+      "PT-141 isn't a hormone and isn't a blood-flow drug. It's a targeted peptide that speaks to the desire pathway directly — delivered through a prefilled pen you use at home.",
   },
 ] as const;
 
 /**
- * Daily pill (Addyi-style) vs. Passion. The on-demand framing is the wedge:
+ * The daily pill (Addyi-style, never named) vs. Passion. On-demand is the wedge:
  * no weeks-long daily ramp, no everyday alcohol restriction.
  */
 export const COMPARISON_ROWS = [
   { label: "When you take it", oldWay: "Every single day", passion: "Only when you want to" },
   { label: "Time to notice a change", oldWay: "Weeks of daily dosing", passion: "The day you need it" },
-  { label: "Targets desire", oldWay: "Sometimes", passion: "Yes — bremelanotide" },
-  { label: "Supports physical arousal", oldWay: "No", passion: "Yes — tadalafil" },
+  { label: "How it's taken", oldWay: "A daily pill", passion: "One on-demand injection" },
+  { label: "Targets desire in the brain", oldWay: "Varies", passion: "Yes — PT-141 acts on the desire pathway" },
+  { label: "Hormonal", oldWay: "Sometimes", passion: "No — non-hormonal" },
   { label: "Everyday alcohol restriction", oldWay: "Often", passion: "No daily-use limit" },
   { label: "Clinic visit required", oldWay: "Often", passion: "No" },
 ] as const;
@@ -83,9 +100,52 @@ export const HOW_IT_WORKS_STEPS = [
   },
   {
     n: "03",
-    title: "Arrives discreetly",
-    body: "A plain, unmarked package at your door with free shipping. Refill on your terms — pause or cancel whenever you like.",
+    title: "Arrives ready to use",
+    body: "A plain, unmarked package with everything you need — prefilled pens, alcohol swabs, and a simple first-dose guide. Refill on your terms; pause or cancel whenever you like.",
     meta: "2 days",
+  },
+] as const;
+
+/**
+ * PRICING — three subscription tiers (Rimo dose plan "PT-141 Standard").
+ * Source of truth (Rimo): 1-Month (1 vial) $185 · 3-Month (3 vials) $495 ·
+ * 6-Month (6 vials) $888. Each vial = a 28-day supply of on-demand doses.
+ * `perMonth` is derived (495/3=165, 888/6=148) to tell the savings story.
+ * `note` deliberately avoids a hard injection count until Rimo confirms yield.
+ */
+export const PRICING_TIERS = [
+  {
+    id: "1mo",
+    name: "1 Month",
+    supply: "1 vial · 28-day supply",
+    price: "$185",
+    perMonth: "$185/mo",
+    save: null,
+    featured: false,
+    cta: "Start your visit",
+    note: "A full month's supply of on-demand doses. Cancel anytime.",
+  },
+  {
+    id: "3mo",
+    name: "3 Months",
+    supply: "3 vials · 84-day supply",
+    price: "$495",
+    perMonth: "$165/mo",
+    save: "Save $60",
+    featured: true,
+    cta: "Start your visit",
+    note: "Our most popular plan — a better per-month rate, delivered on your schedule.",
+  },
+  {
+    id: "6mo",
+    name: "6 Months",
+    supply: "6 vials · 168-day supply",
+    price: "$888",
+    perMonth: "$148/mo",
+    save: "Save $222",
+    featured: false,
+    cta: "Start your visit",
+    note: "The best per-month value for staying on your terms, longer.",
   },
 ] as const;
 
@@ -100,7 +160,7 @@ export const TESTIMONIALS = [
     name: "Jordan L.",
     city: "Denver, CO",
     title: "On my terms, not a schedule",
-    body: `"What I love is taking it when I actually want to — not a pill every single morning, hoping something shifts weeks down the line."`,
+    body: `"What I love is using it when I actually want to — not a pill every single morning, hoping something shifts weeks down the line."`,
   },
   {
     name: "Priya S.",
@@ -111,19 +171,27 @@ export const TESTIMONIALS = [
   {
     name: "Elena M.",
     city: "Chicago, IL",
-    title: "Private and judgment-free",
-    body: `"Three minutes, reviewed the same day, arrived in plain wrapping. No awkward appointment, no explaining myself to anyone."`,
+    title: "The pen was easier than I feared",
+    body: `"I was nervous about an injection. The first-dose guide and the little pen made it a two-second thing — barely a pinch."`,
   },
 ] as const;
 
 export const FAQS = [
   {
     q: "What is Passion?",
-    a: "Passion is a clinician-prescribed, on-demand treatment for low sexual desire in women. It brings together three actives — bremelanotide, tadalafil, and pregnenolone — to address desire, physical arousal, and the hormonal baseline underneath them, in a single dose you take only when you want to.",
+    a: "Passion is a clinician-prescribed, on-demand treatment for low sexual desire in women. It delivers PT-141 (bremelanotide) — a targeted peptide that works on the brain's desire pathway — through a small, prefilled injection you use only when you want it.",
   },
   {
-    q: "How is it different from the daily pink pill?",
-    a: "Daily treatments have to be taken every single day, often for weeks, before you may notice a difference — and they ask you to give up alcohol the whole time. Passion is taken on-demand, in the window that matters to you, and works through different pathways.",
+    q: "How is it different from a daily pill?",
+    a: "Daily treatments have to be taken every single day, often for weeks, before you may notice a difference — and they ask you to give up alcohol the whole time. Passion is used on-demand, in the window that matters to you, and works through a different pathway in the brain.",
+  },
+  {
+    q: "It's an injection — does it hurt?",
+    a: "It's a small subcutaneous injection you give yourself with a prefilled pen, using a very thin needle in the abdomen or thigh. Most people describe it as a quick pinch. Your kit includes a simple first-dose guide, and support is a message away.",
+  },
+  {
+    q: "How often can I use it?",
+    a: "Passion is on-demand — used about 45 minutes before intimacy, only when you want it. To use it safely, take no more than one dose in any 24 hours and no more than eight doses in a month. Your clinician will confirm what's right for you.",
   },
   {
     q: "Is low desire really a medical thing?",
@@ -135,32 +203,32 @@ export const FAQS = [
   },
   {
     q: "Is the packaging discreet?",
-    a: "Always. Your order arrives in a plain, unmarked package — no product name and no brand on the outside.",
+    a: "Always. Your order arrives in a plain, unmarked package — no product name and no brand on the outside — with everything you need to store and use it at home.",
   },
   {
-    q: "Who shouldn't take Passion?",
-    a: "Anyone taking nitrates, with significant cardiovascular disease, or with certain other conditions should not use Passion. The intake screens for these and the prescribing clinician confirms everything before approving your script.",
+    q: "Who shouldn't use Passion?",
+    a: "Passion isn't right for everyone — including people with uncontrolled high blood pressure or known cardiovascular disease, since PT-141 can briefly raise blood pressure. The intake screens for this and the prescribing clinician confirms everything before approving your treatment.",
   },
 ] as const;
 
 export const SCIENCE_STATS = [
   {
-    big: "3",
-    unit: "actives",
-    label: "One coordinated dose",
-    body: "Desire, arousal, and hormonal baseline — addressed together, instead of one narrow mechanism in isolation.",
+    big: "1",
+    unit: "active",
+    label: "One targeted peptide",
+    body: "PT-141 (bremelanotide) works on the brain's desire pathway — one mechanism, aimed where wanting actually starts.",
   },
   {
     big: "1",
     unit: "dose",
     label: "On-demand, not daily",
-    body: "Taken only when you want it. No weeks-long daily ramp, no everyday pill to remember and build a routine around.",
+    body: "Used only when you want it. No weeks-long daily ramp, no everyday pill to remember and build a routine around.",
   },
   {
     big: "~45",
     unit: "min",
-    label: "Take ahead of the moment",
-    body: "Designed to be taken in the window before intimacy, on your timing — not locked to a rigid daily schedule.",
+    label: "Use ahead of the moment",
+    body: "Designed to be used in the window before intimacy, on your timing — not locked to a rigid daily schedule.",
   },
   {
     big: "0",
