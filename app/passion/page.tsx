@@ -2,7 +2,6 @@ import { Hero } from "@/components/passion/Hero";
 import { IngredientRow } from "@/components/passion/IngredientRow";
 import { Comparison } from "@/components/passion/Comparison";
 import { HowItWorks } from "@/components/passion/HowItWorks";
-import { Pricing } from "@/components/passion/Pricing";
 import { PullQuote } from "@/components/passion/PullQuote";
 import { Testimonials } from "@/components/passion/Testimonials";
 import { FAQ } from "@/components/passion/FAQ";
@@ -10,8 +9,9 @@ import { AudienceChip } from "@/components/AudienceChip";
 
 /**
  * Passion landing page (PT-141 injectable) — same section rhythm as the Hot
- * Sauce home page (Hero → how-it-works → comparison → pricing → pull-quote →
- * testimonials → FAQ), themed plasma pink and voiced for women.
+ * Sauce home page (Hero → how-it-works → comparison → pull-quote → testimonials
+ * → FAQ), themed plasma pink and voiced for women. No pricing on the marketing
+ * page — prices appear only inside the Rimo intake funnel (Cole's call).
  *
  * NOTE (pre-go-live): the page was previously taken offline for the LegitScript
  * pass. The reskin restores the structure but reintroduces the same claim
@@ -27,7 +27,6 @@ export default function PassionHomePage() {
       <IngredientRow />
       <Comparison />
       <HowItWorks />
-      <Pricing />
       <PullQuote />
       <Testimonials />
       <FAQ />

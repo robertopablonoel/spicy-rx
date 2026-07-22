@@ -111,47 +111,11 @@ export const HOW_IT_WORKS_STEPS = [
 ] as const;
 
 /**
- * PRICING — three subscription tiers (Rimo dose plan "PT-141 Standard").
- * Source of truth (Rimo): 1-Month (1 vial) $185 · 3-Month (3 vials) $495 ·
- * 6-Month (6 vials) $888. Each vial = a 28-day supply of on-demand doses.
- * `perMonth` is derived (495/3=165, 888/6=148) to tell the savings story.
- * `note` deliberately avoids a hard injection count until Rimo confirms yield.
+ * PRICING — intentionally NOT surfaced on the marketing page. Per Cole, prices
+ * are shown only inside the Rimo intake funnel, where the visitor is further
+ * along and more invested. The plan (Rimo "PT-141 Standard": 1mo $185 / 3mo
+ * $495 / 6mo $888) lives in Rimo; the site never renders it.
  */
-export const PRICING_TIERS = [
-  {
-    id: "1mo",
-    name: "1 Month",
-    supply: "1 vial · 28-day supply",
-    price: "$185",
-    perMonth: "$185/mo",
-    save: null,
-    featured: false,
-    cta: "Start your visit",
-    note: "A full month's supply of on-demand doses. Cancel anytime.",
-  },
-  {
-    id: "3mo",
-    name: "3 Months",
-    supply: "3 vials · 84-day supply",
-    price: "$495",
-    perMonth: "$165/mo",
-    save: "Save $60",
-    featured: true,
-    cta: "Start your visit",
-    note: "Our most popular plan — a better per-month rate, delivered on your schedule.",
-  },
-  {
-    id: "6mo",
-    name: "6 Months",
-    supply: "6 vials · 168-day supply",
-    price: "$888",
-    perMonth: "$148/mo",
-    save: "Save $222",
-    featured: false,
-    cta: "Start your visit",
-    note: "The best per-month value for staying on your terms, longer.",
-  },
-] as const;
 
 export const TESTIMONIALS = [
   {
