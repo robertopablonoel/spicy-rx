@@ -7,7 +7,7 @@ import { BRAND_NAME } from "@/lib/constants";
 import { IntakeLink } from "@/components/passion/IntakeLink";
 
 const LINKS = [
-  { href: "/passion#science", label: "What's inside" },
+  { href: "/passion/science", label: "What's inside" },
   { href: "/passion#how-it-works", label: "How it works" },
   { href: "/passion#faq", label: "FAQ" },
   { href: "/", label: "For men" },
