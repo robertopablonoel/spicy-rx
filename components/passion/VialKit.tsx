@@ -3,16 +3,16 @@
 import { motion, useReducedMotion } from "framer-motion";
 
 /**
- * Hero vessel for Passion (PT-141) — a classic peptide VIAL: squat tinted-glass
- * body, rounded shoulder, a knurled aluminum crimp collar under a mauve flip-off
- * cap, and a wrap label. This is the presentation compounded bremelanotide
- * actually ships in (a multi-dose vial you draw from with an insulin syringe).
- * Modeled on a standard peptide vial silhouette, rendered in the Passion theme.
+ * Hero vessel for Passion (PT-141) — a peptide VIAL drawn in a flat, almost
+ * cartoonish style with realistic proportions (modeled on a standard peptide
+ * vial: wide neck, short shoulder, squat straight body, rounded base). This is
+ * the presentation compounded bremelanotide actually ships in.
  *
- * Visual language kept from the prior vessel: neon-pink outline (var(--ember)),
- * opaque plasma-tinted glass, subtle background afterglow, a clean black label
- * panel, sparse bokeh. Geometry was iterated against a real rendered image so
- * the shapes line up (viewBox 0 33 160 240; vial centered at x=80).
+ * Styling per Cole: simplistic / cartoonish (flat fills, one bold neon-pink
+ * outline — var(--ember)) in the original Passion palette, with the purple
+ * "cork" cap kept. No realistic glass rendering. Geometry was iterated against
+ * real rendered images (rsvg-convert + a headless-Chrome screenshot of the live
+ * /passion hero) so the shapes line up. viewBox 0 33 160 240; vial centered x=80.
  *
  * Motion: whole-vial sway + gentle particle twinkle. useReducedMotion() renders
  * static. Deterministic golden-angle distribution → no hydration drift.
@@ -35,12 +35,12 @@ const DOTS = Array.from({ length: 12 }, (_, i) => {
   };
 });
 
-// Peptide-vial glass — short neck, rounded shoulder into a straight body, round base.
+// Peptide-vial glass — wide neck, short shoulder, straight body, rounded base.
 const GLASS_PATH =
-  "M71 107 L89 107 L89 115 C89 123 117 125 117 138 L117 208 C117 214 112 218 105 218 L55 218 C48 218 43 214 43 208 L43 138 C43 125 71 123 71 115 Z";
-
-// Vertical knurl ticks across the aluminum crimp collar.
-const KNURL = [67, 71, 75, 79, 83, 87, 91];
+  "M57 110 L103 110 L103 116 C103 121 120 122 120 130 L120 214 C120 220 115 224 109 224 L51 224 C45 224 40 220 40 214 L40 130 C40 122 57 121 57 116 Z";
+// Liquid fill — lower body only (matches glass sides so it stays inside).
+const LIQUID_PATH =
+  "M40 132 L120 132 L120 214 C120 220 115 224 109 224 L51 224 C45 224 40 220 40 214 Z";
 
 export function VialKit() {
   const reduced = useReducedMotion();
@@ -104,85 +104,49 @@ export function VialKit() {
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       >
         <defs>
-          {/* Opaque tinted glass — cylindrical shading, faint plasma tint */}
-          <linearGradient id="pa-body" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stopColor="#140E16" />
-            <stop offset="0.18" stopColor="#2C2030" />
-            <stop offset="0.5" stopColor="#171120" />
-            <stop offset="0.82" stopColor="#241A28" />
-            <stop offset="1" stopColor="#0E0A12" />
-          </linearGradient>
-          {/* Flip-off cap — orchid/mauve plastic */}
-          <linearGradient id="pa-cap" x1="0" y1="0" x2="0" y2="1">
+          {/* Purple "cork" cap — simple two-stop orchid */}
+          <linearGradient id="pa-cork" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0" stopColor="#C98AC6" />
-            <stop offset="0.5" stopColor="#9A5AA0" />
-            <stop offset="1" stopColor="#653C6E" />
-          </linearGradient>
-          {/* Aluminum crimp collar — brushed silver-mauve */}
-          <linearGradient id="pa-crimp" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stopColor="#6E5A72" />
-            <stop offset="0.5" stopColor="#C9B0CC" />
-            <stop offset="1" stopColor="#5A4860" />
-          </linearGradient>
-          {/* Liquid — muted rose plasma */}
-          <linearGradient id="pa-liquid" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="rgba(255,46,138,0.66)" />
-            <stop offset="1" stopColor="rgba(180,96,200,0.42)" />
-          </linearGradient>
-          <linearGradient id="pa-sheen" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="rgba(255,255,255,0.16)" />
-            <stop offset="1" stopColor="rgba(255,255,255,0)" />
+            <stop offset="1" stopColor="#7A4A82" />
           </linearGradient>
           <clipPath id="pa-body-clip">
             <path d={GLASS_PATH} />
           </clipPath>
         </defs>
 
-        {/* FLIP-OFF CAP — plastic top, sits flush on the crimp */}
-        <rect x="67" y="77" width="26" height="13" rx="5" fill="url(#pa-cap)" stroke="#A86EAE" strokeWidth="1" />
-        <ellipse cx="80" cy="79.5" rx="8.5" ry="2.4" fill="#B87ABE" />
+        {/* PURPLE CORK CAP — chunky, wide, flat-topped */}
+        <rect x="55" y="76" width="50" height="24" rx="4" fill="url(#pa-cork)" stroke="var(--ember)" strokeWidth="1.6" />
+        <rect x="61" y="80" width="6" height="14" rx="3" fill="rgba(255,255,255,0.22)" />
 
-        {/* ALUMINUM CRIMP COLLAR — knurled, with a rolled bottom lip */}
-        <rect x="63" y="89" width="34" height="18" rx="2.5" fill="url(#pa-crimp)" stroke="#8A6E90" strokeWidth="0.8" />
-        <g stroke="#4A3A50" strokeWidth="0.5" opacity="0.55">
-          {KNURL.map((x) => (
-            <line key={x} x1={x} y1="91" x2={x} y2="105" />
-          ))}
-        </g>
-        <line x1="64" y1="103.5" x2="96" y2="103.5" stroke="#3A2E40" strokeWidth="0.8" opacity="0.7" />
+        {/* DARK RUBBER STOPPER BAND under the cap */}
+        <rect x="58" y="100" width="44" height="9" rx="1.5" fill="#241A2C" stroke="var(--ember)" strokeWidth="1.4" />
 
-        {/* GLASS BODY */}
-        <path d={GLASS_PATH} fill="url(#pa-body)" />
+        {/* GLASS BODY — flat fill */}
+        <path d={GLASS_PATH} fill="#191221" />
         <g clipPath="url(#pa-body-clip)">
-          {/* liquid fill + meniscus */}
-          <rect x="43" y="136" width="74" height="82" fill="url(#pa-liquid)" />
-          <line x1="43" y1="136" x2="117" y2="136" stroke="rgba(255,255,255,0.35)" strokeWidth="0.8" />
-          {/* shoulder sheen */}
-          <path
-            d="M71 115 C57 120 43 126 43 138 L43 150 C60 140 100 140 117 150 L117 138 C117 126 103 120 89 115 Z"
-            fill="url(#pa-sheen)"
-            opacity="0.42"
-          />
-          {/* vertical highlight streak */}
-          <rect x="51" y="128" width="6" height="88" rx="3" fill="rgba(255,235,245,0.13)" />
+          {/* simple liquid tint */}
+          <path d={LIQUID_PATH} fill="rgba(255,46,138,0.14)" />
+          {/* single sheen streak */}
+          <rect x="48" y="126" width="5" height="94" rx="2.5" fill="rgba(255,235,245,0.10)" />
         </g>
-        <path d={GLASS_PATH} fill="none" stroke="var(--ember)" strokeWidth="1.25" strokeLinejoin="round" />
+        {/* bold neon outline */}
+        <path d={GLASS_PATH} fill="none" stroke="var(--ember)" strokeWidth="2.2" strokeLinejoin="round" />
 
-        {/* LABEL — clean black panel, Hot-Sauce structure */}
+        {/* LABEL — clean black panel */}
         <rect
-          x="48"
-          y="148"
-          width="64"
-          height="66"
+          x="44"
+          y="144"
+          width="72"
+          height="68"
           rx="4"
           fill="rgba(6,5,7,0.92)"
           stroke="var(--ember)"
-          strokeWidth="0.75"
-          strokeOpacity="0.4"
+          strokeWidth="1"
+          strokeOpacity="0.5"
         />
         <text
           x="80"
-          y="168"
+          y="166"
           fill="var(--ember)"
           textAnchor="middle"
           fontFamily="var(--font-display)"
@@ -194,7 +158,7 @@ export function VialKit() {
         </text>
         <text
           x="80"
-          y="182"
+          y="180"
           fill="var(--ember)"
           textAnchor="middle"
           opacity="0.65"
@@ -204,10 +168,10 @@ export function VialKit() {
         >
           PT-141 · ON-DEMAND
         </text>
-        <line x1="64" y1="191" x2="96" y2="191" stroke="var(--ember)" strokeWidth="1.6" opacity="0.8" />
+        <line x1="64" y1="189" x2="96" y2="189" stroke="var(--ember)" strokeWidth="1.6" opacity="0.8" />
         <text
           x="80"
-          y="205"
+          y="203"
           fill="var(--ember)"
           textAnchor="middle"
           opacity="0.85"
