@@ -20,13 +20,11 @@
  *
  * Pharmacy: Striker Pharmacy (Katy, TX). Provider network: DrTelx.
  *
- * OPEN ITEMS (safe placeholders used; flagged to Cole/Rimo):
- *   - Doses-per-vial: Cole confirmed "monthly supply = multiple doses", but the
- *     exact injection count per 28-day vial is unconfirmed. Copy therefore says
- *     "a 28-day supply of on-demand doses" WITHOUT a hard number. Add a count
- *     ("up to N injections per supply") once Rimo confirms the vial yield.
- *   - Dosing ceiling (≤1 per 24 hr, ≤8 per month) is the Vyleesi label bound —
- *     safe to state; confirm it matches the compounded product before go-live.
+ * SUPPLY FRAMING (Cole, 2026-07-23): the vial is a MONTHLY supply of on-demand
+ * doses — we deliberately do NOT surface a per-vial injection count. Copy and
+ * the vial label say "monthly" / "1-month", never "28 doses". The only number
+ * kept is the safety ceiling in the FAQ (≤1 dose per 24 hr, ≤8 per month), which
+ * is the Vyleesi label bound — a dosing-safety instruction, not a supply claim.
  */
 
 /**
@@ -75,19 +73,12 @@ export const INGREDIENTS = [
   },
 ] as const;
 
-/**
- * The daily pill (Addyi-style, never named) vs. Passion. On-demand is the wedge:
- * no weeks-long daily ramp, no everyday alcohol restriction.
+/*
+ * The "daily pill vs Passion" comparison table was removed entirely per Cole
+ * (2026-07-23) — the head-to-head framing implied a named competitor and made
+ * onset/efficacy claims. Keeping the launch simple; the on-demand / non-hormonal
+ * story lives in the hero + "what's inside" cards instead.
  */
-export const COMPARISON_ROWS = [
-  { label: "When you take it", oldWay: "Every single day", passion: "Only when you want to" },
-  { label: "Time to notice a change", oldWay: "Weeks of daily dosing", passion: "The day you need it" },
-  { label: "How it's taken", oldWay: "A daily pill", passion: "One on-demand injection" },
-  { label: "Targets desire in the brain", oldWay: "Varies", passion: "Yes — PT-141 acts on the desire pathway" },
-  { label: "Hormonal", oldWay: "Sometimes", passion: "No — non-hormonal" },
-  { label: "Everyday alcohol restriction", oldWay: "Often", passion: "No daily-use limit" },
-  { label: "Clinic visit required", oldWay: "Often", passion: "No" },
-] as const;
 
 export const HOW_IT_WORKS_STEPS = [
   {

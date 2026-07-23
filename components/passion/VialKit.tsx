@@ -179,7 +179,7 @@ export function VialKit() {
           fontSize="5.6"
           letterSpacing="0.1em"
         >
-          28-DAY VIAL
+          1-MONTH VIAL
         </text>
       </motion.svg>
     </div>

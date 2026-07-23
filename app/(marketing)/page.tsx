@@ -2,21 +2,18 @@ import { Hero } from "@/components/marketing/Hero";
 import { MoleculeRow } from "@/components/marketing/MoleculeRow";
 import { HowItWorks } from "@/components/marketing/HowItWorks";
 import { PullQuote } from "@/components/marketing/PullQuote";
-import { Testimonials } from "@/components/marketing/Testimonials";
 import { FAQ } from "@/components/marketing/FAQ";
 import { AudienceChip } from "@/components/AudienceChip";
 
 /*
  * Compliance pass 2026-06-05 (LegitScript pre-approval): Comparison
  * (onset/duration/cost-vs-retail chart) and Testimonials (patient reviews)
- * were removed — both flagged by the clinician review — and AudienceChip went
- * with /passion.
+ * were removed — both flagged by the clinician review.
  *
- * Reinstated per Cole (2026-07-22): Testimonials (so the men's home mirrors the
- * Passion page — each line shows its own four reviews) and the AudienceChip
- * modal (now on BOTH sites, so a visitor can switch men <-> women from either).
- * Comparison stays out (not requested). COMPLIANCE: the reviews are still
- * illustrative and must clear a compliance pass before go-live.
+ * 2026-07-23 (Cole): only the AudienceChip modal is (re)added on the men's site
+ * — so a visitor can switch men <-> women from either line. Testimonials stay
+ * OUT on the men's page (the fabricated quotes are not going live); the men's
+ * home keeps just its nav + the audience modal.
  */
 export default function HomePage() {
   return (
@@ -25,7 +22,6 @@ export default function HomePage() {
       <MoleculeRow />
       <HowItWorks />
       <PullQuote />
-      <Testimonials />
       <FAQ />
       <AudienceChip current="men" />
     </>
