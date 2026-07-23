@@ -3,16 +3,19 @@
 import { motion, useReducedMotion } from "framer-motion";
 
 /**
- * Hero vessel for Passion — a cylindrical apothecary jar of tablets with a
- * cork, modeled on the reference: a defined glass lip ring, a rounded-but-
- * defined shoulder, straight cylindrical sides, and a defined base (cylindrical
- * quality, not fully rounded, not fully angular). Same style otherwise (neon-
- * pink outline, opaque body, subtle background afterglow, clean black label,
- * sparse bokeh). The cork is muted/desaturated so it doesn't pull the palette
- * toward tan. Still clearly tablets.
+ * Hero vessel for Passion (PT-141) — a peptide VIAL drawn in a flat, almost
+ * cartoonish style with realistic proportions (modeled on a standard peptide
+ * vial: wide neck, short shoulder, squat straight body, rounded base). This is
+ * the presentation compounded bremelanotide actually ships in.
  *
- * Motion: whole-bottle sway + gentle particle twinkle. useReducedMotion()
- * renders static. Deterministic golden-angle distribution → no hydration drift.
+ * Styling per Cole: simplistic / cartoonish (flat fills, one bold neon-pink
+ * outline — var(--ember)) in the original Passion palette, with the purple
+ * "cork" cap kept. No realistic glass rendering. Geometry was iterated against
+ * real rendered images (rsvg-convert + a headless-Chrome screenshot of the live
+ * /passion hero) so the shapes line up. viewBox 0 33 160 240; vial centered x=80.
+ *
+ * Motion: whole-vial sway + gentle particle twinkle. useReducedMotion() renders
+ * static. Deterministic golden-angle distribution → no hydration drift.
  */
 
 const PHI = 2.39996323; // golden angle in radians
@@ -32,11 +35,14 @@ const DOTS = Array.from({ length: 12 }, (_, i) => {
   };
 });
 
-// Cylindrical apothecary body — defined shoulder, straight sides, defined base.
+// Peptide-vial glass — wide neck, short shoulder, straight body, rounded base.
 const GLASS_PATH =
-  "M60 116 C46 120 38 132 38 148 L38 214 C38 221 43 225 50 225 L110 225 C117 225 122 221 122 214 L122 148 C122 132 114 120 100 116 Z";
+  "M57 110 L103 110 L103 116 C103 121 120 122 120 130 L120 214 C120 220 115 224 109 224 L51 224 C45 224 40 220 40 214 L40 130 C40 122 57 121 57 116 Z";
+// Liquid fill — lower body only (matches glass sides so it stays inside).
+const LIQUID_PATH =
+  "M40 132 L120 132 L120 214 C120 220 115 224 109 224 L51 224 C45 224 40 220 40 214 Z";
 
-export function PillBottle() {
+export function VialKit() {
   const reduced = useReducedMotion();
 
   return (
@@ -80,7 +86,7 @@ export function PillBottle() {
         ))}
       </svg>
 
-      {/* THE VESSEL — Framer Motion sway */}
+      {/* THE VIAL — Framer Motion sway */}
       <motion.svg
         width="373"
         height="560"
@@ -98,101 +104,82 @@ export function PillBottle() {
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       >
         <defs>
-          {/* Opaque body — cylindrical shading, faint plasma tint */}
-          <linearGradient id="pa-body" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stopColor="#140E16" />
-            <stop offset="0.18" stopColor="#2C2030" />
-            <stop offset="0.5" stopColor="#171120" />
-            <stop offset="0.82" stopColor="#241A28" />
-            <stop offset="1" stopColor="#0E0A12" />
-          </linearGradient>
-          {/* Cork — orchid/mauve, bridges the pink + purple palette */}
+          {/* Purple "cork" cap — simple two-stop orchid */}
           <linearGradient id="pa-cork" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0" stopColor="#C98AC6" />
-            <stop offset="0.5" stopColor="#9A5AA0" />
-            <stop offset="1" stopColor="#653C6E" />
-          </linearGradient>
-          <linearGradient id="pa-sheen" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="rgba(255,255,255,0.16)" />
-            <stop offset="1" stopColor="rgba(255,255,255,0)" />
+            <stop offset="1" stopColor="#7A4A82" />
           </linearGradient>
           <clipPath id="pa-body-clip">
             <path d={GLASS_PATH} />
           </clipPath>
         </defs>
 
-        {/* CORK — simple purple plug, drawn BEHIND the bottle: the opaque body
-            + lip ring (drawn after) hide the inserted lower portion, so only
-            the part above the mouth shows. Bottom (y124) sits inside the neck. */}
-        <path
-          d="M63 126 L61 80 L99 80 L97 126 Z"
-          fill="url(#pa-cork)"
-          stroke="#A86EAE"
-          strokeWidth="1"
-          strokeLinejoin="miter"
-        />
-        <rect x="66" y="83" width="4" height="13" rx="1" fill="rgba(255,255,255,0.12)" />
+        {/* PURPLE CORK CAP — chunky, wide, flat-topped */}
+        <rect x="55" y="76" width="50" height="24" rx="4" fill="url(#pa-cork)" stroke="var(--ember)" strokeWidth="1.6" />
+        <rect x="61" y="80" width="6" height="14" rx="3" fill="rgba(255,255,255,0.22)" />
 
-        {/* OPAQUE CYLINDRICAL BODY */}
-        <path d={GLASS_PATH} fill="url(#pa-body)" />
+        {/* DARK RUBBER STOPPER BAND under the cap */}
+        <rect x="58" y="100" width="44" height="9" rx="1.5" fill="#241A2C" stroke="var(--ember)" strokeWidth="1.4" />
+
+        {/* GLASS BODY — flat fill */}
+        <path d={GLASS_PATH} fill="#191221" />
         <g clipPath="url(#pa-body-clip)">
-          <path d="M60 116 C46 120 38 132 38 150 L38 160 C60 132 100 132 122 160 L122 150 C122 132 114 120 100 116 Z" fill="url(#pa-sheen)" opacity="0.4" />
-          <rect x="44" y="152" width="6" height="64" rx="3" fill="rgba(255,235,245,0.13)" />
+          {/* simple liquid tint */}
+          <path d={LIQUID_PATH} fill="rgba(255,46,138,0.14)" />
+          {/* single sheen streak */}
+          <rect x="48" y="126" width="5" height="94" rx="2.5" fill="rgba(255,235,245,0.10)" />
         </g>
-        <path d={GLASS_PATH} fill="none" stroke="var(--ember)" strokeWidth="1.25" strokeLinejoin="round" />
+        {/* bold neon outline */}
+        <path d={GLASS_PATH} fill="none" stroke="var(--ember)" strokeWidth="2.2" strokeLinejoin="round" />
 
-        {/* GLASS LIP RING — defined collar + top bead, sits on the neck */}
-        <rect x="58" y="103" width="44" height="14" rx="2.5" fill="url(#pa-body)" stroke="var(--ember)" strokeWidth="1.25" strokeLinejoin="round" />
-        <rect x="55" y="99" width="50" height="6" rx="2.5" fill="url(#pa-body)" stroke="var(--ember)" strokeWidth="1.25" strokeLinejoin="round" />
-
-        {/* LABEL — clean black panel, Hot-Sauce structure */}
+        {/* LABEL — clean black panel */}
         <rect
-          x="46"
-          y="152"
-          width="68"
-          height="60"
-          rx="3"
+          x="44"
+          y="144"
+          width="72"
+          height="68"
+          rx="4"
           fill="rgba(6,5,7,0.92)"
           stroke="var(--ember)"
-          strokeWidth="0.75"
-          strokeOpacity="0.4"
+          strokeWidth="1"
+          strokeOpacity="0.5"
         />
         <text
           x="80"
-          y="175"
+          y="166"
           fill="var(--ember)"
           textAnchor="middle"
           fontFamily="var(--font-display)"
           fontWeight="700"
           fontSize="13"
-          letterSpacing="0.04em"
+          letterSpacing="0.01em"
         >
           PASSION
         </text>
         <text
           x="80"
-          y="188"
+          y="180"
           fill="var(--ember)"
           textAnchor="middle"
           opacity="0.65"
           fontFamily="var(--font-mono)"
-          fontSize="4.6"
-          letterSpacing="0.1em"
+          fontSize="4.8"
+          letterSpacing="0.06em"
         >
-          3-IN-1 · ON-DEMAND
+          PT-141 · ON-DEMAND
         </text>
-        <line x1="62" y1="197" x2="98" y2="197" stroke="var(--ember)" strokeWidth="1.75" opacity="0.8" />
+        <line x1="64" y1="189" x2="96" y2="189" stroke="var(--ember)" strokeWidth="1.6" opacity="0.8" />
         <text
           x="80"
-          y="208"
+          y="203"
           fill="var(--ember)"
           textAnchor="middle"
           opacity="0.85"
           fontFamily="var(--font-mono)"
-          fontSize="5"
-          letterSpacing="0.12em"
+          fontSize="5.6"
+          letterSpacing="0.1em"
         >
-          12 TABLETS
+          1-MONTH VIAL
         </text>
       </motion.svg>
     </div>

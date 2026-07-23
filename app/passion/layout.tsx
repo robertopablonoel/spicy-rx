@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: `%s · ${BRAND_NAME} ${PASSION_PRODUCT_NAME}`,
   },
   description:
-    "Passion is a clinician-prescribed, on-demand treatment for low sexual desire in women — bremelanotide, tadalafil, and pregnenolone in a single dose, taken only when you want it. Private online visit, discreet delivery.",
+    "Passion is a clinician-prescribed, on-demand treatment for low sexual desire in women — PT-141 (bremelanotide), a targeted peptide given as a small subcutaneous injection you draw and give yourself, used only when you want it. Private online visit, discreet delivery.",
 };
 
 export default function PassionLayout({

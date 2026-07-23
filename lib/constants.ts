@@ -76,24 +76,39 @@ export const RIMO_PORTAL_URL =
 /* =============================================================
    PASSION — female product line (second line under the SpicyRx brand).
 
-   Status: DESIGN SPIKE. "Passion" is the Rimo offering name and is a
-   PLACEHOLDER consumer name (subject to rebrand, exactly like "Hot Sauce"
-   stands in for "Quattro"). Formulation per Rimo: Tadalafil 10mg /
-   Bremelanotide 10mg / Pregnenolone 10mg, PRN, 12 tablets.
+   Product: PT-141 (bremelanotide), an on-demand SUBCUTANEOUS INJECTION for
+   low sexual desire in women, supplied as a refrigerated multi-dose vial that
+   the patient draws with an insulin syringe (NOT a prefilled pen — a
+   reconstituted vial is used within 28 days, matching the "1 dose = 28 days"
+   Rimo plan). Rimo offering title: "PT-141 Injections" (plan "PT-141 Standard").
+   Consumer brand kept as "Passion" (Cole's call — same pattern as "Hot Sauce"
+   standing in for internal "Quattro"). Pharmacy: Striker Pharmacy (Katy, TX);
+   provider network: DrTelx. Pricing (per Rimo): 1mo $185 / 3mo $495 / 6mo $888.
+
+   Status: reskin complete on branch; NOT live. Go-live gated on (a) the Rimo
+   PT-141 offering being ACTIVATED (currently inactive — Cole's Rimo click) and
+   (b) a LegitScript compliance pass on the restored claim classes.
    ============================================================= */
 
-export const PASSION_PRODUCT_NAME = "Passion"; // placeholder — rebrand TBD
+export const PASSION_PRODUCT_NAME = "Passion";
 export const PASSION_TAGLINE = "Desire, on your terms.";
 
 /**
- * Passion intake channel.
+ * Passion (PT-141) intake channel — LIVE.
  *
- * TODO(rimo): Passion is a separate Rimo offering and will get its OWN
- * sales-channel ID once Roberto provisions it (Cole doesn't yet have
- * access to the SpicyRx Rimo workspace where channels are created).
- * Until then this falls back to the Hot Sauce intake URL so the CTAs
- * are wired end-to-end — repoint NEXT_PUBLIC_RIMO_INTAKE_PASSION_URL
- * the moment the real channel exists.
+ * The PT-141 offering is now provisioned + activated in Rimo (Cole, 2026-07-22),
+ * with its OWN intake form `pt-89gox1` — distinct from Hot Sauce (`sh-rhdbd4`)
+ * and the form-A/B arm B (`qmv-07cx6s`). Bare channel URL (no first-step slug);
+ * Rimo resolves it to the form's first step, same as arm B. Env-overridable so
+ * preview/prod can point elsewhere without a code change. The intake screens
+ * eligibility (DOB, health history, state) server-side, so no CTA on the
+ * marketing page can route an ineligible patient to a sale.
+ *
+ * Attribution: the Passion IntakeLink forwards PARAM_KEYS onto this URL via
+ * withAttribution() — click-IDs + UTMs ride to Rimo exactly as on Hot Sauce.
+ * (Stage 2 will additionally tag this funnel distinctly for cross-line
+ * attribution; not wired yet.)
  */
 export const PASSION_INTAKE_URL =
-  process.env.NEXT_PUBLIC_RIMO_INTAKE_PASSION_URL ?? RIMO_INTAKE_URL;
+  process.env.NEXT_PUBLIC_RIMO_INTAKE_PASSION_URL ??
+  "https://my.spicyrx.com/intake/pt-89gox1";

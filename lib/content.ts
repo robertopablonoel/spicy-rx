@@ -135,3 +135,10 @@ export const SCIENCE_STATS = [
     body: "A single dropper-bottle formulation, taken as directed by your prescribing clinician.",
   },
 ] as const;
+
+/*
+ * Men's peer testimonials were removed in the 2026-06-05 LegitScript pass
+ * (fabricated reviews). Briefly reinstated for the preview, then removed again
+ * per Cole (2026-07-23) — the men's site ships with NO testimonials. Pre-pass
+ * copy remains in git history if real reviews are sourced later.
+ */

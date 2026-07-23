@@ -11,8 +11,9 @@ const LINKS = [
   { href: "/science", label: "Science" },
   { href: "/#how-it-works", label: "How it works" },
   { href: "/#faq", label: "FAQ" },
-  // "/passion" link removed 2026-06-05 — page offline for the LegitScript
-  // compliance pass (see app/passion/page.tsx). Restore with the page.
+  // Cross-link to the women's line, mirroring the "For men" link in the Passion
+  // navbar (components/passion/Navbar.tsx).
+  { href: "/passion", label: "For women" },
 ];
 
 /**

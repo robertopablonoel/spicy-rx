@@ -2,13 +2,14 @@ import { Eyebrow } from "@/components/ui/eyebrow";
 import { ButtonLink } from "@/components/ui/button";
 import { Stat } from "@/components/ui/stat";
 import { Divider } from "@/components/ui/divider";
-import { PillBottle } from "@/components/passion/PillBottle";
+import { VialKit } from "@/components/passion/VialKit";
 import { IntakeLink } from "@/components/passion/IntakeLink";
 import { HERO_STATS } from "@/lib/content-passion";
 
 /**
  * Passion home hero — same asymmetric 1.2fr/1fr layout as Hot Sauce, but the
- * right column is the PillBottle (tablets) and the copy is Addyi-voiced.
+ * right column is the VialKit (vial + insulin syringe) and the copy is
+ * Addyi-voiced for the PT-141 injectable.
  */
 export function Hero() {
   return (
@@ -55,11 +56,11 @@ export function Hero() {
           <p className="mt-7 max-w-[520px] text-base leading-[1.5] text-mist md:text-[19px]">
             Passion is a clinician-prescribed treatment for low sexual desire —{" "}
             <em className="not-italic font-semibold text-fg">
-              taken only when you want it
+              used only when you want it
             </em>
-            , not every single day. Three actives that work on desire,
-            arousal, and the baseline underneath. Because wanting isn&apos;t a
-            flaw — it&apos;s biology.
+            , not every single day. One targeted peptide, PT-141, that works on
+            the brain&apos;s desire pathway. Because wanting isn&apos;t a flaw —
+            it&apos;s biology.
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
@@ -90,9 +91,9 @@ export function Hero() {
           </div>
         </div>
 
-        {/* RIGHT: pill bottle (client island) */}
+        {/* RIGHT: vial + syringe kit (client island) */}
         <div className="relative flex items-center justify-center">
-          <PillBottle />
+          <VialKit />
         </div>
       </div>
     </section>
