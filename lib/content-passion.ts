@@ -108,32 +108,12 @@ export const HOW_IT_WORKS_STEPS = [
  * $495 / 6mo $888) lives in Rimo; the site never renders it.
  */
 
-export const TESTIMONIALS = [
-  {
-    name: "Maya R.",
-    city: "Austin, TX",
-    title: "I stopped feeling broken",
-    body: `"I'd quietly decided this was just who I was now. Passion gave me back a part of myself I thought was gone for good."`,
-  },
-  {
-    name: "Jordan L.",
-    city: "Denver, CO",
-    title: "On my terms, not a schedule",
-    body: `"What I love is using it when I actually want to — not a pill every single morning, hoping something shifts weeks down the line."`,
-  },
-  {
-    name: "Priya S.",
-    city: "Seattle, WA",
-    title: "It's biology, not in my head",
-    body: `"My clinician walked me through the brain-chemistry piece and it finally clicked. This was never a willpower problem."`,
-  },
-  {
-    name: "Elena M.",
-    city: "Chicago, IL",
-    title: "Easier than I feared",
-    body: `"I was nervous about an injection. The first-dose guide walked me through it — drawing the dose and the tiny needle turned out to be barely a pinch."`,
-  },
-] as const;
+/*
+ * The Passion testimonials / reviews section was removed entirely per Cole
+ * (2026-07-23) — no reviews on the new product. This also drops the "4.7 / 5 ·
+ * 1,930 verified reviews" count that lived in the section header. Pre-removal
+ * copy remains in git history if real reviews are sourced later.
+ */
 
 export const FAQS = [
   {
