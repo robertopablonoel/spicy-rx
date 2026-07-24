@@ -5,15 +5,15 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { BRAND_NAME } from "@/lib/constants";
 import { IntakeLink } from "@/components/marketing/IntakeLink";
+import { AudienceToggle } from "@/components/AudienceToggle";
 
 const LINKS = [
   { href: "/", label: "Hot Sauce" },
   { href: "/science", label: "Science" },
   { href: "/#how-it-works", label: "How it works" },
   { href: "/#faq", label: "FAQ" },
-  // Cross-link to the women's line, mirroring the "For men" link in the Passion
-  // navbar (components/passion/Navbar.tsx).
-  { href: "/passion", label: "For women" },
+  // The cross-line switch to the women's line now lives in the persistent
+  // <AudienceToggle> (visible on mobile + desktop), not a desktop-only nav link.
 ];
 
 /**
@@ -75,10 +75,16 @@ export function Navbar() {
           ))}
         </div>
 
-        <IntakeLink size="sm" data-cta-location="nav_primary">
-          Start consultation
-          <span aria-hidden>→</span>
-        </IntakeLink>
+        <div className="flex items-center gap-2 md:gap-4">
+          <AudienceToggle current="men" />
+          <IntakeLink size="sm" data-cta-location="nav_primary">
+            {/* Compact label on phones so the persistent audience toggle fits
+                the bar; full copy returns at ≥sm. */}
+            <span className="sm:hidden">Start</span>
+            <span className="hidden sm:inline">Start consultation</span>
+            <span aria-hidden>→</span>
+          </IntakeLink>
+        </div>
       </div>
     </nav>
   );

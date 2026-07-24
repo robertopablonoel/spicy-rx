@@ -5,12 +5,14 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { BRAND_NAME } from "@/lib/constants";
 import { IntakeLink } from "@/components/passion/IntakeLink";
+import { AudienceToggle } from "@/components/AudienceToggle";
 
 const LINKS = [
   { href: "/passion/science", label: "What's inside" },
   { href: "/passion#how-it-works", label: "How it works" },
   { href: "/passion#faq", label: "FAQ" },
-  { href: "/", label: "For men" },
+  // The cross-line switch to the men's line now lives in the persistent
+  // <AudienceToggle> (visible on mobile + desktop), not a desktop-only nav link.
 ];
 
 /**
@@ -55,7 +57,7 @@ export function Navbar() {
             <span className="font-[family-name:var(--font-display)] text-[17px] font-bold tracking-[-0.02em] text-fg">
               {BRAND_NAME.toUpperCase()}
             </span>
-            <span className="font-[family-name:var(--font-mono)] text-[10px] font-medium uppercase tracking-[0.18em] text-ember">
+            <span className="hidden font-[family-name:var(--font-mono)] text-[10px] font-medium uppercase tracking-[0.18em] text-ember sm:inline">
               Passion
             </span>
           </span>
@@ -73,10 +75,16 @@ export function Navbar() {
           ))}
         </div>
 
-        <IntakeLink size="sm" data-cta-location="nav_primary">
-          Start your visit
-          <span aria-hidden>→</span>
-        </IntakeLink>
+        <div className="flex items-center gap-2 md:gap-4">
+          <AudienceToggle current="women" />
+          <IntakeLink size="sm" data-cta-location="nav_primary">
+            {/* Compact label on phones so the persistent audience toggle fits
+                the bar; full copy returns at ≥sm. */}
+            <span className="sm:hidden">Start</span>
+            <span className="hidden sm:inline">Start your visit</span>
+            <span aria-hidden>→</span>
+          </IntakeLink>
+        </div>
       </div>
     </nav>
   );
