@@ -24,11 +24,36 @@ per-order recovery works later; add a dedicated non-UTM `ref` param when we buil
   strip-proof cookie snapshot builder.
 
 ## Adding an affiliate
-1. Add a line to `AFFILIATES` in `lib/affiliates.ts`: `CODE_UPPERCASE: "utm_source_slug"`.
+1. Add an entry to `AFFILIATES` in `lib/affiliates.ts`: `CODE_UPPERCASE: { source: "utm_source_slug" }`.
 2. The code is matched case-insensitively (`/SPICYALIEN` == `/spicyalien`).
 3. **Never** use a code that collides with a top-level route (`passion`, `consult`, `pages`,
-   `policies`, `qr`, `science`) — `affiliateSource()` refuses these defensively anyway.
+   `policies`, `qr`, `science`) — `lookupAffiliate()` refuses these defensively anyway.
 4. Deploy. The link is live at `spicyrx.com/<CODE>`.
+
+## Direct-to-teleform affiliates (bypass the A/B test)
+Some affiliates are force-routed straight to one specific Rimo intake form instead of the homepage
+funnel — which also holds them OUT of the intake-form A/B test (we're not testing teleforms on that
+traffic). Configure with `destination` + `excludeFromFormAbTest`:
+
+```ts
+SPICYALIEN: {                         // Jamie Lynn
+  source: "spicyalien",
+  destination: RIMO_INTAKE_URL_B,     // https://my.spicyrx.com/intake/qmv-07cx6s (the qmv form)
+  excludeFromFormAbTest: true,
+},
+```
+
+What this does:
+- **Redirects directly to the teleform**, skipping the marketing site — so both A/B assignment paths
+  (the client `IntakeLink` CTA and the `/consult` route) are bypassed: **no `form_arm`, no
+  `utm_term=arm_qmv` stamp, no `form_ab_assigned` event.**
+- **Forwards attribution onto the intake URL** — affiliate UTMs (`utm_source=spicyalien`,
+  `utm_medium=affiliate`, `utm_campaign=affiliate_program`) plus the visitor's inbound click
+  IDs/UTMs (fbclid/gclid/…). This is essential because a direct-to-teleform visitor never runs our
+  `captureAttribution()` — Rimo captures **URL params**, not our cookie.
+- ⚠ **Analytics:** their orders still land in that form's Rimo channel export next to real arm-B
+  traffic. **Filter them out of arm-B analysis by `utm_source=spicyalien`** (`utm_medium=affiliate`).
+  Also noted in `lib/form-ab-shared.ts`.
 
 ## Re-pointing the destination
 Set `AFFILIATE_DESTINATION` in Vercel env (default `https://www.spicyrx.com/`) to send affiliate

@@ -1,9 +1,14 @@
 import { NextFetchEvent, NextRequest, NextResponse } from "next/server";
-import { COOKIE_NAME, COOKIE_MAX_AGE } from "@/lib/attribution-constants";
 import {
+  COOKIE_NAME,
+  COOKIE_MAX_AGE,
+  PARAM_KEYS,
+} from "@/lib/attribution-constants";
+import {
+  type Affiliate,
   affiliateSnapshot,
-  affiliateSource,
   affiliateTarget,
+  lookupAffiliate,
 } from "@/lib/affiliates";
 
 /**
@@ -13,22 +18,38 @@ import {
  * styled 404 or collide with real pages: only KNOWN affiliate codes are
  * intercepted; everything else falls through to normal routing via next().
  *
- * For a matched code it mirrors the insert-QR route: 307 to the configurable
- * destination with utm_source/medium/campaign stamped, writes the
- * `.spicyrx.com` attribution cookie server-side keyed on the PATH (survives
- * VPN/privacy utm_* stripping, carries sticky form_arm forward), and fires an
+ * For a matched code it mirrors the insert-QR route: 307 to the affiliate's
+ * destination with utm_source/medium/campaign stamped + the visitor's inbound
+ * click IDs/UTMs forwarded, writes the `.spicyrx.com` attribution cookie
+ * server-side keyed on the PATH (survives VPN/privacy utm_* stripping, carries
+ * sticky form_arm forward for A/B-participating affiliates only), and fires an
  * `affiliate_click` PostHog event via waitUntil (strip-proof click counter,
  * off the response's critical path).
+ *
+ * Direct-to-teleform affiliates (e.g. SPICYALIEN → the qmv intake) land on a
+ * specific Rimo form and are held OUT of the intake-form A/B test — see
+ * lib/affiliates.ts. Their only attribution channel is the params on the intake
+ * URL (Rimo captures query params, not our cookie), which is why we forward the
+ * inbound PARAM_KEYS straight onto the destination.
  */
 export function middleware(request: NextRequest, event: NextFetchEvent) {
   const segment = request.nextUrl.pathname.split("/")[1] ?? "";
-  const source = affiliateSource(segment);
-  if (!source) return NextResponse.next();
+  const affiliate = lookupAffiliate(segment);
+  if (!affiliate) return NextResponse.next();
 
-  const target = affiliateTarget(source);
+  // Click IDs / UTMs the visitor arrived with on the /<CODE> link, forwarded
+  // onto the destination and into the cookie snapshot (affiliate UTMs still win).
+  const forward: Record<string, string> = {};
+  for (const key of PARAM_KEYS) {
+    const value = request.nextUrl.searchParams.get(key);
+    if (value) forward[key] = value;
+  }
+
+  const target = affiliateTarget(affiliate, forward);
   const response = NextResponse.redirect(target, 307);
 
-  // Read the prior cookie so the sticky form_arm is carried forward.
+  // Read the prior cookie so the sticky form_arm can be carried forward (only
+  // for A/B-participating affiliates; affiliateSnapshot enforces the exclusion).
   let stored: Record<string, unknown> = {};
   const cookieValue = request.cookies.get(COOKIE_NAME)?.value;
   if (cookieValue) {
@@ -38,7 +59,7 @@ export function middleware(request: NextRequest, event: NextFetchEvent) {
       // malformed cookie — treat as no prior attribution
     }
   }
-  const snapshot = affiliateSnapshot(stored, source);
+  const snapshot = affiliateSnapshot(stored, affiliate, forward);
   response.headers.append(
     "Set-Cookie",
     `${COOKIE_NAME}=${encodeURIComponent(JSON.stringify(snapshot))}` +
@@ -46,7 +67,7 @@ export function middleware(request: NextRequest, event: NextFetchEvent) {
       cookieDomainAttr(request),
   );
 
-  event.waitUntil(captureClick(request, segment, source));
+  event.waitUntil(captureClick(request, segment, affiliate));
   return response;
 }
 
@@ -70,7 +91,7 @@ function cookieDomainAttr(request: NextRequest): string {
 async function captureClick(
   request: NextRequest,
   code: string,
-  source: string,
+  affiliate: Affiliate,
 ): Promise<void> {
   const key = process.env.NEXT_PUBLIC_POSTHOG_KEY;
   if (!key) return;
@@ -98,7 +119,14 @@ async function captureClick(
         api_key: key,
         event: "affiliate_click",
         distinct_id: distinctId ?? crypto.randomUUID(),
-        properties: { code: code.toUpperCase(), utm_source: source },
+        properties: {
+          code: code.toUpperCase(),
+          utm_source: affiliate.source,
+          // Routing context, so A/B analysis can see this click never entered
+          // the test. `direct_intake` = force-routed straight to a teleform.
+          routing: affiliate.destination ? "direct_intake" : "site",
+          excluded_from_form_ab: affiliate.excludeFromFormAbTest === true,
+        },
       }),
     });
   } catch {

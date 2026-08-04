@@ -18,6 +18,16 @@
  *
  * Kept directive-free so both the client CTA path (lib/form-ab.ts) and the
  * /consult route handler can import it.
+ *
+ * ⚠ FORCE-ROUTED TRAFFIC EXCLUDED FROM THIS TEST (2026-08-04):
+ * Affiliate SPICYALIEN (Jamie Lynn) is force-routed straight to the qmv
+ * teleform (qmv-07cx6s) via the middleware affiliate redirect — deliberately,
+ * we are not testing teleforms on her traffic. She is NOT A/B-assigned: no
+ * form_arm, no utm_term=arm_qmv stamp, no form_ab_assigned event. BUT her
+ * orders still land in the qmv Rimo channel export alongside real arm-B
+ * traffic, so when analyzing arm B you MUST filter her out by
+ * `utm_source=spicyalien` (utm_medium=affiliate). Any affiliate with
+ * excludeFromFormAbTest=true in lib/affiliates.ts is in this same bucket.
  */
 
 import { RIMO_INTAKE_URL, RIMO_INTAKE_URL_B } from "@/lib/constants";
