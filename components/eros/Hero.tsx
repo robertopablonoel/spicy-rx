@@ -47,7 +47,7 @@ export function Hero() {
               lineHeight: 1,
             }}
           >
-            Reignite the{" "}
+            Reignite your{" "}
             <span className="font-[family-name:var(--font-editorial)] italic font-normal">
               fire.
             </span>
