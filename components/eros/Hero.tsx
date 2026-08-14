@@ -54,10 +54,10 @@ export function Hero() {
           </h1>
 
           <p className="mt-7 max-w-[42ch] text-base leading-[1.5] text-mist md:text-[19px]">
-            Every ED pill you&apos;ve tried worked on the body. Eros also wakes
-            the brain — the{" "}
-            <em className="not-italic font-semibold text-fg">desire</em> a
-            plumbing-only pill was never built to touch.
+            Every ED pill you&apos;ve tried worked on the plumbing — the blood
+            flow that gets you hard. Eros also wakes the brain, where{" "}
+            <em className="not-italic font-semibold text-fg">desire</em> actually
+            begins.
           </p>
 
           <div className="mt-7 flex flex-wrap items-center gap-3">
