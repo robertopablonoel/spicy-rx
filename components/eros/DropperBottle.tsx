@@ -50,7 +50,7 @@ export function DropperBottle() {
   const reduced = useReducedMotion();
 
   return (
-    <div className="eros-anim relative flex aspect-[460/560] w-[280px] items-center justify-center sm:w-[320px] md:w-[460px]">
+    <div className="eros-anim relative flex aspect-[460/560] w-full max-w-[280px] items-center justify-center sm:max-w-[320px] md:max-w-[460px]">
       {/* OUTER NEBULA — soft conic, rotating, fully circular */}
       <div
         aria-hidden

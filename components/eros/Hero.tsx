@@ -34,9 +34,9 @@ export function Hero() {
 
       <div className="relative mx-auto grid min-h-[min(92vh,820px)] max-w-[var(--container-max)] grid-cols-1 items-center gap-6 px-5 pt-[92px] pb-10 md:gap-9 md:px-10 md:pt-[132px] md:pb-20 lg:grid-cols-[1.2fr_1fr] lg:gap-[60px]">
         {/* LEFT: copy */}
-        <div className="relative">
+        <div className="relative min-w-0">
           <Eyebrow className="mb-5">
-            Body + Brain · 3-in-1 sublingual elixir
+            Body + Brain · 3-in-1 elixir
           </Eyebrow>
 
           <h1
@@ -89,7 +89,7 @@ export function Hero() {
         </div>
 
         {/* RIGHT: lapis dropper bottle (client island) */}
-        <div className="relative flex items-center justify-center">
+        <div className="relative flex min-w-0 items-center justify-center">
           <DropperBottle />
         </div>
       </div>

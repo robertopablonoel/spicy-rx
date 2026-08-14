@@ -259,6 +259,14 @@
   color: #F5F8FF !important;
 }
 
+/* An Eros page must never scroll horizontally: if it does, the position:fixed
+   navbar stretches to the overflow width and its CTA lands off-screen on mobile.
+   Scoped via :has() to pages that actually render the Eros subtree, so Hot Sauce
+   and Passion are unaffected. */
+html:has([data-theme="eros"]) {
+  overflow-x: hidden;
+}
+
 /* =============================================================
    EROS — cosmic dropper-bottle keyframes (ported from
    mockups/eros-main.html, recolored lapis/cyan). Prefixed `eros-*`
