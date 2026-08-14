@@ -54,21 +54,30 @@ export const LEGAL_ENTITY = "The Cubes Company LLC";
  * Both default to the live Rimo-provisioned URLs; override per environment
  * via Vercel env vars if Rimo cuts a new sales channel or moves the portal.
  */
-export const RIMO_INTAKE_URL =
-  process.env.NEXT_PUBLIC_RIMO_INTAKE_URL ??
-  "https://my.spicyrx.com/intake/sh-rhdbd4/date-of-birth";
+/**
+ * Form A/B test — arm A intake.
+ *
+ * 2026-08-13: retest reconfigured to a CLEAN single-variable capture-timing test
+ * between two Quattro forms (same design, only where contact capture sits):
+ *   arm A ("spic") → qmv-8dwnjy  — Quattro with contact capture moved EARLY
+ *   arm B ("qmv")  → qmv-07cx6s  — Quattro with contact capture LATE (original)
+ * (Previously arm A was sh-rhdbd4, the Sexual Health Intake — now retired from
+ * the test.) Bare channel URL (no first-step slug), like arm B; Rimo resolves it
+ * to the form's first step. The `spic`/`qmv` arm labels are kept as-is to avoid
+ * stranding sticky cookies — they now denote early/late Quattro, not sh/qmv.
+ * Hardcoded (no env indirection) — change the arm here and deploy.
+ */
+export const RIMO_INTAKE_URL = "https://my.spicyrx.com/intake/qmv-8dwnjy";
 
 /**
- * Form A/B test — arm B intake (new Rimo channel). Arm A is RIMO_INTAKE_URL.
- * Visitors are sticky-assigned 50/50 in lib/form-ab.ts; the assignment is
- * persisted as `form_arm` inside the spicyrx_attribution cookie so
- * rx-datachain can join cohort → order token across the my.spicyrx.com hop.
- * Note: no first-step slug here (unlike arm A) — the new channel's step
- * slugs are unknown; Rimo resolves the bare channel URL to its first step.
+ * Form A/B test — arm B intake. Arm A is RIMO_INTAKE_URL. Visitors are
+ * sticky-assigned 50/50 in lib/form-ab.ts; the assignment is persisted as
+ * `form_arm` inside the spicyrx_attribution cookie so rx-datachain can join
+ * cohort → order token across the my.spicyrx.com hop. Bare channel URL — Rimo
+ * resolves it to its first step. (Arm B = the LATE-capture Quattro; the control.)
+ * Hardcoded (no env indirection) — change the arm here and deploy.
  */
-export const RIMO_INTAKE_URL_B =
-  process.env.NEXT_PUBLIC_RIMO_INTAKE_URL_B ??
-  "https://my.spicyrx.com/intake/qmv-07cx6s";
+export const RIMO_INTAKE_URL_B = "https://my.spicyrx.com/intake/qmv-07cx6s";
 
 export const RIMO_PORTAL_URL =
   process.env.NEXT_PUBLIC_RIMO_PORTAL_URL ?? "https://app.caliberrx.co";

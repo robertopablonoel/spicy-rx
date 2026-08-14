@@ -30,7 +30,6 @@
  */
 
 import { PARAM_KEYS, FORM_ARM_KEY } from "@/lib/attribution-constants";
-import { RIMO_INTAKE_URL_B } from "@/lib/constants";
 
 export const AFFILIATE_UTM_MEDIUM = "affiliate";
 export const AFFILIATE_UTM_CAMPAIGN = "affiliate_program";
@@ -80,15 +79,17 @@ const RESERVED = new Set([
  * case-insensitively, so spicyrx.com/spicyalien resolves too.
  */
 export const AFFILIATES: Record<string, Affiliate> = {
-  // Jamie Lynn. Force-routed straight to the qmv teleform and held OUT of the
-  // intake-form A/B test — we are not testing teleforms on her traffic; every
-  // /SPICYALIEN visitor gets the qmv form, period. RIMO_INTAKE_URL_B is the
-  // same physical qmv Rimo channel arm B uses (env-overridable), reused here so
-  // her form tracks that channel's URL — but her routing is NOT part of the test.
+  // Jamie Lynn. 2026-08-13 (Cole's call): now INCLUDED in the intake-form A/B
+  // test. Routed through /consult so every /SPICYALIEN visitor gets 50/50 cohort
+  // assignment (form_arm + utm_term=arm_*) and lands directly on the assigned
+  // arm's Quattro form — preserving her low-friction direct-to-form experience
+  // (no homepage detour). utm_source=spicyalien is still stamped, so analysis can
+  // segment her cohort in or out. No excludeFromFormAbTest → the sticky arm is
+  // carried forward for returning visitors (affiliateSnapshot). To instead land
+  // her on the homepage funnel, drop `destination`.
   SPICYALIEN: {
     source: "spicyalien",
-    destination: RIMO_INTAKE_URL_B, // https://my.spicyrx.com/intake/qmv-07cx6s
-    excludeFromFormAbTest: true,
+    destination: "https://www.spicyrx.com/consult",
   },
 };
 
