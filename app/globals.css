@@ -235,6 +235,17 @@
   --font-display: var(--font-classical);
 }
 
+/* The shared primary button bakes a literal Hot-Sauce-orange hover glow
+   (rgba(255,59,31,…) in components/ui/button.tsx) that the theme vars can't
+   reach. Recolor it to cyan for the Eros subtree only; Hot Sauce/Passion
+   buttons are unaffected. */
+[data-theme="eros"] a.bg-hot:hover,
+[data-theme="eros"] button.bg-hot:hover {
+  box-shadow:
+    0 0 0 1px rgba(56, 208, 232, 0.45),
+    0 0 32px rgba(56, 208, 232, 0.5) !important;
+}
+
 /* =============================================================
    EROS — cosmic dropper-bottle keyframes (ported from
    mockups/eros-main.html, recolored lapis/cyan). Prefixed `eros-*`
