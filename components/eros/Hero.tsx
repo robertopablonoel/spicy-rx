@@ -32,7 +32,7 @@ export function Hero() {
         }}
       />
 
-      <div className="relative mx-auto grid min-h-[min(92vh,820px)] max-w-[var(--container-max)] grid-cols-1 items-center gap-9 px-5 pt-[110px] pb-14 md:px-10 md:pt-[140px] md:pb-20 lg:grid-cols-[1.2fr_1fr] lg:gap-[60px]">
+      <div className="relative mx-auto grid min-h-[min(92vh,820px)] max-w-[var(--container-max)] grid-cols-1 items-center gap-6 px-5 pt-[92px] pb-10 md:gap-9 md:px-10 md:pt-[132px] md:pb-20 lg:grid-cols-[1.2fr_1fr] lg:gap-[60px]">
         {/* LEFT: copy */}
         <div className="relative">
           <Eyebrow className="mb-5">
@@ -60,7 +60,7 @@ export function Hero() {
             plumbing-only pill was never built to touch.
           </p>
 
-          <div className="mt-9 flex flex-wrap items-center gap-3">
+          <div className="mt-7 flex flex-wrap items-center gap-3">
             <IntakeLink size="lg" data-cta-location="hero_primary">
               See if Eros is right for you
               <span aria-hidden>→</span>
@@ -76,7 +76,7 @@ export function Hero() {
           </div>
 
           {/* Stat row */}
-          <div className="mt-11 flex flex-wrap items-center gap-x-5 gap-y-4 md:gap-7">
+          <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-4 md:gap-7">
             {HERO_STATS.map((s, i) => (
               <div key={s.label} className="flex items-center gap-5 md:gap-7">
                 <Stat label={s.label} value={s.value} />

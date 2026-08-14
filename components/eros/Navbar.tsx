@@ -72,8 +72,12 @@ export function Navbar() {
           ))}
         </div>
 
-        <IntakeLink size="sm" data-cta-location="nav_primary">
-          See if Eros is right for you
+        <IntakeLink
+          size="sm"
+          data-cta-location="nav_primary"
+          className="whitespace-nowrap"
+        >
+          See if you qualify
           <span aria-hidden>→</span>
         </IntakeLink>
       </div>
