@@ -121,3 +121,40 @@ export const PASSION_TAGLINE = "Desire, on your terms.";
 export const PASSION_INTAKE_URL =
   process.env.NEXT_PUBLIC_RIMO_INTAKE_PASSION_URL ??
   "https://my.spicyrx.com/intake/pt-89gox1";
+
+/* =============================================================
+   EROS — men's premium line (third line under the SpicyRx brand).
+
+   Product: a compounded 3-in-1 SUBLINGUAL ELIXIR (2 mL under the tongue)
+   combining sildenafil (70 mg) + tadalafil (20 mg) for vascular support with
+   apomorphine (4 mg) for the brain's dopamine / desire pathway — the "body +
+   brain" step-up over a PDE5-only pill. Consumer brand kept as "Eros" (same
+   pattern as "Hot Sauce" / "Passion"). Themed lapis + cyan (see the
+   [data-theme="eros"] override in globals.css), headings set in Cormorant
+   Garamond. Design source of truth: mockups/eros-main.html (Cole-approved).
+
+   Status: reskin on branch `eros-launch`; NOT live. Go-live gated on (a) the
+   real Rimo Eros offering being provisioned + activated (channel ID TBD —
+   currently a PLACEHOLDER), (b) a LegitScript compliance pass, and (c) a real
+   Eros logo asset (temporarily reuses /brand/logo-mark.svg).
+   ============================================================= */
+
+export const EROS_PRODUCT_NAME = "Eros";
+export const EROS_TAGLINE = "The 3-in-1 elixir for body and brain.";
+
+/**
+ * Eros intake channel.
+ *
+ * Points at the main SpicyRx Rimo teleform (`sh-rhdbd4`) per Cole — Eros runs
+ * the identical intake with full attribution carry-over. Env-overridable
+ * (NEXT_PUBLIC_RIMO_INTAKE_EROS_URL) so a dedicated Eros channel can be swapped
+ * in later without a code change.
+ *
+ * Attribution: the Eros IntakeLink forwards the same PARAM_KEYS (gclid, fbclid,
+ * utm_*, sc_order, …) onto this URL via withAttribution() — click-IDs + UTMs
+ * ride to Rimo exactly as on the main teleform. Plain withAttribution only — no
+ * A/B arms and no utm_term (that param belongs to the live capture-timing test).
+ */
+export const EROS_INTAKE_URL =
+  process.env.NEXT_PUBLIC_RIMO_INTAKE_EROS_URL ??
+  "https://my.spicyrx.com/intake/sh-rhdbd4";

@@ -4,6 +4,7 @@ import {
   Manrope,
   Instrument_Serif,
   JetBrains_Mono,
+  Cormorant_Garamond,
 } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
@@ -42,6 +43,14 @@ const mono = JetBrains_Mono({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
 });
+// Classical display serif — used only across the /eros subtree, where
+// [data-theme="eros"] rebinds --font-display to --font-classical.
+const classical = Cormorant_Garamond({
+  variable: "--font-classical",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+});
 
 export const metadata: Metadata = {
   title: {
@@ -60,7 +69,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${display.variable} ${body.variable} ${editorial.variable} ${mono.variable}`}
+      className={`${display.variable} ${body.variable} ${editorial.variable} ${mono.variable} ${classical.variable}`}
     >
       <body>
         {/* Google tag (gtag.js) — Google Ads AW-18275822466 (SpicyRx serving

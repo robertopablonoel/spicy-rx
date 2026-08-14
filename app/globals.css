@@ -209,6 +209,83 @@
 }
 
 /* =============================================================
+   EROS — men's premium line theme override.
+
+   Same lazy-var mechanism as PASSION above: remap the accent vars on a scoped
+   [data-theme="eros"] wrapper (app/eros/layout.tsx) to pivot the whole subtree
+   from capsaicin heat to lapis blue + cyan without touching a component. Also
+   swaps --font-display to Cormorant Garamond (--font-classical, loaded in
+   app/layout.tsx) so Eros headings render in the classical serif, while
+   --font-editorial (Instrument Serif) stays the italic accent. The Hot Sauce
+   and Passion subtrees are untouched. Palette from mockups/eros-main.html.
+   ============================================================= */
+
+[data-theme="eros"] {
+  --hot:      #1034A6;                     /* lapis-deep */
+  --hot-deep: #0A2478;
+  --ember:    #38D0E8;                     /* cyan for editorial accents */
+  --serum:    #C9A24B;                     /* apothecary gold */
+  --grad-capsaicin: linear-gradient(135deg, #38D0E8 0%, #1034A6 100%);
+  --border-hot: rgba(16, 52, 166, 0.4);
+  --sh-heat:    0 0 0 1px rgba(16,52,166,0.35), 0 0 32px rgba(56,208,232,0.35);
+  --sh-heat-lg: 0 0 0 1px rgba(16,52,166,0.4),  0 0 80px rgba(56,208,232,0.5);
+
+  /* Cooler, brighter neutrals for readable contrast on the deep-blue field
+     (the warm Hot-Sauce greys read muddy here). */
+  --mist: #CBD3E2;                         /* body / subhead text */
+  --fog:  #99A4BE;                         /* dim mono labels (stat labels, meta) */
+
+  /* Headings in Cormorant Garamond across the Eros subtree; Instrument Serif
+     stays the italic accent (--font-editorial, left untouched). */
+  --font-display: var(--font-classical);
+}
+
+/* The shared primary button bakes a literal Hot-Sauce-orange hover glow
+   (rgba(255,59,31,…) in components/ui/button.tsx) that the theme vars can't
+   reach. Recolor it to cyan for the Eros subtree only; Hot Sauce/Passion
+   buttons are unaffected. */
+[data-theme="eros"] a.bg-hot:hover,
+[data-theme="eros"] button.bg-hot:hover {
+  box-shadow:
+    0 0 0 1px rgba(56, 208, 232, 0.45),
+    0 0 32px rgba(56, 208, 232, 0.5) !important;
+}
+
+/* =============================================================
+   EROS — cosmic dropper-bottle keyframes (ported from
+   mockups/eros-main.html, recolored lapis/cyan). Prefixed `eros-*`
+   to avoid colliding with the `sa-*` set above; the two share geometry
+   but differ in hue and are scoped to their own components.
+   ============================================================= */
+@keyframes eros-sway {
+  0%, 100% { transform: translate(0, 0) rotate(-3deg); }
+  50%      { transform: translate(4px, -8px) rotate(3deg); }
+}
+@keyframes eros-nebula     { to { transform: rotate(360deg); } }
+@keyframes eros-nebula-rev { to { transform: rotate(-360deg); } }
+@keyframes eros-breathe {
+  0%, 100% { opacity: 0.45; transform: scale(1); }
+  50%      { opacity: 0.9;  transform: scale(1.08); }
+}
+@keyframes eros-twinkle {
+  0%, 100% { opacity: 0.15; }
+  50%      { opacity: 1; }
+}
+@keyframes eros-waveA { from { transform: translateX(0); } to { transform: translateX(-80px); } }
+@keyframes eros-waveB { from { transform: translateX(0); } to { transform: translateX(80px); } }
+@keyframes eros-shimmer {
+  0%, 100% { opacity: 0.3; }
+  50%      { opacity: 0.9; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eros-anim,
+  .eros-anim * {
+    animation: none !important;
+  }
+}
+
+/* =============================================================
    Audience chip — slide-up entrance (CSS, so it renders reliably
    and never gets stuck invisible). Respects reduced motion.
    ============================================================= */
