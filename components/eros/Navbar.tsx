@@ -16,7 +16,7 @@ const LINKS = [
  * Eros marketing nav — same scroll-aware shell as the other lines, but the
  * wordmark carries an "EROS" line tag, links point at the /eros sections, and
  * the CTA enters the Eros intake channel. No cross-line link (out of scope).
- * Logo is temporary (/brand/logo-mark.svg) until the real Eros mark lands.
+ * Uses the blue Eros drop mark (/brand/logo-mark-eros.svg).
  */
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -44,7 +44,7 @@ export function Navbar() {
       <div className="mx-auto flex max-w-[var(--container-max)] items-center justify-between px-5 py-3.5 md:px-10 md:py-5">
         <Link href="/eros" className="flex items-center gap-2.5">
           <Image
-            src="/brand/logo-mark.svg"
+            src="/brand/logo-mark-eros.svg"
             alt=""
             width={26}
             height={31}

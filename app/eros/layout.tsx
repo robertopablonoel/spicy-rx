@@ -12,7 +12,7 @@ import { BRAND_NAME, EROS_PRODUCT_NAME, EROS_TAGLINE } from "@/lib/constants";
  * heat to lapis blue + cyan AND rebinds --font-display to Cormorant Garamond
  * (see the override block in globals.css). The Footer is shared brand-level
  * chrome, reused as-is; it inherits the theme because it renders inside the
- * wrapper. Logo is temporary (/brand/logo-mark.svg) until the real Eros mark.
+ * wrapper. Uses the blue Eros drop mark (/brand/logo-mark-eros.svg).
  *
  * Nests under the root app/layout.tsx, so fonts + Providers (PostHog +
  * attribution capture) apply with no extra wiring; analytics segments
@@ -36,7 +36,7 @@ export default function ErosLayout({
     <div data-theme="eros">
       <Navbar />
       <main>{children}</main>
-      <Footer logoSrc="/brand/logo-mark.svg" />
+      <Footer logoSrc="/brand/logo-mark-eros.svg" />
     </div>
   );
 }
