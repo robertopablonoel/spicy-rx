@@ -28,10 +28,10 @@ export function IngredientRow() {
               lineHeight: 1,
             }}
           >
-            It gets you hard.
+            It doesn&apos;t just get you hard.
             <br />
             <span className="font-[family-name:var(--font-editorial)] italic font-normal text-ember">
-              Eros makes you want to.
+              It makes you want to.
             </span>
           </h2>
         </div>

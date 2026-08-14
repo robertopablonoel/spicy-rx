@@ -251,6 +251,14 @@
     0 0 32px rgba(56, 208, 232, 0.5) !important;
 }
 
+/* The primary button's text is --void (near-black) — fine on the orange Hot
+   Sauce fill, but unreadable on the lapis Eros fill. Force light text in the
+   Eros subtree only. */
+[data-theme="eros"] a.bg-hot,
+[data-theme="eros"] button.bg-hot {
+  color: #F5F8FF !important;
+}
+
 /* =============================================================
    EROS — cosmic dropper-bottle keyframes (ported from
    mockups/eros-main.html, recolored lapis/cyan). Prefixed `eros-*`
