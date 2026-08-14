@@ -19,15 +19,17 @@
  * Kept directive-free so both the client CTA path (lib/form-ab.ts) and the
  * /consult route handler can import it.
  *
- * ⚠ FORCE-ROUTED TRAFFIC EXCLUDED FROM THIS TEST (2026-08-04):
- * Affiliate SPICYALIEN (Jamie Lynn) is force-routed straight to the qmv
- * teleform (qmv-07cx6s) via the middleware affiliate redirect — deliberately,
- * we are not testing teleforms on her traffic. She is NOT A/B-assigned: no
- * form_arm, no utm_term=arm_qmv stamp, no form_ab_assigned event. BUT her
- * orders still land in the qmv Rimo channel export alongside real arm-B
- * traffic, so when analyzing arm B you MUST filter her out by
- * `utm_source=spicyalien` (utm_medium=affiliate). Any affiliate with
- * excludeFromFormAbTest=true in lib/affiliates.ts is in this same bucket.
+ * 2026-08-13: test reconfigured to Quattro-early (arm A, spic → qmv-8dwnjy) vs
+ * Quattro-late (arm B, qmv → qmv-07cx6s) — a clean capture-timing test. Arm
+ * labels `spic`/`qmv` are retained (to keep sticky cookies valid) but now denote
+ * early/late, not sh/qmv.
+ *
+ * ⚠ SPICYALIEN (Jamie Lynn) is now INCLUDED in the test (Cole's call): routed
+ * through /consult so she gets normal 50/50 cohort assignment. Her rows carry a
+ * real form_arm + utm_term=arm_*, so she IS part of arm data now. She remains
+ * taggable by `utm_source=spicyalien` — segment her in/out as needed, but by
+ * default she counts. (Her pre-2026-08-13 rows were force-routed/untagged; use
+ * the switch date as the clean boundary.)
  */
 
 import { RIMO_INTAKE_URL, RIMO_INTAKE_URL_B } from "@/lib/constants";
