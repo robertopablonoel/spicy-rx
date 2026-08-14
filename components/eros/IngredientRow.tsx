@@ -31,15 +31,16 @@ export function IngredientRow() {
             It doesn&apos;t just get you hard.
             <br />
             <span className="font-[family-name:var(--font-editorial)] italic font-normal text-ember">
-              It makes you want to.
+              It brings the wanting back — in your brain.
             </span>
           </h2>
         </div>
-        <p className="max-w-[360px] text-sm leading-[1.6] text-mist">
-          Most pills work only on the body&apos;s blood flow. Eros pairs
-          sildenafil and tadalafil for the vascular response with apomorphine
-          for the brain&apos;s dopamine pathway — the half a PDE5-only pill was
-          never designed to touch.
+        <p className="max-w-[380px] text-sm leading-[1.6] text-mist">
+          Getting hard is the body&apos;s job — Eros covers it with sildenafil
+          and tadalafil. But actually <em className="not-italic font-semibold text-fg">wanting sex</em>{" "}
+          starts in your brain. Apomorphine works there, on the dopamine pathway
+          behind desire and drive — the half a PDE5-only pill was never built to
+          touch.
         </p>
       </div>
 
