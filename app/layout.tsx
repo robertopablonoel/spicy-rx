@@ -5,6 +5,7 @@ import {
   Instrument_Serif,
   JetBrains_Mono,
 } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { BRAND_NAME } from "@/lib/constants";
 import { Providers } from "./providers";
@@ -62,6 +63,25 @@ export default function RootLayout({
       className={`${display.variable} ${body.variable} ${editorial.variable} ${mono.variable}`}
     >
       <body>
+        {/* Google tag (gtag.js) — Google Ads AW-18275822466 (SpicyRx serving
+            account, 6885243915). Base tag so PMAX gets site signals + the
+            Conversion Linker persists gclid with cross-domain linking across
+            spicyrx.com <-> my.spicyrx.com. Ad personalization OFF (ED/health
+            compliance). Spec: gads-mcc-access (fleet #396/#397). */}
+        <Script
+          id="gtag-src"
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18275822466"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-18275822466', {
+  allow_ad_personalization_signals: false,
+  linker: { domains: ['spicyrx.com','my.spicyrx.com'], accept_incoming: true }
+});`}
+        </Script>
         <Providers>{children}</Providers>
       </body>
     </html>
