@@ -54,7 +54,7 @@ export function Navbar() {
             <span className="font-[family-name:var(--font-display)] text-[17px] font-bold tracking-[-0.02em] text-fg">
               {BRAND_NAME.toUpperCase()}
             </span>
-            <span className="font-[family-name:var(--font-mono)] text-[10px] font-medium uppercase tracking-[0.18em] text-ember">
+            <span className="hidden font-[family-name:var(--font-mono)] text-[10px] font-medium uppercase tracking-[0.18em] text-ember sm:inline">
               Eros
             </span>
           </span>
@@ -77,7 +77,7 @@ export function Navbar() {
           data-cta-location="nav_primary"
           className="whitespace-nowrap"
         >
-          See if you qualify
+          Get started
           <span aria-hidden>→</span>
         </IntakeLink>
       </div>
