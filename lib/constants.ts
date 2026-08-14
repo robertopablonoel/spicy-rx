@@ -143,18 +143,18 @@ export const EROS_PRODUCT_NAME = "Eros";
 export const EROS_TAGLINE = "The 3-in-1 elixir for body and brain.";
 
 /**
- * Eros intake channel — PLACEHOLDER.
+ * Eros intake channel.
  *
- * Eros is its own Rimo offering and needs its OWN sales-channel ID. The real
- * channel is not yet provisioned, so this defaults to a clearly-labelled
- * placeholder path — DO NOT ship to production until the real Eros channel ID
- * replaces it (either here or via the env var). Env-overridable so preview/prod
- * can point elsewhere without a code change.
+ * Points at the main SpicyRx Rimo teleform (`sh-rhdbd4`) per Cole — Eros runs
+ * the identical intake with full attribution carry-over. Env-overridable
+ * (NEXT_PUBLIC_RIMO_INTAKE_EROS_URL) so a dedicated Eros channel can be swapped
+ * in later without a code change.
  *
- * Attribution: the Eros IntakeLink forwards PARAM_KEYS onto this URL via
- * withAttribution() — click-IDs + UTMs ride to Rimo exactly as on the other
- * lines. Plain withAttribution only — no A/B arms, no utm_term.
+ * Attribution: the Eros IntakeLink forwards the same PARAM_KEYS (gclid, fbclid,
+ * utm_*, sc_order, …) onto this URL via withAttribution() — click-IDs + UTMs
+ * ride to Rimo exactly as on the main teleform. Plain withAttribution only — no
+ * A/B arms and no utm_term (that param belongs to the live capture-timing test).
  */
 export const EROS_INTAKE_URL =
   process.env.NEXT_PUBLIC_RIMO_INTAKE_EROS_URL ??
-  "https://my.spicyrx.com/intake/eros-PLACEHOLDER";
+  "https://my.spicyrx.com/intake/sh-rhdbd4";

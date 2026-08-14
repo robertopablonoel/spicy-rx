@@ -230,6 +230,11 @@
   --sh-heat:    0 0 0 1px rgba(16,52,166,0.35), 0 0 32px rgba(56,208,232,0.35);
   --sh-heat-lg: 0 0 0 1px rgba(16,52,166,0.4),  0 0 80px rgba(56,208,232,0.5);
 
+  /* Cooler, brighter neutrals for readable contrast on the deep-blue field
+     (the warm Hot-Sauce greys read muddy here). */
+  --mist: #CBD3E2;                         /* body / subhead text */
+  --fog:  #99A4BE;                         /* dim mono labels (stat labels, meta) */
+
   /* Headings in Cormorant Garamond across the Eros subtree; Instrument Serif
      stays the italic accent (--font-editorial, left untouched). */
   --font-display: var(--font-classical);
