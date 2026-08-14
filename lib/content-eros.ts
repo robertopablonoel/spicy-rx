@@ -42,7 +42,7 @@ export const HERO_STATS = [
 export const INGREDIENTS = [
   {
     key: "apomorphine",
-    mol: "/brand/molecule-apomorphine.svg",
+    mol: "/brand/molecule-apomorphine-eros.svg",
     slot: "The brain · dopamine",
     role: "The wanting, switched on",
     name: "Apomorphine · 4mg",
@@ -96,8 +96,12 @@ export const FAQS = [
     a: "A compounded, 3-in-1 sublingual liquid — sildenafil, tadalafil and apomorphine — prescribed online after a licensed-clinician review. Two milliliters under the tongue.",
   },
   {
+    q: "Why is it called Eros?",
+    a: "Eros was the Greek word for desire itself — the drive that pulls a man toward life, not just the act. That's the half most ED pills miss and the half Eros is built for: the wanting, not only the working. Body and brain, in one dose.",
+  },
+  {
     q: "How is it different from my current pill?",
-    a: "Most ED medicine works only on the body's blood flow. Eros adds apomorphine, which engages the brain's dopamine pathways tied to desire — the half a PDE5 pill was never designed to touch.",
+    a: "Most ED medicine works only on the body's blood flow. Eros adds apomorphine, which engages the brain's dopamine pathways tied to desire — the wanting a plumbing-only pill was never designed to touch.",
   },
   {
     q: "Is it FDA-approved?",

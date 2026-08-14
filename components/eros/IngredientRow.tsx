@@ -61,7 +61,7 @@ export function IngredientRow() {
               ) : (
                 <span
                   aria-hidden
-                  className="flex h-full items-center font-[family-name:var(--font-display)] text-[52px] font-bold leading-none text-ember/25 md:text-[64px]"
+                  className="flex h-full items-center font-[family-name:var(--font-display)] text-[52px] font-bold leading-none text-ember md:text-[64px]"
                 >
                   {ing.key === "sildenafil" ? "70mg" : "20mg"}
                 </span>

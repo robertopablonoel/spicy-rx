@@ -16,7 +16,7 @@ export function PullQuote() {
           The oldest idea in medicine, made modern
         </Eyebrow>
         <blockquote
-          className="mx-auto max-w-[20ch] font-[family-name:var(--font-editorial)] italic font-normal text-chalk"
+          className="mx-auto max-w-[22ch] font-[family-name:var(--font-editorial)] italic font-normal text-chalk"
           style={{
             fontSize: "clamp(40px, 5.6vw, 78px)",
             lineHeight: 1.04,
@@ -24,6 +24,15 @@ export function PullQuote() {
         >
           The old fire, in a single drop.
         </blockquote>
+        <p
+          className="mx-auto mt-7 max-w-[52ch] text-[15px] leading-[1.65] md:text-base"
+          style={{ color: "rgba(255,255,255,0.85)" }}
+        >
+          The &ldquo;fire&rdquo; is the plain, old thing every man knows: the
+          drive and the wanting — the pull you had in your prime, not just the
+          mechanics. Eros is built to reignite it, working on the body and the
+          brain at once, in a single sublingual dose.
+        </p>
       </div>
     </section>
   );

@@ -20,7 +20,7 @@ export function Hero() {
       style={{
         background:
           "radial-gradient(120% 80% at 72% 0%, #12245E 0%, #070B18 66%)",
-        minHeight: "92vh",
+        minHeight: "min(92vh, 820px)",
       }}
     >
       {/* Subtle lab-paper grid texture */}
@@ -32,7 +32,7 @@ export function Hero() {
         }}
       />
 
-      <div className="relative mx-auto grid min-h-[92vh] max-w-[var(--container-max)] grid-cols-1 items-center gap-9 px-5 pt-[110px] pb-14 md:px-10 md:pt-[140px] md:pb-20 lg:grid-cols-[1.2fr_1fr] lg:gap-[60px]">
+      <div className="relative mx-auto grid min-h-[min(92vh,820px)] max-w-[var(--container-max)] grid-cols-1 items-center gap-9 px-5 pt-[110px] pb-14 md:px-10 md:pt-[140px] md:pb-20 lg:grid-cols-[1.2fr_1fr] lg:gap-[60px]">
         {/* LEFT: copy */}
         <div className="relative">
           <Eyebrow className="mb-5">
