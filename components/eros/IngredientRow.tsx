@@ -31,7 +31,7 @@ export function IngredientRow() {
             It doesn&apos;t just get you hard.
             <br />
             <span className="font-[family-name:var(--font-editorial)] italic font-normal text-ember">
-              It brings the wanting back — in your brain.
+              It makes you want it.
             </span>
           </h2>
         </div>
