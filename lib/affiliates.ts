@@ -71,6 +71,7 @@ const RESERVED = new Set([
   "policies",
   "qr",
   "science",
+  "go", // destination-split entry (spicyrx.com/go/<surface>) — handled in middleware
 ]);
 
 /**
