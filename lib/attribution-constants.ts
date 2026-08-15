@@ -16,6 +16,7 @@ export const PARAM_KEYS = [
   "utm_content",
   "utm_term",
   "sc_order", // Spicy Cubes checkout_token — forwarded onto the Rimo intake URL for cross-brand order attribution
+  "sc_dest", // Destination-split A/B arm (experiment spicyrx-destination-2026-08): "control" = spicyrx.com root, "eros" = /eros. MINTED SERVER-SIDE by the /go/<surface> redirect middleware (lib/destination-split.ts), written into the attribution cookie AND onto the landing URL, then forwarded onto the Rimo intake URL so a purchase joins to its destination arm at the order level. The strip-proof PRIMARY marker is the landing PATH (/ vs /eros); sc_dest is the order-level convenience join. One-param-one-experiment: does NOT touch utm_content (surface + IG halo arm) or utm_term (form A/B arm).
 ] as const;
 
 export const STORAGE_KEY = "spicyrx_attribution";
