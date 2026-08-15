@@ -69,5 +69,46 @@ Cole picked the **controlled alpha turntable, canvas-scrubbed**. Two ways to sou
 ### Correction accepted (from @spicyrx-brand)
 Trench OS **image-to-video cannot feed the turntable path even if it holds the label** — it still can't output alpha, and a glowing translucent vial can't be keyed after the fact. Struck from the plan: the alpha frames come from a controlled render (7a or the validated 7b), never from AI. Trench OS video = **ads only** (and possibly an ambient bg layer).
 
+## 8. UPDATE (2026-08-15) — native-alpha AI generation exists; 3-way re-scope
+@spicyrx-brand corrected a constraint I'd scoped on: **native-alpha AI video generation now exists** (Wan-Alpha CVPR'26 / Adobe Firefly transparent video / Mootion 4K alpha). Accepted. The distinction that matters:
+- **Extraction/matting** an existing clip of glass → still bad (my "no clean matte for a glowing translucent vial" call stands).
+- **Native generation** → the model emits alpha directly, no matting step. This removes my alpha/compositing objection to AI, and its output (transparent PNG frames) matches this spec's shape (36 frames, 920×1120) — and being *frames*, it sidesteps the HEVC/VP9 dual-source + iOS-multi-WebM-crash delivery problem too.
+
+**What native-alpha does NOT change (still gating):**
+1. **Label identity drift** — the EROS cartouche will still warp/re-letter across AI frames. Alpha doesn't touch this. For a label-forward hero, likely disqualifying on its own.
+2. **Temporal coherence of the alpha itself** — a matte that breathes/flickers at the glow-bloom edge across 36 frames is worse than none. Unproven on glowing translucent subjects.
+3. **Art-direction control** — AI won't precisely match our exact vial silhouette / lapis+cyan palette / ornate label. The SVG route IS our exact asset.
+4. **Payload** — AI PNG frames ≈ MBs; the SVG route ≈ 10KB.
+
+**The real fork is AESTHETIC, not technical:**
+- **Stylized-neon vial (current /eros aesthetic)** → **Option 1 (headless-Chrome SVG→alpha, §7b)** wins on cost AND cohesion — it's literally our shipped vial, free, validated, perfect label, deterministic coherence. **Recommended.**
+- **Photoreal vial** (real glass/caustics/liquid the flat SVG can't do) → needs AI-gen or 3D. Here **Option 2 (native-alpha AI) beats Option 3 (3D)** on cost — *if* the empirical tests pass. But going photoreal for the hero vial risks clashing with the neon-cosmic aesthetic used everywhere else on the page.
+
+**Cheapest-that-works ranking:** 1) headless SVG frames (validated, free, cohesive) → 2) native-alpha AI (only if we want photoreal; run the cheap test first) → 3) commissioned 3D (most expensive; only for literal rotation, low value on a symmetric dropper). **Do NOT hire a 3D artist yet.**
+
+**Empirical test for Option 2 (brand agent to run before any spend):** generate a native-alpha clip of a glowing translucent bottle w/ a legible text label, gentle tilt; PASS = (a) label stays legible + non-drifting across ≥36 frames, (b) alpha temporally coherent at the glow bloom (no breathing/flicker), (c) exportable as PNG frames / ProRes4444 / VP9 (NOT MP4 — strips alpha), (d) Trench OS actually exposes alpha output. Fail on (a) [probable] → Option 1.
+**Hybrid fallback** if they want AI photorealism but the label fails: generate the vial label-less via native-alpha, composite our crisp SVG label on top per-frame (track the label plane). Powerful but fragile — only if photoreal is a hard requirement.
+
+## 9. Photoreal cascade — scoped consequence (Cole chose PHOTOREAL, 2026-08-15)
+**Does a photoreal hero vial force the rest of /eros photoreal? No — the cascade is bounded, not total.**
+
+**Hosts a photoreal hero fine (no change needed):**
+- Typography (Cormorant/Instrument), hairline-grid cards, science page, footer — an **editorial/graphic register**, not competing product-illustration. Luxury/product pages routinely pair a photoreal hero "cover" with clean typographic sections. Survives.
+- Ambient nebula / stars / haze (CSS) — reads as an atmospheric **studio backdrop**; photoreal product shots live on dramatic lit fields. **Keep them — they're the BRIDGE** that embeds the vial in our world. Survives.
+
+**The ONE real clash point:**
+- The stylized cyan **line-art apomorphine molecule** in the body/brain section — the other place we depict the product/science *illustratively*, so it directly contrasts a photoreal vial. This is the element that "suddenly looks wrong." Fix = a richer/dimensional treatment OR reduce its adjacency. **Local harmonization, not a page rebuild.**
+
+**The real risk is the VIAL, not the sections:** if it's generated as a neutral studio product shot (white-lit, photographic-neutral) and dropped in, the whole page below reads flat/mismatched → *that* is what tempts a full cascade. Kill it at the source.
+
+**Middle treatment — photoreal vial on a stylized field, credibly:**
+1. Generate/grade the vial to OUR world — lapis (#1034A6) key + cyan (#38D0E8) rim, deep-blue liquid, on/for a dark cosmic field, **NOT neutral studio white**. It must look lit by our scene.
+2. Composite it INTO the existing ambient layers — nebula behind, stars/particles in front — so it's **embedded, not floating**.
+3. Keep a subtle cyan rim/edge-glow echoing the neon language — bridges photoreal↔stylized, holds the brand signature.
+4. Harmonize the single molecule illustration; leave everything else.
+→ **Net consequence: ~1 element + art-direction on the generation, NOT a photoreal rebuild of the page.**
+
+**Art-direction for the test generation (so the test validates FIT, not just alpha/label):** cool lapis key + cyan rim, deep-blue liquid, gold-accented label plate, transparent bg intended to composite over a **dark cosmic haze** — not studio white. A neutral studio vial would *pass* alpha/label but *fail* the page.
+
 ## Offer
-I can build **7b end-to-end** — the 36-frame alpha sequence off the SVG + the canvas scroll-scrub of the tilt→drop beat — as a working prototype on `/eros`, so Cole feels it before anyone commits a 3D budget. Say go.
+I can build **7b/Option 1 end-to-end** — the 36-frame alpha sequence off the SVG + the canvas scroll-scrub of the tilt→drop beat — as a working prototype on `/eros`, so Cole feels it before anyone commits a 3D budget. Say go.
