@@ -19,7 +19,7 @@ export function Hero() {
       className="relative isolate overflow-hidden"
       style={{
         background:
-          "radial-gradient(120% 80% at 72% 0%, #12245E 0%, #070B18 66%)",
+          "radial-gradient(120% 88% at 72% 0%, #12245E 0%, #070B18 46%, var(--bg) 84%)",
         minHeight: "min(92vh, 820px)",
       }}
     >
