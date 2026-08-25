@@ -87,17 +87,25 @@ export function mintResumeToken(email: string, returnTo?: string): string {
  * Decrypt and validate a token. Returns null for anything malformed, tampered
  * with, or past MAX_AGE_DAYS — the caller treats every null identically (bounce
  * to the marketing site) so this never leaks *why* a token failed.
+ *
+ * THROWS (rather than returning null) when SPICYRX_LINK_SECRET is missing or
+ * too short. That is a deployment fault, not a bad token, and conflating the two
+ * is actively misleading: an unset secret would make every single link report
+ * "bad token" and send you hunting for a crypto bug that isn't there. The route
+ * catches this separately and reports it as `not_configured`.
  */
 export function readResumeToken(
   token: string,
 ): { email: string; returnTo: string | null } | null {
+  const key = encryptionKey();
+
   try {
     const raw = Buffer.from(token, "base64url");
     if (raw.length <= IV_BYTES + TAG_BYTES) return null;
 
     const decipher = crypto.createDecipheriv(
       ALGORITHM,
-      encryptionKey(),
+      key,
       raw.subarray(0, IV_BYTES),
     );
     decipher.setAuthTag(raw.subarray(IV_BYTES, IV_BYTES + TAG_BYTES));

@@ -40,13 +40,22 @@ export async function GET(
 ) {
   const { token } = await params;
 
-  const parsed = safeRead(token);
+  // Distinguish "this token is bad" from "this deployment is misconfigured".
+  // Both bounce the visitor identically, but they mean opposite things to us:
+  // bad_token is one person's stale link, secret_missing is EVERY link broken.
+  let parsed: ReturnType<typeof readResumeToken>;
+  try {
+    parsed = readResumeToken(token);
+  } catch (error) {
+    console.error("[/r] SPICYRX_LINK_SECRET missing or too short", error);
+    return bounce("secret_missing");
+  }
   if (!parsed) return bounce("bad_token");
 
   const apiKey = process.env.RIMO_SSO_KEY;
   if (!apiKey) {
     console.error("[/r] RIMO_SSO_KEY is not configured");
-    return bounce("not_configured");
+    return bounce("key_missing");
   }
 
   let destination: string;
@@ -104,16 +113,6 @@ export async function GET(
   redirect.headers.set("Cache-Control", "no-store, no-cache, must-revalidate, private");
   redirect.headers.set("Referrer-Policy", "no-referrer");
   return redirect;
-}
-
-function safeRead(token: string) {
-  try {
-    return readResumeToken(token);
-  } catch (error) {
-    // thrown only when SPICYRX_LINK_SECRET is missing/short — a config fault, not a bad token
-    console.error("[/r] token read failed", error);
-    return null;
-  }
 }
 
 function bounce(reason: string) {
