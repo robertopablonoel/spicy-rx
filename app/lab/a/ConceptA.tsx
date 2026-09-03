@@ -137,15 +137,31 @@ export function ConceptA() {
           </>
         )}
 
-        {/* Q1 — routes on the PURCHASE, not on identity. */}
+        {/* Q1 — routes on the PURCHASE, not on identity. Carries the opening
+            hook: exclusivity, effort promise, payoff. Never let screen one be
+            a bare question — they need a reason to start tapping. */}
         {step === 0 && (
           <>
             <h1
-              className="mt-4 font-[family-name:var(--font-display)] font-semibold text-[var(--fg)]"
-              style={{ fontSize: "clamp(28px,7vw,38px)", lineHeight: 1.1 }}
+              className="mt-5 font-[family-name:var(--font-display)] font-semibold text-[var(--fg)]"
+              style={{ fontSize: "clamp(32px,8vw,44px)", lineHeight: 1.04 }}
+            >
+              The card in your box opens something{" "}
+              <span className="font-[family-name:var(--font-editorial)] italic font-normal text-[var(--ember)]">
+                the website doesn&apos;t.
+              </span>
+            </h1>
+
+            <p className="mt-5 text-[16px] leading-[1.55] text-[var(--fg-muted)]">
+              Three taps. At the end, your first month for $1.
+            </p>
+
+            <h2
+              className="mt-10 font-[family-name:var(--font-display)] font-semibold text-[var(--fg)]"
+              style={{ fontSize: "clamp(22px,5.4vw,28px)", lineHeight: 1.15 }}
             >
               Who are we finding this for?
-            </h1>
+            </h2>
             <div className="mt-8 space-y-3">
               <Option
                 label="For a man"
@@ -169,10 +185,9 @@ export function ConceptA() {
                 }}
               />
             </div>
-            <p className="mt-8 text-xs leading-relaxed text-[var(--fg-dim)]">
-              Two different prescriptions, reviewed by two different clinicians.
-              This just points you at the right one — plenty of people here are
-              shopping for someone else.
+            <p className="mt-7 text-xs leading-relaxed text-[var(--fg-dim)]">
+              Two prescriptions, built for two different bodies. Point us the
+              right way — plenty of people here are shopping for someone else.
             </p>
           </>
         )}
@@ -247,9 +262,9 @@ export function ConceptA() {
                   <span className="text-[var(--ember)]">switched on.</span>
                 </h1>
                 <p className="mt-6 text-[16px] leading-[1.6] text-[var(--fg-muted)]">
-                  Passion is PT-141 (bremelanotide) — prescribed after a
-                  clinician review, and taken on demand rather than as a daily
-                  pill.
+                  Taken when the night is actually happening — not a daily pill
+                  you wait six weeks to feel. PT-141 is the only FDA-approved
+                  on-demand treatment for low desire in women.
                 </p>
               </>
             ) : (
@@ -313,7 +328,7 @@ export function ConceptA() {
             {line === "both" && (
               <p className="mt-6 text-center text-sm">
                 <span className="text-[var(--fg-dim)] underline underline-offset-4">
-                  Start the women&apos;s visit instead →
+                  She can start hers here →
                 </span>
               </p>
             )}
