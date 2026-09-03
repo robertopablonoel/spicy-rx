@@ -261,8 +261,8 @@ export function ConceptA() {
                     lineHeight: 1.05,
                   }}
                 >
-                  Firm, and ready.{" "}
-                  <span className="text-[var(--ember)]">And wanting it.</span>
+                  The half your pill{" "}
+                  <span className="text-[var(--ember)]">never touched.</span>
                 </h1>
                 {speed && <Teach beat={AFTER_SPEED[speed]} />}
               </>
@@ -292,8 +292,9 @@ export function ConceptA() {
                   Your trial month
                 </div>
                 <p className="mt-5 text-sm leading-relaxed text-[var(--fg-muted)]">
-                  The card in your box unlocked this: a full month for $1.
-                  Cancel anytime. Not on the site, not in an email.
+                  The card in your box unlocked this. A full month for $1 —
+                  not on the site, not in an email, not for sale anywhere else.
+                  Cancel whenever you want.
                 </p>
               </div>
             )}
