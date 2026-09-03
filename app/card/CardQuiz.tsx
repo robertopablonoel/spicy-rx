@@ -17,12 +17,16 @@ import {
 /**
  * The insert-card lander — where a scanned QR lands.
  *
- * PROBLEM-AWARE FIRST. The first three questions never mention a medication:
- * when it changed, how it shows up, what they've been told about it. Routing
- * comes fourth, once the person has been seen and validated. The old version
- * opened by asking which product they wanted, which assumed a solution
- * awareness this audience does not have — they have a private problem, not a
- * shortlist.
+ * PROBLEM FIRST, THEN SPLIT PATHS. Q1 is the problem and nothing else — no
+ * product, no molecule — because the earlier version opened by asking which
+ * product you wanted, which only parses for someone already shopping. Routing
+ * happens at Q2, and from there the two lines own everything: their own Q3,
+ * their own Q4, their own beats, ledger and fair balance.
+ *
+ * The split is not a preference, it is a correctness requirement. The
+ * dismissal statistics are from a study of 530 WOMEN; showing them to a man
+ * would be the wrong audience, and the fair balance differs by molecule
+ * entirely (nitrates for the PDE5 stack, nausea for the peptide).
  *
  * THE EXPERIMENT (insert-exit-2026-09) is what happens AFTER the reveal:
  * arm `lander` hands off to the product page, arm `direct` goes straight to
@@ -130,9 +134,9 @@ function Back({ onClick }: { onClick: () => void }) {
 export function CardQuiz() {
   const [step, setStep] = useState(0);
   const [a1, setA1] = useState<string | null>(null);
-  const [a2, setA2] = useState<string | null>(null);
-  const [a3, setA3] = useState<string | null>(null);
   const [line, setLine] = useState<Line | null>(null);
+  const [a3, setA3] = useState<string | null>(null);
+  const [a4, setA4] = useState<string | null>(null);
 
   const arm = useExitArm();
   const isPassion = line === "passion";
@@ -166,7 +170,7 @@ export function CardQuiz() {
       trackEvent("card_quiz_completed", {
         experiment_id: EXIT_EXPERIMENT_ID,
         arm,
-        line: value,
+        line,
       });
     }
   }
@@ -221,7 +225,7 @@ export function CardQuiz() {
           </>
         )}
 
-        {/* Q2 — how it shows up. */}
+        {/* Q2 — routing. Everything after this belongs to the chosen line. */}
         {step === 1 && (
           <>
             {a1 && <Teach beat={OPENING.afterQ1[a1]} />}
@@ -232,29 +236,32 @@ export function CardQuiz() {
                   key={id}
                   label={label}
                   onClick={() => {
-                    setA2(id);
-                    answer("q2_shows_up", id, 2);
+                    setLine(id as Line);
+                    answer("q2_who", id, 2);
                   }}
                 />
               ))}
             </div>
+            <p className="mt-7 text-xs leading-relaxed text-[var(--fg-dim)]">
+              {OPENING.routeNote}
+            </p>
             <Back onClick={() => setStep(0)} />
           </>
         )}
 
-        {/* Q3 — what they've been told. Sets up the dismissal data. */}
+        {/* Q3 — LINE-SPECIFIC. How the problem shows up, in that line's terms. */}
         {step === 2 && (
           <>
-            {a2 && <Teach beat={OPENING.afterQ2[a2]} />}
-            <Prompt text={OPENING.q3.prompt} small />
+            {line && <Teach beat={copy.afterRoute} />}
+            <Prompt text={copy.q3.prompt} />
             <div className="mt-7 space-y-3">
-              {OPENING.q3.options.map(([id, label]) => (
+              {copy.q3.options.map(([id, label]) => (
                 <Option
                   key={id}
                   label={label}
                   onClick={() => {
                     setA3(id);
-                    answer("q3_explanation", id, 3);
+                    answer("q3_shows_up", id, 3);
                   }}
                 />
               ))}
@@ -263,26 +270,23 @@ export function CardQuiz() {
           </>
         )}
 
-        {/* Q4 — routing, deliberately last. */}
+        {/* Q4 — LINE-SPECIFIC. */}
         {step === 3 && (
           <>
-            {a3 && <Teach beat={OPENING.afterQ3[a3]} />}
-            <Prompt text={OPENING.q4.prompt} small />
+            {a3 && copy.afterQ3[a3] && <Teach beat={copy.afterQ3[a3]} />}
+            <Prompt text={copy.q4.prompt} small />
             <div className="mt-7 space-y-3">
-              {OPENING.q4.options.map(([id, label]) => (
+              {copy.q4.options.map(([id, label]) => (
                 <Option
                   key={id}
                   label={label}
                   onClick={() => {
-                    setLine(id as Line);
-                    answer("q4_who", id, LAST_STEP);
+                    setA4(id);
+                    answer("q4_detail", id, LAST_STEP);
                   }}
                 />
               ))}
             </div>
-            <p className="mt-7 text-xs leading-relaxed text-[var(--fg-dim)]">
-              {OPENING.routeNote}
-            </p>
             <Back onClick={() => setStep(2)} />
           </>
         )}
@@ -290,7 +294,7 @@ export function CardQuiz() {
         {/* Reveal — the first screen that sells a product. */}
         {step === LAST_STEP && (
           <>
-            {line && <Teach beat={copy.afterRoute} />}
+            {a4 && copy.afterQ4[a4] && <Teach beat={copy.afterQ4[a4]} />}
 
             <h1
               className="mt-8 font-[family-name:var(--font-display)] font-semibold text-[var(--fg)]"
