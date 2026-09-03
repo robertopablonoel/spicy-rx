@@ -9,6 +9,12 @@ import {
   insertQrTarget,
   isInsertQrCode,
 } from "@/lib/insert-qr";
+import {
+  EXIT_COOKIE_MAX_AGE,
+  EXIT_COOKIE_NAME,
+  EXIT_PARAM,
+  resolveExitArm,
+} from "@/lib/insert-exit-split";
 
 /**
  * Package-insert QR redirect — `/qr/pc` and `/qr/bc`.
@@ -32,7 +38,27 @@ export async function GET(
   const { code } = await params;
 
   const target = insertQrTarget(code);
+
+  // Assign the lander EXIT arm (experiment insert-exit-2026-09) here, on the
+  // scan itself: server-side so it can't be reshuffled client-side, and sticky
+  // by cookie so a re-scan keeps the same arm. Stamped onto the landing URL as
+  // well as the cookie — the quiz reads it to decide where its CTA points, and
+  // it rides on to Rimo so a lead joins back to its arm.
+  const { arm: exitArm, assigned: exitAssigned } = resolveExitArm(
+    request.cookies.get(EXIT_COOKIE_NAME)?.value,
+  );
+  target.searchParams.set(EXIT_PARAM, exitArm);
+
   const response = NextResponse.redirect(target, 307);
+
+  if (exitAssigned) {
+    response.headers.append(
+      "Set-Cookie",
+      `${EXIT_COOKIE_NAME}=${exitArm}` +
+        `; Path=/; Max-Age=${EXIT_COOKIE_MAX_AGE}; SameSite=Lax` +
+        cookieDomainAttr(request),
+    );
+  }
 
   // Write the attribution cookie server-side, keyed on the path — the
   // strip-proof belt to the URL param's suspenders. Read the prior cookie so
