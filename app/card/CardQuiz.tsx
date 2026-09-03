@@ -179,8 +179,15 @@ export function CardQuiz() {
               </span>
             </h1>
 
+            {/* The line is unknown at screen one, so this promise has to hold
+                for BOTH paths. It only names the $1 once every path can honour
+                it — until Passion has a coupon, it stays specific about
+                exclusivity rather than about price. Flips automatically the
+                moment NEXT_PUBLIC_PASSION_COUPON is set. */}
             <p className="mt-5 text-[16px] leading-[1.55] text-[var(--fg-muted)]">
-              Three taps. At the end, your first month for $1.
+              {PASSION_OFFER_READY
+                ? "Three taps. At the end, your first month for $1."
+                : "Three taps. At the end, something that isn't on the site."}
             </p>
 
             <h2
