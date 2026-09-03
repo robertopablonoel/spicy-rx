@@ -47,17 +47,23 @@ export const EXIT_PARAM = "sc_exit";
 export type ExitLine = "eros" | "passion";
 
 /**
- * Passion's first-month coupon. Empty until the code exists in Rimo — and the
- * lander checks PASSION_OFFER_READY before promising a price, so an unset
- * coupon degrades to "pricing is shown inside your visit" instead of promising
- * $1 and then showing full pack pricing at checkout. That exact mismatch is
- * what lost a buyer who had completed the entire medical form on the
- * post-purchase quiz, before coupon auto-apply was added.
+ * Passion's first-month coupon, applied on the intake URL exactly the way
+ * `eros1` is — Rimo auto-applies it, so the price promised on the lander is
+ * the price seen at checkout. That mismatch is what lost a buyer who had
+ * completed the entire medical form on the post-purchase quiz, before coupon
+ * auto-apply was added there.
  *
- * To go live: set NEXT_PUBLIC_PASSION_COUPON to the code, or
- * NEXT_PUBLIC_EXIT_DIRECT_PASSION_URL to a full pre-couponed intake URL.
+ * Hardcoded rather than env-driven, matching how eros1 is baked in below: a
+ * NEXT_PUBLIC_* value is inlined at build time, so an env var would still
+ * require a redeploy to take effect and buys nothing over a constant. The env
+ * override remains for a temporary swap without a code change.
+ *
+ * PASSION_OFFER_READY gates the $1 promise on the women's path; with a coupon
+ * present it is now true, which turns on the $1 box, the "$1" line on screen
+ * one, and the couponed handoff together.
  */
-export const PASSION_COUPON = process.env.NEXT_PUBLIC_PASSION_COUPON ?? "";
+export const PASSION_COUPON =
+  process.env.NEXT_PUBLIC_PASSION_COUPON ?? "passion1";
 export const PASSION_OFFER_READY =
   PASSION_COUPON.length > 0 ||
   Boolean(process.env.NEXT_PUBLIC_EXIT_DIRECT_PASSION_URL);
