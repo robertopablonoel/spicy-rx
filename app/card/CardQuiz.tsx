@@ -3,14 +3,7 @@
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { trackEvent } from "@/lib/analytics";
 import { getStoredAttribution, withAttribution } from "@/lib/attribution";
-import {
-  AFTER_ROUTE,
-  AFTER_SPEED,
-  AFTER_STRENGTH,
-  COMBINATION,
-  LEDGER,
-  type Beat,
-} from "@/lib/content-card";
+import { LINE_COPY, type Beat } from "@/lib/content-card";
 import {
   EXIT_EXPERIMENT_ID,
   EXIT_PARAM,
@@ -42,25 +35,6 @@ type Line = "eros" | "passion" | "both";
 /** Fast-to-slow. A linear bar measurably does nothing; a slow-starting one is
  *  worse than showing none at all. */
 const PROGRESS = [0, 55, 80, 100];
-
-const Q2 = {
-  prompt:
-    "When you take something for a night like this — how much do you want to feel it?",
-  options: [
-    ["low", "A little goes a long way"],
-    ["mid", "Noticeable — no guessing"],
-    ["max", "As strong as they make it"],
-  ],
-} as const;
-
-const Q3 = {
-  prompt: "And when the moment hits — how do you want it to work?",
-  options: [
-    ["fast", "Fast — minutes, not an hour"],
-    ["long", "Steady — a longer window"],
-    ["both", "Both, honestly"],
-  ],
-} as const;
 
 /**
  * Read the arm assigned server-side on the /qr redirect: the URL param first
@@ -153,6 +127,12 @@ export function CardQuiz() {
   const arm = useExitArm();
   const isPassion = line === "passion";
 
+  // Everything the reveal renders comes from ONE product object. Before this
+  // was split, the women's path inherited Eros's beats and fair balance — she
+  // got told about 94mg of sildenafil/tadalafil/apomorphine and warned about
+  // nitrates. Selecting the whole copy set at once makes that impossible.
+  const copy = LINE_COPY[line ?? "eros"];
+
   const href = useHandoffHref();
 
   useEffect(() => {
@@ -241,21 +221,21 @@ export function CardQuiz() {
 
         {step === 1 && (
           <>
-            {line && <Teach beat={AFTER_ROUTE[line]} />}
+            {line && <Teach beat={copy.afterRoute} />}
             <h1
               className="mt-7 font-[family-name:var(--font-display)] font-semibold text-[var(--fg)]"
               style={{ fontSize: "clamp(24px,6vw,32px)", lineHeight: 1.15 }}
             >
-              {Q2.prompt}
+              {copy.q2.prompt}
             </h1>
             <div className="mt-7 space-y-3">
-              {Q2.options.map(([id, label]) => (
+              {copy.q2.options.map(([id, label]) => (
                 <Option
                   key={id}
                   label={label}
                   onClick={() => {
                     setStrength(id);
-                    answer("strength", id, 2);
+                    answer("q2", id, 2);
                   }}
                 />
               ))}
@@ -271,21 +251,21 @@ export function CardQuiz() {
 
         {step === 2 && (
           <>
-            {strength && <Teach beat={AFTER_STRENGTH[strength]} />}
+            {strength && <Teach beat={copy.afterQ2[strength]} />}
             <h1
               className="mt-7 font-[family-name:var(--font-display)] font-semibold text-[var(--fg)]"
               style={{ fontSize: "clamp(24px,6vw,32px)", lineHeight: 1.15 }}
             >
-              {Q3.prompt}
+              {copy.q3.prompt}
             </h1>
             <div className="mt-7 space-y-3">
-              {Q3.options.map(([id, label]) => (
+              {copy.q3.options.map(([id, label]) => (
                 <Option
                   key={id}
                   label={label}
                   onClick={() => {
                     setSpeed(id);
-                    answer("speed", id, 3);
+                    answer("q3", id, 3);
                   }}
                 />
               ))}
@@ -305,34 +285,17 @@ export function CardQuiz() {
               Card holders only · chosen for you
             </p>
 
-            {isPassion ? (
-              <>
-                <h1
-                  className="mt-4 font-[family-name:var(--font-display)] font-semibold text-[var(--fg)]"
-                  style={{ fontSize: "clamp(34px,8.5vw,46px)", lineHeight: 1.05 }}
-                >
-                  The wanting,{" "}
-                  <span className="text-[var(--ember)]">switched on.</span>
-                </h1>
-                <p className="mt-6 text-[16px] leading-[1.6] text-[var(--fg-muted)]">
-                  Taken when the night is actually happening — not a daily pill
-                  you wait six weeks to feel. PT-141 is the only FDA-approved
-                  on-demand treatment for low desire in women.
-                </p>
-              </>
-            ) : (
-              <>
-                <h1
-                  className="mt-4 font-[family-name:var(--font-display)] font-semibold text-[var(--fg)]"
-                  style={{ fontSize: "clamp(34px,8.5vw,46px)", lineHeight: 1.05 }}
-                >
-                  Hard is the easy part.{" "}
-                  <span className="text-[var(--ember)]">
-                    The wanting is the rest.
-                  </span>
-                </h1>
-                {speed && <Teach beat={AFTER_SPEED[speed]} />}
-              </>
+            <h1
+              className="mt-4 font-[family-name:var(--font-display)] font-semibold text-[var(--fg)]"
+              style={{ fontSize: "clamp(34px,8.5vw,46px)", lineHeight: 1.05 }}
+            >
+              {copy.headline.lead}{" "}
+              <span className="text-[var(--ember)]">
+                {copy.headline.accent}
+              </span>
+            </h1>
+            {speed && copy.afterQ3[speed] && (
+              <Teach beat={copy.afterQ3[speed]} />
             )}
 
             {isPassion ? (
@@ -380,13 +343,12 @@ export function CardQuiz() {
               About 5 minutes, private. No clinic, no waiting room.
             </p>
 
-            {!isPassion && (
-              <div className="mt-14 border-t border-[var(--border)] pt-10">
-                <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[var(--tr-eyebrow)] text-[var(--fg-dim)]">
-                  94mg of actives · nothing hidden
-                </p>
+            <div className="mt-14 border-t border-[var(--border)] pt-10">
+              <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[var(--tr-eyebrow)] text-[var(--fg-dim)]">
+                {copy.ledgerEyebrow}
+              </p>
                 <div className="mt-6 space-y-5">
-                  {LEDGER.map((ing) => (
+                  {copy.ledger.map((ing) => (
                     <div
                       key={ing.name}
                       className="rounded-xl border border-[var(--border)] bg-[var(--bg-elev)] p-5"
@@ -408,20 +370,19 @@ export function CardQuiz() {
                     </div>
                   ))}
                 </div>
+              {copy.closer && (
                 <div className="mt-8">
-                  <Teach beat={COMBINATION} />
+                  <Teach beat={copy.closer} />
                 </div>
-              </div>
-            )}
+              )}
+            </div>
 
             <div className="mt-12 space-y-3 border-t border-[var(--border)] pt-6">
               <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[var(--tr-eyebrow)] text-[var(--fg-dim)]">
                 US-licensed clinicians · Licensed pharmacy · LegitScript-certified
               </p>
               <p className="text-[11px] leading-[1.5] text-[var(--fg-faint)]">
-                Rx only. A US-licensed clinician reviews your health answers and,
-                if appropriate, issues a prescription. Not for use with nitrates.
-                Side effects may include headache, flushing, and dyspepsia.
+                {copy.disclaimer}
               </p>
             </div>
           </>

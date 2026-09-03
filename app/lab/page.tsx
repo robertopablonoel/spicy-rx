@@ -7,7 +7,9 @@ import Link from "next/link";
  * behind it, and says so, rather than linking into a 404.
  */
 type Concept = {
+  /** Full href — concept A now points out of /lab to the shipped page. */
   slug: string;
+  href: string;
   name: string;
   premise: string;
   status: "live" | "planned";
@@ -15,14 +17,16 @@ type Concept = {
 
 const CONCEPTS: Concept[] = [
   {
-    slug: "a",
-    name: "A · Quiz-router",
+    slug: "card",
+    href: "/card",
+    name: "A · Quiz-router — SHIPPED",
     premise:
-      "Three questions. Q1 routes to the right line, Q2/Q3 are marketing questions that set up the offer. The honest version of the quiz thesis — highest friction, most personalization.",
+      "Picked and built. Now lives at /card as the real insert-card lander, with the exit-split experiment wired in. This entry links there; the concept copy is gone so the two can't drift.",
     status: "live",
   },
   {
     slug: "b",
+    href: "/lab/b",
     name: "B · The invitation",
     premise:
       "No quiz. The card is a private invitation: offer in the first screen, one tap to the clinician review, education below the fold for those who research first.",
@@ -30,6 +34,7 @@ const CONCEPTS: Concept[] = [
   },
   {
     slug: "c",
+    href: "/lab/c",
     name: "C · Register-detect",
     premise:
       "One question — not to route, but to detect which register to sell in. The whole page then rewrites to match. Built on the 0/15 finding from the post-purchase quiz.",
@@ -89,7 +94,7 @@ export default function LabIndexPage() {
           return c.status === "live" ? (
             <Link
               key={c.slug}
-              href={`/lab/${c.slug}`}
+              href={c.href}
               className={`${className} hover:border-[var(--fg-dim)]`}
             >
               {inner}
