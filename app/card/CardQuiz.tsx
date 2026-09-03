@@ -209,6 +209,10 @@ export function CardQuiz() {
                 {OPENING.hook.accent}
               </span>
             </h1>
+            <p className="mt-5 text-[15px] leading-[1.55] text-[var(--fg-muted)]">
+              {OPENING.scarcity}
+            </p>
+
             <Prompt text={OPENING.q1.prompt} />
             <div className="mt-7 space-y-3">
               {OPENING.q1.options.map(([id, label]) => (

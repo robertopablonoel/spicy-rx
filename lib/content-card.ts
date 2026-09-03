@@ -48,40 +48,50 @@ export type Ingredient = {
 /* ══════════════  SHARED OPENING — no product, no molecules  ══════════════ */
 
 export const OPENING = {
+  /** Screen one is framed as an invitation, not a landing page — because that
+   *  is literally what it is. The scarcity line is deliberately TRUE: the
+   *  offer exists only on the physical card. "Close this and you'll never see
+   *  it again" would be false, since a QR can be rescanned all day, and a
+   *  claim the visitor can disprove in one tap costs more than it buys. */
   hook: {
-    lead: "The card in your box opens something",
-    accent: "the website doesn't.",
+    lead: "This isn't on the site.",
+    accent: "It's on the card in your hand.",
   },
+  scarcity:
+    "No link, no email, no way back to it without the card. Lose the card and you lose the offer.",
 
-  /** Q1 — problem recognition, shared by both lines. Deliberately universal:
-   *  it must read the same whether the person is a man, a woman, or shopping
-   *  for a partner, because routing hasn't happened yet. */
+  /** Q1 — shared, and deliberately GENERAL. Gender hasn't been asked yet, so
+   *  this has to read identically to a man, a woman, or someone shopping for a
+   *  partner. Framed as a want, not an interrogation: the earlier "be honest"
+   *  opener read as invasive on a first screen from a stranger. The specific,
+   *  more personal questions come after routing, because the two genders
+   *  describe genuinely different problems. */
   q1: {
-    prompt: "Be honest — when did you last want it without trying?",
+    prompt: "What would you most want to change?",
     options: [
-      ["recent", "Recently, actually"],
-      ["months", "A while ago. Months."],
-      ["forget", "I genuinely can't remember"],
-      ["comes", "It comes and goes"],
+      ["wanting", "Wanting it more often"],
+      ["reliable", "Knowing it'll work when it matters"],
+      ["feeling", "Feeling more when it happens"],
+      ["curious", "Nothing's wrong — I'm just curious"],
     ],
   } satisfies Question,
 
   afterQ1: {
-    recent: {
-      eyebrow: "Then you caught it early",
-      body: "Most people don't go looking until it's been years. Wanting that flickers is far easier to work with than wanting that's gone quiet altogether.",
+    wanting: {
+      eyebrow: "That's the one almost nothing treats",
+      body: "There are four drugs for the mechanics and essentially nothing aimed at the wanting itself. Which is why people who describe exactly that usually get handed something for the part that was already working.",
     },
-    months: {
-      eyebrow: "That's the usual answer",
-      body: "In the trials for this, people had been living with it for an average of four years before anyone did anything. Months is early by that standard.",
+    reliable: {
+      eyebrow: "Reliability is its own problem",
+      body: "It stops being about one night and starts being about the next one. Once you're wondering whether it'll work, the wondering becomes part of why it doesn't — and nothing sold for blood flow touches that loop.",
     },
-    forget: {
-      eyebrow: "You are not the outlier here",
-      body: "Someone described it at an FDA hearing like this: in a beautiful place, with the person they loved, their body was a shell with nothing inside. People rarely say that out loud. It's far more common than the silence suggests.",
+    feeling: {
+      eyebrow: "Those are two different systems",
+      body: "Sensation and desire don't run on the same wiring, and most of what gets sold works on neither. Which one is quiet matters more than how much of it you throw at the problem.",
     },
-    comes: {
-      eyebrow: "That's worth paying attention to",
-      body: "Coming and going means the wiring works — something is interrupting the signal rather than the signal being gone. Different problem, and usually a more tractable one.",
+    curious: {
+      eyebrow: "Fair enough",
+      body: "Most people who scan this weren't looking for anything. The card was just in the box. Worth knowing what it is before you decide it isn't for you.",
     },
   } as Record<string, Beat>,
 
