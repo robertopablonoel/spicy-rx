@@ -6,6 +6,7 @@ import {
   AFTER_ROUTE,
   AFTER_SPEED,
   AFTER_STRENGTH,
+  COMBINATION,
   LEDGER,
   type Beat,
 } from "./education";
@@ -342,6 +343,13 @@ export function ConceptA() {
                       </p>
                     </div>
                   ))}
+                </div>
+
+                {/* The tap-and-drain convergence — the reason these molecules
+                    belong in one dose. Mechanism only: no trial of the three
+                    together has ever been run. */}
+                <div className="mt-8">
+                  <Teach beat={COMBINATION} />
                 </div>
               </div>
             )}
