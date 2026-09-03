@@ -76,12 +76,18 @@ export const PASSION_OFFER_READY =
  * Every leg is env-overridable so it can be re-pointed without a deploy.
  */
 export const EXIT_DESTINATIONS: Record<ExitArm, Record<ExitLine, string>> = {
+  // The lander arm carries the coupon ON the URL so it survives the extra hop.
+  // /eros and /passion capture it (coupon is in PARAM_KEYS) and their existing
+  // IntakeLink forwards it to Rimo. Without this the discount is silently lost
+  // between the promise and the checkout — the exact price-shock that cost a
+  // completed-form buyer on the post-purchase quiz.
   lander: {
     eros:
-      process.env.NEXT_PUBLIC_EXIT_LANDER_URL ?? "https://www.spicyrx.com/eros",
+      process.env.NEXT_PUBLIC_EXIT_LANDER_URL ??
+      "https://www.spicyrx.com/eros?coupon=eros1",
     passion:
       process.env.NEXT_PUBLIC_EXIT_LANDER_PASSION_URL ??
-      "https://www.spicyrx.com/passion",
+      `https://www.spicyrx.com/passion?coupon=${PASSION_COUPON}`,
   },
   direct: {
     eros:
