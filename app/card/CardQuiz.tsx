@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { Credentials, DeadCTA, Disclaimer, Phone, Stepper } from "../_kit";
+import { useEffect, useState, useSyncExternalStore } from "react";
+import { trackEvent } from "@/lib/analytics";
+import { getStoredAttribution, withAttribution } from "@/lib/attribution";
 import {
   AFTER_ROUTE,
   AFTER_SPEED,
@@ -10,39 +11,36 @@ import {
   LEDGER,
   type Beat,
 } from "@/lib/content-card";
+import {
+  EXIT_EXPERIMENT_ID,
+  EXIT_PARAM,
+  type ExitArm,
+  exitTarget,
+  isExitArm,
+} from "@/lib/insert-exit-split";
 
 /**
- * CONCEPT A — the quiz-router, carrying its education.
+ * The insert-card lander — where a scanned QR lands.
  *
- * The test this page exists to lose or win: LANDER vs STRAIGHT-TO-TELEFORM,
- * judged on leads per scan. Both arms share the same denominator (QR scans).
- * Direct-to-Teleform trivially wins Teleform-STARTS, so starts prove nothing;
- * the only honest question is whether educating first produces more leads per
- * scan than not making them click twice. That means this page has exactly one
- * job: teach enough, fast enough, to earn the extra click it costs.
+ * Three taps, then a handoff. The handoff destination is the EXPERIMENT
+ * (insert-exit-2026-09): the `lander` arm hands off to /eros, the `direct` arm
+ * goes straight to the Rimo intake with the coupon pre-applied. Everything
+ * upstream of the CTA is byte-identical across arms, which both keeps the test
+ * clean and doubles as its own sanity check — if the arms' quiz-completion
+ * rates diverge, the split is broken, not the copy.
  *
- * HOW THE EDUCATION IS CARRIED: each answer unlocks a teaching beat that
- * renders at the top of the NEXT screen. Education accumulates without adding
- * a single screen of drop-off, and every beat is chosen by something the
- * visitor actually clicked — so the register matches. See ./education.ts.
+ * Judged on LEADS PER SCAN. Intake-starts would be rigged toward `direct` by
+ * construction, since going straight to the form IS an intake start.
  *
- * Other design rules, each tied to evidence rather than taste:
- *  - Questions are MARKETING-MOTIVE, never symptom/diagnosis. This page
- *    inherits the global Google Ads gtag (app/layout.tsx), and health answers
- *    under an ad tag are the second count in FTC v. Hims & Hers (N.D. Cal.,
- *    filed 2026-07-29).
- *  - Q1 routes on the PURCHASE, not identity ("who are we finding this for" /
- *    "for a man"), because a large share of the ~46% of men's-product leads are
- *    plausibly women buying for a partner. Identity framing bounces them.
- *  - Progress is FRONT-LOADED, never linear (Conrad 2010 n=3,179; Villar 2013
- *    meta-analysis of 32 experiments: slow-to-fast is worse than no bar).
- *  - Auto-advance WITH back (Hays 2010, n=807).
- *  - Tap-only, no keyboard, no email gate.
+ * Mobile-first by necessity: this traffic is a phone camera pointed at a card.
+ * Tap-only answers, no keyboard anywhere, no email gate — we already have their
+ * email, we shipped them the box.
  */
 
 type Line = "eros" | "passion" | "both";
 
-/** Fast-to-slow: big jump on the first answer, decelerating after. */
+/** Fast-to-slow. A linear bar measurably does nothing; a slow-starting one is
+ *  worse than showing none at all. */
 const PROGRESS = [0, 55, 80, 100];
 
 const Q2 = {
@@ -64,6 +62,47 @@ const Q3 = {
   ],
 } as const;
 
+/**
+ * Read the arm assigned server-side on the /qr redirect: the URL param first
+ * (freshest), then the persisted attribution snapshot (survives a privacy
+ * browser stripping the query string). Falls back to `lander` so a direct
+ * visit with no assignment still renders a coherent page.
+ */
+function readExitArm(): ExitArm {
+  const fromUrl = new URLSearchParams(window.location.search).get(EXIT_PARAM);
+  if (isExitArm(fromUrl)) return fromUrl;
+  const stored = getStoredAttribution()[EXIT_PARAM];
+  return isExitArm(stored) ? stored : "lander";
+}
+
+/** The assignment never changes mid-visit, so there is nothing to subscribe to. */
+const noopSubscribe = () => () => {};
+
+/**
+ * Client-only values read through useSyncExternalStore rather than
+ * setState-in-an-effect. Two reasons this matters beyond satisfying the
+ * linter: it avoids a cascading second render, and — more importantly — the
+ * href is correct on the FIRST paint rather than after hydration. The shipped
+ * IntakeLink resolves attribution on mount, which is a known live bug: a tap
+ * landing before hydration loses its UTMs. Snapshots are strings, so React's
+ * Object.is comparison is stable and this cannot loop.
+ */
+function useExitArm(): ExitArm {
+  return useSyncExternalStore(
+    noopSubscribe,
+    readExitArm,
+    () => "lander" as ExitArm,
+  );
+}
+
+function useHandoffHref(): string {
+  return useSyncExternalStore(
+    noopSubscribe,
+    () => withAttribution(exitTarget(readExitArm())),
+    () => exitTarget("lander"),
+  );
+}
+
 function ProgressBar({ step }: { step: number }) {
   return (
     <div className="mb-7 h-1 w-full overflow-hidden rounded-full bg-[var(--border)]">
@@ -78,7 +117,6 @@ function ProgressBar({ step }: { step: number }) {
   );
 }
 
-/** A teaching beat, earned by the answer they just gave. */
 function Teach({ beat }: { beat: Beat }) {
   return (
     <div
@@ -106,28 +144,40 @@ function Option({ label, onClick }: { label: string; onClick: () => void }) {
   );
 }
 
-function BackLink({ onClick }: { onClick: () => void }) {
-  return (
-    <button
-      onClick={onClick}
-      className="mt-8 text-sm text-[var(--fg-dim)] underline underline-offset-4"
-    >
-      ← back
-    </button>
-  );
-}
-
-export function ConceptA() {
+export function CardQuiz() {
   const [step, setStep] = useState(0);
   const [line, setLine] = useState<Line | null>(null);
   const [strength, setStrength] = useState<string | null>(null);
   const [speed, setSpeed] = useState<string | null>(null);
 
+  const arm = useExitArm();
   const isPassion = line === "passion";
+
+  const href = useHandoffHref();
+
+  useEffect(() => {
+    trackEvent("card_quiz_viewed", { experiment_id: EXIT_EXPERIMENT_ID, arm });
+  }, [arm]);
+
+  function answer(question: string, value: string, next: number) {
+    trackEvent("card_quiz_step", {
+      experiment_id: EXIT_EXPERIMENT_ID,
+      arm,
+      question,
+      answer: value,
+    });
+    setStep(next);
+    if (next === 3) {
+      trackEvent("card_quiz_completed", {
+        experiment_id: EXIT_EXPERIMENT_ID,
+        arm,
+      });
+    }
+  }
 
   return (
     <div data-theme={isPassion ? "passion" : "eros"}>
-      <Phone>
+      <div className="mx-auto min-h-screen w-full max-w-[480px] px-5 pb-24 pt-10">
         {step < 3 && (
           <>
             <ProgressBar step={step} />
@@ -137,9 +187,6 @@ export function ConceptA() {
           </>
         )}
 
-        {/* Q1 — routes on the PURCHASE, not on identity. Carries the opening
-            hook: exclusivity, effort promise, payoff. Never let screen one be
-            a bare question — they need a reason to start tapping. */}
         {step === 0 && (
           <>
             <h1
@@ -167,21 +214,21 @@ export function ConceptA() {
                 label="For a man"
                 onClick={() => {
                   setLine("eros");
-                  setStep(1);
+                  answer("who", "man", 1);
                 }}
               />
               <Option
                 label="For a woman"
                 onClick={() => {
                   setLine("passion");
-                  setStep(1);
+                  answer("who", "woman", 1);
                 }}
               />
               <Option
                 label="For both of us"
                 onClick={() => {
                   setLine("both");
-                  setStep(1);
+                  answer("who", "both", 1);
                 }}
               />
             </div>
@@ -208,12 +255,17 @@ export function ConceptA() {
                   label={label}
                   onClick={() => {
                     setStrength(id);
-                    setStep(2);
+                    answer("strength", id, 2);
                   }}
                 />
               ))}
             </div>
-            <BackLink onClick={() => setStep(0)} />
+            <button
+              onClick={() => setStep(0)}
+              className="mt-8 text-sm text-[var(--fg-dim)] underline underline-offset-4"
+            >
+              ← back
+            </button>
           </>
         )}
 
@@ -233,16 +285,20 @@ export function ConceptA() {
                   label={label}
                   onClick={() => {
                     setSpeed(id);
-                    setStep(3);
+                    answer("speed", id, 3);
                   }}
                 />
               ))}
             </div>
-            <BackLink onClick={() => setStep(1)} />
+            <button
+              onClick={() => setStep(1)}
+              className="mt-8 text-sm text-[var(--fg-dim)] underline underline-offset-4"
+            >
+              ← back
+            </button>
           </>
         )}
 
-        {/* Reveal */}
         {step === 3 && (
           <>
             <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[var(--tr-eyebrow)] text-[var(--serum)]">
@@ -253,10 +309,7 @@ export function ConceptA() {
               <>
                 <h1
                   className="mt-4 font-[family-name:var(--font-display)] font-semibold text-[var(--fg)]"
-                  style={{
-                    fontSize: "clamp(34px,8.5vw,46px)",
-                    lineHeight: 1.05,
-                  }}
+                  style={{ fontSize: "clamp(34px,8.5vw,46px)", lineHeight: 1.05 }}
                 >
                   The wanting,{" "}
                   <span className="text-[var(--ember)]">switched on.</span>
@@ -271,10 +324,7 @@ export function ConceptA() {
               <>
                 <h1
                   className="mt-4 font-[family-name:var(--font-display)] font-semibold text-[var(--fg)]"
-                  style={{
-                    fontSize: "clamp(34px,8.5vw,46px)",
-                    lineHeight: 1.05,
-                  }}
+                  style={{ fontSize: "clamp(34px,8.5vw,46px)", lineHeight: 1.05 }}
                 >
                   Hard is the easy part.{" "}
                   <span className="text-[var(--ember)]">
@@ -285,11 +335,6 @@ export function ConceptA() {
               </>
             )}
 
-            {/* The $1 trial rides coupon `eros1`, which is Eros-only. The
-                women's line has no coupon provisioned, so this path must not
-                promise a price it cannot honour — that is the exact
-                price-shock leak that lost a completed-form buyer before
-                coupon auto-apply landed in the post-purchase quiz. */}
             {isPassion ? (
               <div className="mt-8 rounded-xl border border-[var(--border)] bg-[var(--bg-elev)] p-6">
                 <p className="text-sm leading-relaxed text-[var(--fg-muted)]">
@@ -306,34 +351,35 @@ export function ConceptA() {
                   $1
                 </div>
                 <div className="mt-2 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[var(--tr-eyebrow)] text-[var(--serum)]">
-                  Your trial month
+                  Your first month
                 </div>
                 <p className="mt-5 text-sm leading-relaxed text-[var(--fg-muted)]">
-                  The card in your box unlocked this. A full month for $1 —
-                  not on the site, not in an email, not for sale anywhere else.
+                  The card in your box unlocked this. A full month for $1 — not
+                  on the site, not in an email, not for sale anywhere else.
                   Cancel whenever you want.
                 </p>
               </div>
             )}
 
-            <div className="mt-7">
-              <DeadCTA>Start my clinician review →</DeadCTA>
-            </div>
-            {!isPassion && (
-              <p className="mt-3 text-center text-xs text-[var(--fg-dim)]">
-                Cancel anytime. No commitment beyond your $1 month.
-              </p>
-            )}
+            <a
+              href={href}
+              onClick={() =>
+                trackEvent("card_quiz_handoff_click", {
+                  experiment_id: EXIT_EXPERIMENT_ID,
+                  arm,
+                  line,
+                  destination: href,
+                })
+              }
+              className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--hot)] px-7 py-4 text-center font-semibold text-[var(--bone)] transition-transform active:scale-[0.98]"
+              style={{ boxShadow: "var(--sh-heat)" }}
+            >
+              Start my visit <span aria-hidden>→</span>
+            </a>
+            <p className="mt-3 text-center text-xs text-[var(--fg-dim)]">
+              About 5 minutes, private. No clinic, no waiting room.
+            </p>
 
-            {line === "both" && (
-              <p className="mt-6 text-center text-sm">
-                <span className="text-[var(--fg-dim)] underline underline-offset-4">
-                  She can start hers here →
-                </span>
-              </p>
-            )}
-
-            {/* The deep block — what's actually in it. Apomorphine first. */}
             {!isPassion && (
               <div className="mt-14 border-t border-[var(--border)] pt-10">
                 <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[var(--tr-eyebrow)] text-[var(--fg-dim)]">
@@ -362,32 +408,48 @@ export function ConceptA() {
                     </div>
                   ))}
                 </div>
-
-                {/* The tap-and-drain convergence — the reason these molecules
-                    belong in one dose. Mechanism only: no trial of the three
-                    together has ever been run. */}
                 <div className="mt-8">
                   <Teach beat={COMBINATION} />
                 </div>
               </div>
             )}
 
-            <div className="mt-12">
-              <Stepper />
-            </div>
-            <button
-              onClick={() => setStep(0)}
-              className="mt-8 w-full text-center text-xs text-[var(--fg-dim)] underline underline-offset-4"
-            >
-              ← start over
-            </button>
-            <div className="mt-8 space-y-3 border-t border-[var(--border)] pt-6">
-              <Credentials />
-              <Disclaimer />
+            <div className="mt-12 space-y-3 border-t border-[var(--border)] pt-6">
+              <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[var(--tr-eyebrow)] text-[var(--fg-dim)]">
+                US-licensed clinicians · Licensed pharmacy · LegitScript-certified
+              </p>
+              <p className="text-[11px] leading-[1.5] text-[var(--fg-faint)]">
+                Rx only. A US-licensed clinician reviews your health answers and,
+                if appropriate, issues a prescription. Not for use with nitrates.
+                Side effects may include headache, flushing, and dyspepsia.
+              </p>
             </div>
           </>
         )}
-      </Phone>
+      </div>
+
+      {step === 3 && (
+        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-[var(--border)] bg-[var(--bg)]/95 px-5 py-3 backdrop-blur">
+          <div className="mx-auto max-w-[480px]">
+            <a
+              href={href}
+              onClick={() =>
+                trackEvent("card_quiz_handoff_click", {
+                  experiment_id: EXIT_EXPERIMENT_ID,
+                  arm,
+                  line,
+                  destination: href,
+                  position: "sticky",
+                })
+              }
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--hot)] px-7 py-4 text-center font-semibold text-[var(--bone)] active:scale-[0.98]"
+              style={{ boxShadow: "var(--sh-heat)" }}
+            >
+              Start my visit <span aria-hidden>→</span>
+            </a>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
