@@ -153,7 +153,7 @@ export const PASSION: ProductCopy = {
     prompt: "Be honest — what's actually changed?",
     options: [
       ["quiet", "I just don't think about it anymore"],
-      ["slow", "The interest is there. It takes forever to arrive."],
+      ["avoid", "I've started finding ways to avoid it"],
       ["want", "I want to want it. That's the part that's missing."],
     ],
   },
@@ -167,12 +167,12 @@ export const PASSION: ProductCopy = {
   },
   afterQ2: {
     quiet: {
-      eyebrow: "That's the part it goes after",
-      body: "Not blood flow. Not hormones. The researcher who found this wrote that it works at the level of the brain — producing a natural response rather than a mechanical one. Everything else on the shelf assumes the wanting is already there and just clears the path.",
+      eyebrow: "It is in your head. Just not the way they meant it.",
+      body: "Researchers at Imperial College scanned 31 women with this exact problem, on the drug and on a placebo, and watched what changed. The part of the brain that monitors and second-guesses you went quiet. Their words: it worked by reducing self-consciousness. Twenty-one of the thirty-one reported more desire over the next day. Eight did on the placebo.",
     },
-    slow: {
-      eyebrow: "Upstream of everything else",
-      body: "Lubricants work on friction. Hormones work on levels. PT-141 works on the signal that's supposed to arrive before any of that does — and in the original human research on women, what went up was desire, not just arousal.",
+    avoid: {
+      eyebrow: "You are very much not the only one",
+      body: "At the FDA's own patient meeting, women described going to bed after their husband was already asleep, getting up before he woke, avoiding even a hug — just to not have the conversation. And they were emphatic it wasn't the relationship. One said there were no other stressors, no issues in their life. The avoiding is a symptom. It isn't a verdict on your marriage.",
     },
     want: {
       eyebrow: "You are not imagining this",
@@ -182,7 +182,7 @@ export const PASSION: ProductCopy = {
   afterQ3: {
     needle: {
       eyebrow: "Fair — and there's a reason for it",
-      body: "A nasal spray version was tried first, and abandoned. Absorption through the nose was too unpredictable — some people absorbed far more than intended. Switching to a small injection is what made the dose consistent enough to get approved. It's an insulin-fine needle, into the thigh or the stomach, and it takes about as long as reading this sentence.",
+      body: "A nasal spray version was tried first, and abandoned. Absorption through the nose was too unpredictable — some people absorbed far more than intended. Switching to a small injection is what made the dose consistent enough to get approved. It's an insulin-fine needle — finer, in fact, than the one inside the branded auto-injector — into the thigh or the stomach, and it takes about as long as reading this sentence. In the trials, most women used it two or three times a month.",
     },
     tried: {
       eyebrow: "Most of it was never aimed at this",
