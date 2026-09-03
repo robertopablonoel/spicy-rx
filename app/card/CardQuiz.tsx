@@ -8,6 +8,8 @@ import {
   EXIT_EXPERIMENT_ID,
   EXIT_PARAM,
   type ExitArm,
+  type ExitLine,
+  PASSION_OFFER_READY,
   exitTarget,
   isExitArm,
 } from "@/lib/insert-exit-split";
@@ -69,14 +71,6 @@ function useExitArm(): ExitArm {
   );
 }
 
-function useHandoffHref(): string {
-  return useSyncExternalStore(
-    noopSubscribe,
-    () => withAttribution(exitTarget(readExitArm())),
-    () => exitTarget("lander"),
-  );
-}
-
 function ProgressBar({ step }: { step: number }) {
   return (
     <div className="mb-7 h-1 w-full overflow-hidden rounded-full bg-[var(--border)]">
@@ -133,7 +127,13 @@ export function CardQuiz() {
   // nitrates. Selecting the whole copy set at once makes that impossible.
   const copy = LINE_COPY[line ?? "eros"];
 
-  const href = useHandoffHref();
+  // The handoff depends on BOTH the arm and the line: the `direct` arm has to
+  // reach the right intake form with the right coupon, and `lander` the right
+  // product page. Only ever read at step 3, which is unreachable during SSR
+  // (step starts at 0), so computing it in render is client-only by
+  // construction and correct on the frame it first appears.
+  const exitLine: ExitLine = line === "passion" ? "passion" : "eros";
+  const href = step === 3 ? withAttribution(exitTarget(arm, exitLine)) : "";
 
   useEffect(() => {
     trackEvent("card_quiz_viewed", { experiment_id: EXIT_EXPERIMENT_ID, arm });
@@ -298,7 +298,7 @@ export function CardQuiz() {
               <Teach beat={copy.afterQ3[speed]} />
             )}
 
-            {isPassion ? (
+            {isPassion && !PASSION_OFFER_READY ? (
               <div className="mt-8 rounded-xl border border-[var(--border)] bg-[var(--bg-elev)] p-6">
                 <p className="text-sm leading-relaxed text-[var(--fg-muted)]">
                   Pricing is shown inside your visit, once a clinician has

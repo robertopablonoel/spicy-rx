@@ -28,7 +28,7 @@
  * route handler can import it.
  */
 
-import { EROS_INTAKE_URL } from "@/lib/constants";
+import { EROS_INTAKE_URL, PASSION_INTAKE_URL } from "@/lib/constants";
 
 export const EXIT_EXPERIMENT_ID = "insert-exit-2026-09";
 
@@ -43,15 +43,50 @@ export const EXIT_COOKIE_MAX_AGE = 60 * 60 * 24 * 30; // 30 days
 /** The param the arm rides on, into the cookie and onward to Rimo. */
 export const EXIT_PARAM = "sc_exit";
 
+/** The product line the quiz routed to. "both" resolves to eros. */
+export type ExitLine = "eros" | "passion";
+
 /**
- * Where each arm sends the visitor when they finish the quiz.
- * Env-overridable so either leg can be re-pointed without a deploy.
+ * Passion's first-month coupon. Empty until the code exists in Rimo — and the
+ * lander checks PASSION_OFFER_READY before promising a price, so an unset
+ * coupon degrades to "pricing is shown inside your visit" instead of promising
+ * $1 and then showing full pack pricing at checkout. That exact mismatch is
+ * what lost a buyer who had completed the entire medical form on the
+ * post-purchase quiz, before coupon auto-apply was added.
+ *
+ * To go live: set NEXT_PUBLIC_PASSION_COUPON to the code, or
+ * NEXT_PUBLIC_EXIT_DIRECT_PASSION_URL to a full pre-couponed intake URL.
  */
-export const EXIT_DESTINATIONS: Record<ExitArm, string> = {
-  lander: process.env.NEXT_PUBLIC_EXIT_LANDER_URL ?? "https://www.spicyrx.com/eros",
-  direct:
-    process.env.NEXT_PUBLIC_EXIT_DIRECT_URL ??
-    `${EROS_INTAKE_URL}?coupon=eros1`,
+export const PASSION_COUPON = process.env.NEXT_PUBLIC_PASSION_COUPON ?? "";
+export const PASSION_OFFER_READY =
+  PASSION_COUPON.length > 0 ||
+  Boolean(process.env.NEXT_PUBLIC_EXIT_DIRECT_PASSION_URL);
+
+/**
+ * Where the quiz sends the visitor, by arm AND by line. Both dimensions
+ * matter: the `direct` arm has to land on the RIGHT intake form with the right
+ * coupon, and the `lander` arm has to land on the right product page. Keying
+ * only on the arm sent every woman to the Eros intake.
+ * Every leg is env-overridable so it can be re-pointed without a deploy.
+ */
+export const EXIT_DESTINATIONS: Record<ExitArm, Record<ExitLine, string>> = {
+  lander: {
+    eros:
+      process.env.NEXT_PUBLIC_EXIT_LANDER_URL ?? "https://www.spicyrx.com/eros",
+    passion:
+      process.env.NEXT_PUBLIC_EXIT_LANDER_PASSION_URL ??
+      "https://www.spicyrx.com/passion",
+  },
+  direct: {
+    eros:
+      process.env.NEXT_PUBLIC_EXIT_DIRECT_URL ??
+      `${EROS_INTAKE_URL}?coupon=eros1`,
+    passion:
+      process.env.NEXT_PUBLIC_EXIT_DIRECT_PASSION_URL ??
+      (PASSION_COUPON
+        ? `${PASSION_INTAKE_URL}?coupon=${PASSION_COUPON}`
+        : PASSION_INTAKE_URL),
+  },
 };
 
 export function isExitArm(value: unknown): value is ExitArm {
@@ -77,10 +112,10 @@ export function resolveExitArm(cookieValue: string | undefined): {
 }
 
 /**
- * The finished-quiz destination for an arm, as a bare URL string. Attribution
- * (PARAM_KEYS, including sc_exit itself) is merged on by the client CTA via
- * withAttribution() so click-IDs and UTMs ride through to Rimo.
+ * The finished-quiz destination for an arm + line, as a bare URL string.
+ * Attribution (PARAM_KEYS, including sc_exit itself) is merged on by the
+ * client CTA via withAttribution() so click-IDs and UTMs ride to Rimo.
  */
-export function exitTarget(arm: ExitArm): string {
-  return EXIT_DESTINATIONS[arm];
+export function exitTarget(arm: ExitArm, line: ExitLine = "eros"): string {
+  return EXIT_DESTINATIONS[arm][line];
 }
