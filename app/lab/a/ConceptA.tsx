@@ -2,41 +2,41 @@
 
 import { useState } from "react";
 import { Credentials, DeadCTA, Disclaimer, Phone, Stepper } from "../_kit";
+import {
+  AFTER_ROUTE,
+  AFTER_SPEED,
+  AFTER_STRENGTH,
+  LEDGER,
+  type Beat,
+} from "./education";
 
 /**
- * CONCEPT A — the quiz-router. Cole's thesis, developed.
+ * CONCEPT A — the quiz-router, carrying its education.
  *
- * Design rules here are evidence-led, not stylistic:
+ * The test this page exists to lose or win: LANDER vs STRAIGHT-TO-TELEFORM,
+ * judged on leads per scan. Both arms share the same denominator (QR scans).
+ * Direct-to-Teleform trivially wins Teleform-STARTS, so starts prove nothing;
+ * the only honest question is whether educating first produces more leads per
+ * scan than not making them click twice. That means this page has exactly one
+ * job: teach enough, fast enough, to earn the extra click it costs.
  *
- * 1. EVERY QUESTION IS A MARKETING-MOTIVE QUESTION, never a symptom or
- *    diagnosis question. This page inherits the global Google Ads gtag from
- *    app/layout.tsx, so anything health-shaped collected here would be a page
- *    with an ad tag observing health answers — the second count in FTC v.
- *    Hims & Hers (N.D. Cal., filed 2026-07-29). Motive tags keep this a
- *    product-finder; the teleform does medical intake behind its own consent.
+ * HOW THE EDUCATION IS CARRIED: each answer unlocks a teaching beat that
+ * renders at the top of the NEXT screen. Education accumulates without adding
+ * a single screen of drop-off, and every beat is chosen by something the
+ * visitor actually clicked — so the register matches. See ./education.ts.
  *
- * 2. Q1 ROUTES ON THE PURCHASE, NOT ON IDENTITY. "Who are we finding this
- *    for?" rather than "are you a man or a woman." ~46% of men's-product leads
- *    are women, and women are the household health initiator in most telehealth
- *    data — a large share are plausibly buying FOR a partner. Identity framing
- *    would bounce them; purchase framing routes them correctly. Also dodges
- *    NN/g's finding that identity-based splitters degrade usability because
- *    users belong to several categories at once.
- *
- * 3. PROGRESS IS FRONT-LOADED (fast-to-slow), never linear. Conrad et al. 2010
- *    (randomized, n=3,179) and Villar et al. 2013 (meta-analysis of 32
- *    experiments): constant-speed indicators do not reduce drop-off, and
- *    slow-to-fast is WORSE than showing none at all (21.8% vs 12.7%). Only
- *    fast-to-slow measurably helped.
- *
- * 4. AUTO-ADVANCE WITH BACK AVAILABLE. Hays et al. 2010 (randomized, n=807):
- *    auto-advance cut completion time ~50% with no data-quality cost, and the
- *    authors still recommend keeping Back. On touch, Back is also the only
- *    recovery from a mis-tap.
- *
- * 5. TAP-ONLY, NO KEYBOARD, NO EMAIL GATE. Traffic is ~98% mobile; the touch
- *    keyboard eats ~50% of a portrait screen. And we already have these
- *    people's emails — we shipped them a box.
+ * Other design rules, each tied to evidence rather than taste:
+ *  - Questions are MARKETING-MOTIVE, never symptom/diagnosis. This page
+ *    inherits the global Google Ads gtag (app/layout.tsx), and health answers
+ *    under an ad tag are the second count in FTC v. Hims & Hers (N.D. Cal.,
+ *    filed 2026-07-29).
+ *  - Q1 routes on the PURCHASE, not identity ("who are we finding this for" /
+ *    "for a man"), because a large share of the ~46% of men's-product leads are
+ *    plausibly women buying for a partner. Identity framing bounces them.
+ *  - Progress is FRONT-LOADED, never linear (Conrad 2010 n=3,179; Villar 2013
+ *    meta-analysis of 32 experiments: slow-to-fast is worse than no bar).
+ *  - Auto-advance WITH back (Hays 2010, n=807).
+ *  - Tap-only, no keyboard, no email gate.
  */
 
 type Line = "eros" | "passion" | "both";
@@ -63,20 +63,6 @@ const Q3 = {
   ],
 } as const;
 
-/** Mg-load framing only. No efficacy promise, no duration promise attached to
- *  a named molecule (the 06-card pull order bars that on ad-adjacent surfaces). */
-const STRENGTH_LINE: Record<string, string> = {
-  low: "You said a little goes a long way — a clinician dials the dose to you. Nothing here is one-size-fits-all.",
-  mid: "You said noticeable, no guessing — Eros carries 94mg of actives across three ingredients.",
-  max: "You said as strong as they make it — 94mg of actives, with the brain-side active at the top of the clinically studied range.",
-};
-
-const SPEED_LINE: Record<string, string> = {
-  fast: "You said fast — sildenafil is the fast half of the formula.",
-  long: "You said a longer window — tadalafil is the long half.",
-  both: "You said both — that's the design: sildenafil, tadalafil, and apomorphine for the wanting.",
-};
-
 function ProgressBar({ step }: { step: number }) {
   return (
     <div className="mb-7 h-1 w-full overflow-hidden rounded-full bg-[var(--border)]">
@@ -87,6 +73,23 @@ function ProgressBar({ step }: { step: number }) {
           background: "var(--ember)",
         }}
       />
+    </div>
+  );
+}
+
+/** A teaching beat, earned by the answer they just gave. */
+function Teach({ beat }: { beat: Beat }) {
+  return (
+    <div
+      className="mt-5 rounded-xl border-l-2 bg-[var(--bg-elev)] px-5 py-4"
+      style={{ borderLeftColor: "var(--ember)" }}
+    >
+      <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[var(--tr-eyebrow)] text-[var(--ember)]">
+        {beat.eyebrow}
+      </p>
+      <p className="mt-2.5 text-[14px] leading-[1.6] text-[var(--fg-muted)]">
+        {beat.body}
+      </p>
     </div>
   );
 }
@@ -175,13 +178,14 @@ export function ConceptA() {
 
         {step === 1 && (
           <>
+            {line && <Teach beat={AFTER_ROUTE[line]} />}
             <h1
-              className="mt-4 font-[family-name:var(--font-display)] font-semibold text-[var(--fg)]"
-              style={{ fontSize: "clamp(26px,6.4vw,34px)", lineHeight: 1.15 }}
+              className="mt-7 font-[family-name:var(--font-display)] font-semibold text-[var(--fg)]"
+              style={{ fontSize: "clamp(24px,6vw,32px)", lineHeight: 1.15 }}
             >
               {Q2.prompt}
             </h1>
-            <div className="mt-8 space-y-3">
+            <div className="mt-7 space-y-3">
               {Q2.options.map(([id, label]) => (
                 <Option
                   key={id}
@@ -199,13 +203,14 @@ export function ConceptA() {
 
         {step === 2 && (
           <>
+            {strength && <Teach beat={AFTER_STRENGTH[strength]} />}
             <h1
-              className="mt-4 font-[family-name:var(--font-display)] font-semibold text-[var(--fg)]"
-              style={{ fontSize: "clamp(26px,6.4vw,34px)", lineHeight: 1.15 }}
+              className="mt-7 font-[family-name:var(--font-display)] font-semibold text-[var(--fg)]"
+              style={{ fontSize: "clamp(24px,6vw,32px)", lineHeight: 1.15 }}
             >
               {Q3.prompt}
             </h1>
-            <div className="mt-8 space-y-3">
+            <div className="mt-7 space-y-3">
               {Q3.options.map(([id, label]) => (
                 <Option
                   key={id}
@@ -258,24 +263,15 @@ export function ConceptA() {
                   Firm, and ready.{" "}
                   <span className="text-[var(--ember)]">And wanting it.</span>
                 </h1>
-                {strength && (
-                  <p className="mt-6 text-[15px] font-semibold leading-relaxed text-[var(--ember)]">
-                    {STRENGTH_LINE[strength]}
-                  </p>
-                )}
-                {speed && (
-                  <p className="mt-3 text-[15px] font-semibold leading-relaxed text-[var(--fg)]">
-                    {SPEED_LINE[speed]}
-                  </p>
-                )}
+                {speed && <Teach beat={AFTER_SPEED[speed]} />}
               </>
             )}
 
-            {/* The $1 trial is wired to coupon `eros1`, which is Eros-only.
-                The women's line has no coupon provisioned, so this path must
-                not promise a price it cannot honour — that is exactly the
+            {/* The $1 trial rides coupon `eros1`, which is Eros-only. The
+                women's line has no coupon provisioned, so this path must not
+                promise a price it cannot honour — that is the exact
                 price-shock leak that lost a completed-form buyer before
-                coupon auto-apply was added to the post-purchase quiz. */}
+                coupon auto-apply landed in the post-purchase quiz. */}
             {isPassion ? (
               <div className="mt-8 rounded-xl border border-[var(--border)] bg-[var(--bg-elev)] p-6">
                 <p className="text-sm leading-relaxed text-[var(--fg-muted)]">
@@ -318,7 +314,39 @@ export function ConceptA() {
               </p>
             )}
 
-            <div className="mt-10">
+            {/* The deep block — what's actually in it. Apomorphine first. */}
+            {!isPassion && (
+              <div className="mt-14 border-t border-[var(--border)] pt-10">
+                <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[var(--tr-eyebrow)] text-[var(--fg-dim)]">
+                  94mg of actives · nothing hidden
+                </p>
+                <div className="mt-6 space-y-5">
+                  {LEDGER.map((ing) => (
+                    <div
+                      key={ing.name}
+                      className="rounded-xl border border-[var(--border)] bg-[var(--bg-elev)] p-5"
+                    >
+                      <div className="flex items-baseline justify-between gap-3">
+                        <span className="font-semibold text-[var(--fg)]">
+                          {ing.name}
+                        </span>
+                        <span className="font-[family-name:var(--font-mono)] text-sm text-[var(--ember)]">
+                          {ing.dose}
+                        </span>
+                      </div>
+                      <p className="mt-1 font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[var(--tr-eyebrow)] text-[var(--fg-dim)]">
+                        {ing.slot}
+                      </p>
+                      <p className="mt-3 text-[14px] leading-[1.6] text-[var(--fg-muted)]">
+                        {ing.body}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="mt-12">
               <Stepper />
             </div>
             <button
