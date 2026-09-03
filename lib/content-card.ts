@@ -1,27 +1,28 @@
 /**
  * Insert-card lander copy.
  *
- * ── STRUCTURE: PROBLEM-AWARE FIRST ─────────────────────────────────────────
- * The funnel opens on the PROBLEM, not the product. The earlier version asked
- * "who are we finding this for?" on screen one, which only parses for someone
- * already shopping — it assumed solution awareness this audience doesn't have.
- * A Spicy Cubes buyer scanning a card has a private problem, not a shortlist.
+ * ── STRUCTURE: ONE SHARED PROBLEM QUESTION, THEN SPLIT PATHS ───────────────
+ * Q1 is the problem and nothing else — no product, no molecule. An earlier
+ * version opened by asking which product you wanted, which only parses for
+ * someone already shopping; a Cubes buyer scanning a card has a private
+ * problem, not a shortlist.
  *
- * So the first three questions never mention a medication. They ask when it
- * changed, how it shows up, and what they've been told about it. Only after
- * that — once the person has been seen and, critically, VALIDATED against the
- * dismissal they've probably already experienced — does the quiz ask which
- * line it's for and start talking about molecules.
+ * Routing happens at Q2. From there the two lines own EVERYTHING: their own
+ * Q3, their own Q4, their own beats, ledger, closer and fair balance.
  *
- * The payoff is that Q3 ("what have you been told?") sets up the single most
- * persuasive fact available: most women who ask for help get told it's stress,
- * their age, or handed a lubricant. Answering that at the exact moment they've
- * just admitted it happened to them is worth more than any mechanism claim.
+ *   Q1  shared   when it changed
+ *   Q2  shared   who it's for
+ *   Q3  line     Eros: how strong · Passion: how it shows up
+ *   Q4  line     Eros: fast or long · Passion: what you've been told
  *
- * OPENING is shared across lines and runs BEFORE routing. Each ProductCopy
- * then owns everything downstream so the two paths can never bleed — the
- * women's path once inherited Eros's beats and PDE5 fair balance about
- * nitrates, and splitting the objects is what makes that unrepresentable.
+ * The EROS path is the original funnel, restored verbatim — it is the version
+ * Cole preferred, and the only change is that it now sits behind the two
+ * shared questions rather than starting cold.
+ *
+ * The split is a correctness requirement, not a preference. The dismissal
+ * statistics are from a study of 530 WOMEN and must never be shown to a man,
+ * and the fair balance differs entirely by molecule — nitrates for the PDE5
+ * stack, nausea for the peptide.
  *
  * Beats render at the top of the NEXT screen, so the pitch sharpens as they go
  * without costing a screen of drop-off. The matching is INVISIBLE — never
@@ -110,8 +111,10 @@ export type ProductCopy = {
   q4: Question;
   afterQ4: Record<string, Beat>;
   headline: { lead: string; accent: string };
-  /** The pitch, under the headline, on the reveal. */
-  pitch: string;
+  /** Optional paragraph under the headline. Eros deliberately has none: its
+   *  original reveal went straight from headline to the answer-matched beat,
+   *  and that is the version that tested well with Cole. */
+  pitch?: string;
   ledgerEyebrow: string;
   ledger: Ingredient[];
   closer: Beat | null;
@@ -123,41 +126,37 @@ export type ProductCopy = {
 
 export const EROS: ProductCopy = {
   afterRoute: {
-    eyebrow: "Then here's what's different",
-    body: "Every pill you've tried worked on the machinery. None of them touched the wanting. Eros carries the actives you already know — and a third one that goes after desire itself.",
+    eyebrow: "The difference",
+    body: "Every pill you've tried worked on the machinery. None of them touched the wanting. Eros carries the actives you already know — and apomorphine, which goes after desire itself. Not just able. Actually wanting to.",
   },
   q3: {
-    prompt: "And how does it show up?",
+    prompt:
+      "When you take something for a night like this — how much do you want to feel it?",
     options: [
-      ["wanting", "It works. The wanting just isn't there."],
-      ["coinflip", "It's a coin flip. I never know."],
-      ["avoid", "I've started avoiding the situation"],
-      ["slower", "It takes a lot more than it used to"],
+      ["low", "A little goes a long way"],
+      ["mid", "Noticeable — no guessing"],
+      ["max", "As strong as they make it"],
     ],
   },
   afterQ3: {
-    wanting: {
-      eyebrow: "That's the half nobody treats",
-      body: "There are four drugs for the machinery and essentially nothing aimed at the wanting. Which is why men who describe exactly what you just described get handed another pill for the part that was already working.",
+    low: {
+      eyebrow: "Dialed to you",
+      body: "Then you don't need the biggest dose on the shelf. You need yours. A clinician prescribes to your history and moves it if it's wrong — that's the whole reason this is compounded instead of pulled off a shelf.",
     },
-    coinflip: {
-      eyebrow: "The unreliability is its own problem",
-      body: "It stops being about one night and starts being about dreading the next one. The anxiety about whether it'll work becomes a reason it doesn't — and no amount of blood flow touches that loop.",
+    mid: {
+      eyebrow: "Nothing hidden",
+      body: "70mg sildenafil. 20mg tadalafil. 4mg apomorphine. 94mg of actives and every milligram printed on the label. No proprietary blend, no vague promises. You will know it's working.",
     },
-    avoid: {
-      eyebrow: "That's the most common ending",
-      body: "Not a dramatic conversation. Just going to bed later, being tired more often, letting fewer moments start. It's rarely about wanting the person less.",
-    },
-    slower: {
-      eyebrow: "Worth knowing what's actually slowing",
-      body: "Two different things get slower with age and they need different answers: the blood flow, and the signal that starts it. Most treatments only address the first one.",
+    max: {
+      eyebrow: "Built heavy",
+      body: "94mg of actives in a single 2mL dose, absorbed under your tongue instead of fighting through your stomach first. This is the strong end of what a compounding pharmacy will build. It is not a starter pill.",
     },
   },
   q4: {
-    prompt: "When it does happen — what matters most?",
+    prompt: "And when the moment hits — how do you want it to work?",
     options: [
-      ["fast", "That it's ready when I am"],
-      ["long", "That it lasts"],
+      ["fast", "Fast — minutes, not an hour"],
+      ["long", "Steady — a longer window"],
       ["both", "Both, honestly"],
     ],
   },
@@ -172,22 +171,20 @@ export const EROS: ProductCopy = {
     },
     both: {
       eyebrow: "Fast and long, one dose",
-      body: "Apomorphine inside twenty minutes. Sildenafil holding the middle. Tadalafil carrying it into the next day. You get the first hour and the next morning out of the same two millilitres.",
+      body: "Apomorphine inside twenty minutes. Sildenafil holding the middle. Tadalafil carrying it into the next day. You get the first hour and the next morning out of the same two milliliters.",
     },
   },
   headline: {
     lead: "Hard is the easy part.",
     accent: "The wanting is the rest.",
   },
-  pitch:
-    "Three molecules in a single drop under the tongue. Two handle the plumbing you already know about. The third works somewhere else entirely.",
   ledgerEyebrow: "94mg of actives · nothing hidden",
   ledger: [
     {
       dose: "4mg",
       name: "Apomorphine",
       slot: "Desire",
-      body: "The one that goes after wanting. Every other pill on the market waits until you're already in the mood — this works on the part of the brain that decides you're in the mood. It's the difference between being able to and actually wanting to.",
+      body: "The one that goes after wanting. Every other pill on the market waits until you're already in the mood — apomorphine works on the part of the brain that decides you're in the mood. It's the difference between being able to and actually wanting to.",
     },
     {
       dose: "70mg",
@@ -199,12 +196,12 @@ export const EROS: ProductCopy = {
       dose: "20mg",
       name: "Tadalafil",
       slot: "The window",
-      body: "The long weekend. One dose Friday night was still working a day and a half later in trial — 59% of attempts against 28% on placebo.",
+      body: "The long weekend. 20mg of the active that keeps things open well past a single night, so one dose covers the evening and whatever happens after it.",
     },
   ],
   closer: {
     eyebrow: "Three levers, one dose",
-    body: "Most pills give you one thing: blood flow, for a few hours, if you're already in the mood. This gives you the wanting, the firmness, and the window.",
+    body: "Most pills give you one thing: blood flow, for a few hours, if you're already in the mood. Eros gives you the wanting, the firmness, and the window — fast in, steady through, still there tomorrow.",
   },
   disclaimer:
     "Rx only. A US-licensed clinician reviews your health answers and, if appropriate, issues a prescription. Not for use with nitrates. Side effects may include headache, flushing, and dyspepsia.",

@@ -294,19 +294,27 @@ export function CardQuiz() {
         {/* Reveal — the first screen that sells a product. */}
         {step === LAST_STEP && (
           <>
-            {a4 && copy.afterQ4[a4] && <Teach beat={copy.afterQ4[a4]} />}
+            <p className="font-[family-name:var(--font-mono)] text-[10px] uppercase tracking-[var(--tr-eyebrow)] text-[var(--serum)]">
+              Card holders only · chosen for you
+            </p>
 
             <h1
-              className="mt-8 font-[family-name:var(--font-display)] font-semibold text-[var(--fg)]"
+              className="mt-4 font-[family-name:var(--font-display)] font-semibold text-[var(--fg)]"
               style={{ fontSize: "clamp(34px,8.5vw,46px)", lineHeight: 1.05 }}
             >
               {copy.headline.lead}{" "}
               <span className="text-[var(--ember)]">{copy.headline.accent}</span>
             </h1>
 
-            <p className="mt-6 text-[16px] leading-[1.6] text-[var(--fg-muted)]">
-              {copy.pitch}
-            </p>
+            {/* Headline, then the answer-matched beat — the original Eros
+                reveal's order. Eros carries no pitch paragraph by design. */}
+            {a4 && copy.afterQ4[a4] && <Teach beat={copy.afterQ4[a4]} />}
+
+            {copy.pitch && (
+              <p className="mt-6 text-[16px] leading-[1.6] text-[var(--fg-muted)]">
+                {copy.pitch}
+              </p>
+            )}
 
             {/* The $1 rides coupon eros1, which is Eros-only. The women's path
                 must not promise a price it cannot honour — price-shock at
