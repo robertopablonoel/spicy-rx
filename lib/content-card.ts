@@ -147,7 +147,7 @@ export const EROS: ProductCopy = {
 export const PASSION: ProductCopy = {
   afterRoute: {
     eyebrow: "The difference",
-    body: "PT-141 started life as a tanning drug. Arizona, 1989 — the lab was chasing a sunless tan, and the volunteers reported something nobody was looking for. Thirty years later it's the only FDA-approved on-demand treatment for low desire in women.",
+    body: "They tried Viagra on women. It worked — blood flow went up, measurably, in Pfizer's own studies. It just didn't make anyone want anything. That's the whole problem in one experiment: for women, desire was never a plumbing issue. PT-141 works somewhere else entirely.",
   },
   q2: {
     prompt: "Be honest — what's actually changed?",
@@ -158,39 +158,39 @@ export const PASSION: ProductCopy = {
     ],
   },
   q3: {
-    prompt: "And how would you want it to fit into a night?",
+    prompt: "Anything giving you pause?",
     options: [
-      ["planned", "Something taken when the night's already coming"],
-      ["easy", "Something without a whole ritual around it"],
-      ["either", "Either — it just has to work"],
+      ["needle", "Honestly? The injection"],
+      ["tried", "I've tried things that didn't do anything"],
+      ["none", "Not really — I just want to try it"],
     ],
   },
   afterQ2: {
     quiet: {
       eyebrow: "That's the part it goes after",
-      body: "Not blood flow. Not hormones. PT-141 works in the brain, on the system that decides you're interested in the first place — which is the entire reason it exists. Everything else on the shelf assumes the wanting is already there.",
+      body: "Not blood flow. Not hormones. The researcher who found this wrote that it works at the level of the brain — producing a natural response rather than a mechanical one. Everything else on the shelf assumes the wanting is already there and just clears the path.",
     },
     slow: {
       eyebrow: "Upstream of everything else",
-      body: "Lubricants work on friction. Hormones work on levels. PT-141 works on the signal that starts the whole thing — the one that's supposed to arrive before any of the rest of it does.",
+      body: "Lubricants work on friction. Hormones work on levels. PT-141 works on the signal that's supposed to arrive before any of that does — and in the original human research on women, what went up was desire, not just arousal.",
     },
     want: {
-      eyebrow: "That's the exact thing it was approved for",
-      body: "Not arousal. Not performance. Desire itself — the wanting. That's the endpoint the trials measured, and it's why this got approved when most things aimed at the same problem didn't.",
+      eyebrow: "You are not imagining this",
+      body: "It has a name, it has a diagnosis, and it has one approved treatment. In a study of 530 women who went to a doctor about exactly this, 44% were told it was something else — stress, anxiety, the relationship. 35% were told it was normal for their age. It isn't in your head, and it isn't a character flaw.",
     },
   },
   afterQ3: {
-    planned: {
-      eyebrow: "On demand, not on schedule",
-      body: "One dose, about 45 minutes ahead. Not a daily pill taken forever whether the night is happening or not, and not six weeks of waiting to find out whether it worked at all.",
+    needle: {
+      eyebrow: "Fair — and there's a reason for it",
+      body: "A nasal spray version was tried first, and abandoned. Absorption through the nose was too unpredictable — some people absorbed far more than intended. Switching to a small injection is what made the dose consistent enough to get approved. It's an insulin-fine needle, into the thigh or the stomach, and it takes about as long as reading this sentence.",
     },
-    easy: {
-      eyebrow: "One dose, and that's it",
-      body: "A small subcutaneous injection — the same kind of fine needle used for insulin, into the thigh or the stomach. It takes seconds, and there is nothing else to remember for the rest of the month.",
+    tried: {
+      eyebrow: "Most of it was never aimed at this",
+      body: "In that same study of 530 women, 52% were handed a lubricant — for a problem that has nothing to do with dryness. Only 7% were offered the one treatment actually approved for it. Viagra was tried on women too: blood flow went up and wanting stayed exactly where it was. You probably haven't failed treatment. You probably haven't been offered it.",
     },
-    either: {
-      eyebrow: "The timing is the whole point",
-      body: "The daily alternative has to build up over weeks and carries a drinking restriction. This is one dose, before a night you actually want to have. That's the difference.",
+    none: {
+      eyebrow: "Then the visit is the only step left",
+      body: "About five minutes of private questions, and a US-licensed clinician decides whether it's right for you. No clinic, no waiting room, no explaining yourself to someone who's already decided it's stress.",
     },
   },
   headline: { lead: "The wanting,", accent: "switched on." },
@@ -200,12 +200,12 @@ export const PASSION: ProductCopy = {
       dose: "PT-141",
       name: "Bremelanotide",
       slot: "Desire",
-      body: "The same molecule as Vyleesi — the only FDA-approved on-demand treatment for low desire in premenopausal women. It isn't a hormone and it isn't a stimulant. It works through the melanocortin system in the brain, a completely different address from anything else you've been offered.",
+      body: "The same molecule as Vyleesi — the only FDA-approved on-demand treatment for low desire in premenopausal women. Not a hormone, not a stimulant. It works through the melanocortin system in the brain, a completely different address from anything else you've been offered. Found by accident, incidentally, by a lab trying to build a sunless tan.",
     },
   ],
   closer: {
-    eyebrow: "Why this and not a daily pill",
-    body: "The daily option takes weeks to build up, has to be taken every single day, and comes with a drinking restriction. This is one dose before a night you actually want — and nothing to think about the rest of the time.",
+    eyebrow: "Why this is different",
+    body: "Everything else aimed at this problem either works on the body and hopes the mind follows, or asks you to take something daily for weeks before you find out. This one works where wanting actually starts — and you take it on the nights you want it to matter.",
   },
   disclaimer:
     "Rx only. A US-licensed clinician reviews your health answers and, if appropriate, issues a prescription. Side effects may include nausea, flushing, and injection-site reactions.",

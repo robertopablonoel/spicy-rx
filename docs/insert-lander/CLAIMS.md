@@ -44,8 +44,23 @@ and on `/eros/science`.
 
 ## Passion
 
-Copy is currently built from the Vyleesi label and the Addyi contrast only.
-Deeper research was in flight at time of writing.
+| "They tried Viagra on women… blood flow went up… didn't make anyone want anything" | Laan et al. 2002 (Pfizer co-author Boolell) — sildenafil significantly increased vaginal vasocongestion, no difference in subjective arousal. Basson 2002 (n=781) — genital effect "not perceived as improving the sexual response." Pfizer halted the female programme in 2004. **Narrowing for review:** Berman 2003 found sildenafil DID help women with arousal disorder *without* comorbid low desire (p<0.02), and Nurnberg 2008 (JAMA, n=98) found clear benefit in SSRI-induced dysfunction. The claim holds for the HSDD population, not universally. | TRIAL |
+| "for women, desire was never a plumbing issue" | Chivers et al. 2010, meta-analysis of 132 studies — genital/subjective arousal concordance r=.26 in women vs r=.66 in men | TRIAL |
+| "the blood-flow measure barely moved and the desire measure did" | Diamond et al. 2006, *J Sex Med* (n=18, FSAD, crossover, vaginal photoplethysmography) — more women reported moderate/high desire on drug (p=0.0114); "vaginal vasocongestion did not change significantly" | TRIAL |
+| "44% were told it was something else… 35% told normal for their age" | Simon et al. 2022, PMC9133974 (n=530 women with acquired generalized HSDD who sought care) | TRIAL |
+| "52% were handed a lubricant… only 7% offered the one treatment approved for it" | Same study. The 7% refers to flibanserin, the only approved treatment at the time of that study. | TRIAL |
+| "a nasal spray version was tried first, and abandoned… absorption too unpredictable" | Palatin SEC 8-K 30 Aug 2007 (FDA "identified blood pressure increases as its greatest safety concern"); Palatin press release 9 Feb 2010 — BP and GI events "primarily related to high intranasal absorption in a subset of patients"; FY2008 10-K confirms discontinuation. **Note:** secondary sources say "FDA clinical hold"; Palatin's own filings say the FDA raised concerns and the companies self-halted. The copy says "tried first and abandoned," which avoids the disputed term. | HISTORY |
+| Insulin-fine needle, thigh or stomach | Vyleesi is subcutaneous, abdomen or thigh. This product is a compounded vial + syringe. | LABEL + product |
+
+**Numbers deliberately NOT used, and why (updated):**
+- **Vyleesi's approved dose is 1.75 mg subcutaneous.** One research pass reported "45 mg" — that is wrong and must not reach copy. No dose is stated on the page.
+- RECONNECT effect sizes are small: desire 0.39, distress 0.27; **median placebo change was 0 on both co-primaries**. Discontinuation was 40% vs 13% and 39% vs 25% (drug vs placebo), largely nausea-driven.
+- **Nausea 40% vs 1.3% placebo**; anti-emetics required in 13%; discontinuation in 8%.
+- Focal hyperpigmentation ~1% at recommended dosing, 38% with daily use for 8 days, and **resolution was not confirmed in all patients**.
+- Contraindicated in uncontrolled hypertension or known cardiovascular disease.
+- The widely-quoted "25% vs 17% responder" figures exist only inside a label figure image and could not be verified from text.
+
+Original notes retained below.
 
 | Claim in copy | Source | Tier |
 |---|---|---|
