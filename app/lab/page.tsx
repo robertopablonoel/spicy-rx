@@ -16,24 +16,24 @@ type Concept = {
 const CONCEPTS: Concept[] = [
   {
     slug: "a",
-    name: "Concept A",
+    name: "A · Quiz-router",
     premise:
-      "Quiz-router — a short, problem-aware question set that sorts the visitor to Eros or Passion, then sells with education.",
-    status: "planned",
+      "Three questions. Q1 routes to the right line, Q2/Q3 are marketing questions that set up the offer. The honest version of the quiz thesis — highest friction, most personalization.",
+    status: "live",
   },
   {
     slug: "b",
-    name: "Concept B",
+    name: "B · The invitation",
     premise:
-      "Direct continuity — treats the card as a personal invitation and leads with the offer, minimal friction to intake.",
-    status: "planned",
+      "No quiz. The card is a private invitation: offer in the first screen, one tap to the clinician review, education below the fold for those who research first.",
+    status: "live",
   },
   {
     slug: "c",
-    name: "Concept C",
+    name: "C · Register-detect",
     premise:
-      "Education-first — leads with the apomorphine 'missing half' mechanism, sells by teaching the science.",
-    status: "planned",
+      "One question — not to route, but to detect which register to sell in. The whole page then rewrites to match. Built on the 0/15 finding from the post-purchase quiz.",
+    status: "live",
   },
 ];
 
