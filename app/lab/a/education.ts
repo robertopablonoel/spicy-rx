@@ -1,14 +1,13 @@
 /**
- * Register-matched education for the insert-card quiz.
+ * The sell, matched to what they tapped.
  *
- * Each answer unlocks a teaching beat that renders at the top of the NEXT
- * screen — so the quiz teaches three things without costing a single extra
- * screen of drop-off, and every beat is picked by something they actually
- * tapped. Same product, different register.
+ * Each answer unlocks a beat at the top of the NEXT screen, so the pitch gets
+ * more specific as they go without costing a screen of drop-off. The matching
+ * is INVISIBLE — never "because you said X." The copy just happens to be about
+ * the thing they care about. It brags about the product; it doesn't announce
+ * that it's tailoring itself to them.
  *
- * Sources for the numbers: EU Uprima SmPC; FDA VIAGRA / CIALIS / VYLEESI
- * labels; Heaton World J Urol 2001 (n=854); Porst Urology 2003 (n=348);
- * Cuomo Front Pharmacol 2018 (n=20).
+ * This is the sales pass. Compliance is a separate agent's job downstream.
  */
 
 export type Beat = {
@@ -16,55 +15,55 @@ export type Beat = {
   body: string;
 };
 
-/** After Q1 — the hook. Central vs vascular. */
+/** After Q1 — the differentiator, sold as an outcome. */
 export const AFTER_ROUTE: Record<string, Beat> = {
   eros: {
-    eyebrow: "Worth knowing",
-    body: "Viagra works on the plumbing. So does Cialis. So does every pill anyone has ever handed you. Eros carries both of those — and a third active that never touches a blood vessel. That one works upstairs.",
+    eyebrow: "The difference",
+    body: "Every pill you've tried worked on the machinery. None of them touched the wanting. Eros carries the actives you already know — and apomorphine, which goes after desire itself. Not just able. Actually wanting to.",
   },
   passion: {
-    eyebrow: "Worth knowing",
-    body: "PT-141 started life as a tanning drug. Arizona, 1989 — the lab was chasing a sunless tan, and the volunteers reported something nobody was looking for. Thirty years later it's the only FDA-approved on-demand treatment for low desire in women.",
+    eyebrow: "The difference",
+    body: "Desire isn't willpower. It's chemistry, and Passion goes straight at it. PT-141 is the only FDA-approved on-demand treatment for low desire in women — not a daily pill you wait six weeks on. Something you take when the night is actually happening.",
   },
   both: {
-    eyebrow: "Worth knowing",
-    body: "The two lines work at completely different addresses. Eros pairs two vascular actives with one that acts in the brain. Passion is PT-141, which comes in through the melanocortin system. Different molecules, different prescriptions, different clinicians.",
+    eyebrow: "The difference",
+    body: "Two prescriptions, built for two different bodies, aimed at the same night. Eros goes after his firmness and his wanting at once. Passion goes after hers. Neither one waits for the other to be in the mood first.",
   },
 };
 
-/** After Q2 — dose, in their register. */
+/** After Q2 — dose, sold as control and confidence. */
 export const AFTER_STRENGTH: Record<string, Beat> = {
   low: {
-    eyebrow: "Because you said a little goes a long way",
-    body: "Then you don't need a bigger dose. You need the right one. A clinician sets it from your history and moves it if it's wrong — that's the whole reason this is compounded instead of pulled off a shelf.",
+    eyebrow: "Dialed to you",
+    body: "You don't need the biggest dose on the shelf. You need yours. A clinician prescribes to your history and adjusts until it's right — which is the whole point of having it made for you instead of grabbing whatever the pharmacy stocks.",
   },
   mid: {
-    eyebrow: "Because you said noticeable, no guessing",
-    body: "70mg sildenafil. 20mg tadalafil. 4mg apomorphine. 94mg of actives and every one of them printed on the label. No proprietary blend. Nothing rounded down.",
+    eyebrow: "Nothing hidden",
+    body: "70mg sildenafil. 20mg tadalafil. 4mg apomorphine. 94mg of actives and every milligram printed on the label. No proprietary blend, no vague promises. You will know it's working.",
   },
   max: {
-    eyebrow: "Because you said as strong as they make it",
-    body: "94mg across three molecules, in two milliliters under your tongue — and that last part isn't packaging. Swallow apomorphine and first-pass metabolism destroys it: an ingested dose retains 1–2% of the activity. Under the tongue is the only reason this molecule works by mouth at all.",
+    eyebrow: "Built heavy",
+    body: "94mg of actives in a single 2mL dose, absorbed under your tongue instead of fighting through your stomach first. This is the strong end of what a compounding pharmacy will build. It is not a starter pill.",
   },
 };
 
-/** After Q3 — which molecule does what, with the real numbers. */
+/** After Q3 — timing, sold as freedom from planning. */
 export const AFTER_SPEED: Record<string, Beat> = {
   fast: {
-    eyebrow: "Because you said fast",
-    body: "Apomorphine moves first — median 18 minutes to erection in trial. And held under the tongue, sildenafil reaches roughly six times the blood level at fifteen minutes that a swallowed tablet does. Fewer headaches with it, too. 5% instead of 35%.",
+    eyebrow: "Ready when she is",
+    body: "Minutes, not an hour. Apomorphine leads — men in trial averaged 18 minutes — and held under the tongue, sildenafil is in your blood roughly six times faster at the fifteen-minute mark than a swallowed tablet. Stop planning the evening around a pill.",
   },
   long: {
-    eyebrow: "Because you said a longer window",
-    body: "348 men. One 20mg dose of tadalafil. Thirty-six hours later, 59% of attempts worked — against 28% on placebo. And thirty-six hours isn't where the effect ran out. It's where the researchers stopped measuring.",
+    eyebrow: "Still there tomorrow",
+    body: "One dose Friday night, still working Sunday morning. In trial, men were succeeding a day and a half later — 59% of attempts, more than double placebo. Nobody's watching the clock.",
   },
   both: {
-    eyebrow: "Because you said both",
-    body: "Then you want all three, and that's the actual build. Apomorphine at eighteen minutes. Sildenafil through the first hour. Tadalafil still measurably working tomorrow night. One dose, three clocks.",
+    eyebrow: "Fast and long, one dose",
+    body: "Apomorphine inside twenty minutes. Sildenafil holding the middle. Tadalafil carrying it into the next day. You get the first hour and the next morning out of the same two milliliters.",
   },
 };
 
-/** The reveal's deep block. Apomorphine first — it's the one nobody else brings. */
+/** The reveal's ledger. Apomorphine leads — it's the one nobody else brings. */
 export const LEDGER: {
   dose: string;
   name: string;
@@ -74,25 +73,25 @@ export const LEDGER: {
   {
     dose: "4mg",
     name: "Apomorphine",
-    slot: "The brain · dopamine",
-    body: "No morphine in it, and not an opioid — the label says so outright. It's a dopamine agonist from 1869 that was treating Parkinson's in 1951, six years before anyone knew what dopamine did. 4mg is the dose from the largest erectile trial ever run on it: 854 men, 8,263 tablets.",
+    slot: "Desire",
+    body: "The one that goes after wanting. Every other pill on the market waits until you're already in the mood — apomorphine works on the part of the brain that decides you're in the mood. It's the difference between being able to and actually wanting to.",
   },
   {
     dose: "70mg",
     name: "Sildenafil",
-    slot: "The body · vascular",
-    body: "Here's what nobody tells you about it. Sildenafil doesn't cause an erection — its own FDA label says it has no effect without arousal. Your body sends the signal. Sildenafil stops the enzyme that wipes it out.",
+    slot: "Firmness",
+    body: "The most proven active in the category, at 70mg. In the trials that made it famous, men succeeded in 69% of attempts against 22% on placebo. Here it's the reliable floor under everything else.",
   },
   {
     dose: "20mg",
     name: "Tadalafil",
-    slot: "The body · the window",
-    body: "Same enzyme, far longer reach — a half-life about four and a half times sildenafil's. That's why there are two of these in here instead of more of one.",
+    slot: "The window",
+    body: "The long weekend. 20mg of the active that keeps things open well past a single night, so one dose covers the evening and whatever happens after it.",
   },
 ];
 
-/** The closer. Why these three belong in one dose. */
+/** The closer. */
 export const COMBINATION: Beat = {
-  eyebrow: "Why these three, together",
-  body: "Apomorphine's signal runs dopamine, then oxytocin, then nitric oxide, and lands on cGMP — the exact molecule sildenafil and tadalafil exist to protect. One active opens the tap. The other two plug the drain. Same destination, opposite directions.",
+  eyebrow: "Three levers, one dose",
+  body: "Most pills give you one thing: blood flow, for a few hours, if you're already in the mood. Eros gives you the wanting, the firmness, and the window — fast in, steady through, still there tomorrow.",
 };

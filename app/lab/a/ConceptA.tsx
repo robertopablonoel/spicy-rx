@@ -261,8 +261,10 @@ export function ConceptA() {
                     lineHeight: 1.05,
                   }}
                 >
-                  The half your pill{" "}
-                  <span className="text-[var(--ember)]">never touched.</span>
+                  Hard is the easy part.{" "}
+                  <span className="text-[var(--ember)]">
+                    The wanting is the rest.
+                  </span>
                 </h1>
                 {speed && <Teach beat={AFTER_SPEED[speed]} />}
               </>
