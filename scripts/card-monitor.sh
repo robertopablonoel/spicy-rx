@@ -90,11 +90,34 @@ q "SELECT properties.utm_content AS design, count() AS scans
    GROUP BY design ORDER BY scans DESC"
 
 echo
-echo "▸ DID ANYONE REACH THE INTAKE?  (the hop I could not test)"
-q "SELECT event, count() AS n, count(DISTINCT distinct_id) AS people
+echo "▸ DID ANYONE REACH THE INTAKE?  (arm parsed out of the intake URL)"
+# Join on sc_exit read from \$current_url, NOT from a property. Rimo's GTM
+# bridge promotes only an allowlist of params to top-level properties —
+# sc_order and form_arm made that list, sc_exit did not — so properties.sc_exit
+# is null on every Rimo event even when the param is plainly in the URL.
+#
+# Do NOT filter on `properties.utm.utmMedium`: HogQL reads that as a nested
+# JSON path (properties → utm → utmMedium), but the literal key is the
+# dotted string "utm.utmMedium". It silently matches nothing, which reported
+# "(nothing yet)" for the first 14 hours while two real leads had already
+# landed. Bracket-quote dotted keys, or key off the URL as we do here.
+q "SELECT extractURLParameter(toString(properties.\$current_url),'sc_exit') AS arm,
+          event, count() AS n, count(DISTINCT distinct_id) AS people
    FROM events
    WHERE event LIKE 'client.%'
-     AND properties.utm.utmMedium = 'insert'
+     AND extractURLParameter(toString(properties.\$current_url),'sc_exit') != ''
      AND timestamp > toDateTime('$SINCE')
-   GROUP BY event ORDER BY n DESC"
+   GROUP BY arm, event ORDER BY arm, n DESC"
+
+echo
+echo "▸ COUPON SURVIVAL INTO THE INTAKE  (blank = the discount was lost)"
+q "SELECT extractURLParameter(toString(properties.\$current_url),'sc_exit') AS arm,
+          toString(properties['teleform.name']) AS form,
+          extractURLParameter(toString(properties.\$current_url),'coupon') AS coupon,
+          count() AS n
+   FROM events
+   WHERE event = 'client.teleform.started'
+     AND extractURLParameter(toString(properties.\$current_url),'sc_exit') != ''
+     AND timestamp > toDateTime('$SINCE')
+   GROUP BY arm, form, coupon ORDER BY n DESC"
 echo

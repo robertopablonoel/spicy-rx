@@ -52,11 +52,31 @@ export function initPostHog(): void {
   initialized = true;
 }
 
+/**
+ * Fire an event, initializing PostHog first if it hasn't happened yet.
+ *
+ * The self-init is load-bearing, not defensive. `initPostHog()` runs in a
+ * `useEffect` inside <Providers>, and React runs CHILD effects before PARENT
+ * effects — so any component that tracks on mount fires before the provider
+ * has initialized, and the old `if (!initialized) return` dropped that event
+ * on the floor. lib/form-ab.ts already worked around this locally; doing it
+ * here fixes every caller at once.
+ *
+ * Observed live: `card_quiz_viewed` recorded 15 events against 25 people who
+ * went on to answer questions — completions outnumbered views, which is
+ * impossible in a funnel. The loss was also perfectly correlated with the
+ * exit-split arm (15 direct, 0 lander), because useExitArm()'s server snapshot
+ * is "lander": lander visitors' client snapshot matches it, so the effect never
+ * re-ran after init, while direct visitors got a second, surviving fire when
+ * the arm changed. A dropped event that looks like a clean 15/0 experiment
+ * result is worse than no event at all.
+ */
 export function trackEvent(
   name: string,
   properties?: Record<string, unknown>,
 ): void {
-  if (!initialized) return;
+  if (!initialized) initPostHog();
+  if (!initialized) return; // no key, or SSR — genuinely nothing to send
   posthog.capture(name, properties);
 }
 
