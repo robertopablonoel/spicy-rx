@@ -154,9 +154,25 @@ export function CardQuiz() {
   const href =
     step === LAST_STEP ? withAttribution(exitTarget(arm, exitLine)) : "";
 
+  // Fire ONCE per mount, and read the arm at fire time rather than closing over
+  // the `arm` binding above.
+  //
+  // useExitArm()'s getServerSnapshot returns "lander", so the hydration commit
+  // always sees "lander" and only direct-arm visitors re-render once the client
+  // snapshot disagrees. Keying this effect on [arm] therefore fired it TWICE for
+  // direct visitors — once mislabelled "lander", once correct — while lander
+  // visitors fired once. That silently inflated lander and put 36 of 97 people
+  // under BOTH arms. readExitArm() runs in an effect, i.e. client-side after
+  // mount, so it returns the true arm on the first and only fire.
+  //
+  // Tap-time events (step/completed/handoff) were never affected: they fire long
+  // after hydration settles, and it is those events the experiment is read from.
   useEffect(() => {
-    trackEvent("card_quiz_viewed", { experiment_id: EXIT_EXPERIMENT_ID, arm });
-  }, [arm]);
+    trackEvent("card_quiz_viewed", {
+      experiment_id: EXIT_EXPERIMENT_ID,
+      arm: readExitArm(),
+    });
+  }, []);
 
   function answer(question: string, value: string, next: number) {
     trackEvent("card_quiz_step", {

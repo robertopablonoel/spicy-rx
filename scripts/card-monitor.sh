@@ -63,10 +63,44 @@ q "SELECT event, count() AS events, count(DISTINCT distinct_id) AS people
 
 echo
 echo "▸ BY EXIT ARM  (the experiment: lander vs direct)"
-q "SELECT properties.arm AS arm, event, count() AS n
+# TAP-TIME EVENTS ONLY. card_quiz_viewed is deliberately excluded: it fires
+# during hydration, when useExitArm()'s server snapshot still reads "lander",
+# so its `arm` is unreliable and over-counts lander. step/completed/handoff all
+# fire on a user tap, long after hydration settles, and are trustworthy.
+# Read the experiment from these, never from viewed.
+q "SELECT properties.arm AS arm, event, count() AS n,
+          count(DISTINCT distinct_id) AS people
    FROM events
-   WHERE event LIKE 'card_quiz_%' AND timestamp > toDateTime('$SINCE')
+   WHERE event IN ('card_quiz_step','card_quiz_completed','card_quiz_handoff_click')
+     AND timestamp > toDateTime('$SINCE')
    GROUP BY arm, event ORDER BY arm, n DESC"
+
+echo
+echo "▸ SPLIT BALANCE  (a person under BOTH arms means the labelling regressed)"
+q "SELECT arms, count() AS people FROM (
+     SELECT distinct_id, arrayStringConcat(arraySort(groupUniqArray(toString(properties.arm))),'+') AS arms
+     FROM events
+     WHERE event IN ('card_quiz_step','card_quiz_completed','card_quiz_handoff_click')
+       AND timestamp > toDateTime('$SINCE')
+     GROUP BY distinct_id
+   ) GROUP BY arms ORDER BY people DESC"
+
+echo
+echo "▸ THE SCOREBOARD  (leads ÷ people who reached the reveal)"
+# The reveal is the last screen both arms share, so it is the unbiased
+# denominator. Scans cannot be used per-arm: insert_qr_scan is posted
+# server-side and does NOT carry sc_exit, so scan counts exist only in total.
+q "SELECT r.arm AS arm, r.reveal AS reveal, l.leads AS leads,
+          round(100.0 * l.leads / r.reveal, 1) AS pct
+   FROM (SELECT toString(properties.arm) AS arm, count(DISTINCT distinct_id) AS reveal
+         FROM events WHERE event='card_quiz_completed' AND timestamp > toDateTime('$SINCE')
+         GROUP BY arm) r
+   LEFT JOIN (SELECT extractURLParameter(toString(properties.\$current_url),'sc_exit') AS arm,
+                     count(DISTINCT distinct_id) AS leads
+              FROM events WHERE event='client.lead.created' AND timestamp > toDateTime('$SINCE')
+                AND extractURLParameter(toString(properties.\$current_url),'sc_exit') != ''
+              GROUP BY arm) l ON r.arm = l.arm
+   ORDER BY arm"
 
 echo
 echo "▸ DROP-OFF BY QUESTION  (where they quit)"
